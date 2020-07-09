@@ -321,10 +321,11 @@
             <binplus.FoodWill.Fonts.LatoBLack
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
                 android:paddingLeft="@dimen/space_10"
+                android:textSize="@dimen/space_16"
                 android:textColor="@color/colorPrimary"
-                android:text="Recently Added Products"/>
+                android:text="Products in Demand"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -367,7 +368,8 @@
             <binplus.FoodWill.Fonts.LatoBLack
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/space_16"
                 android:paddingLeft="@dimen/space_10"
                 android:textColor="@color/colorPrimary"
                 android:text="Proudly Delivered"/>
