@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FORTSDKv1.5/FORTSDKv1.5.iml" filepath="$PROJECT_DIR$/FORTSDKv1.5/FORTSDKv1.5.iml" group="foodwill2/FORTSDKv1.5" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="foodwill2/app" />
-      <module fileurl="file://$PROJECT_DIR$/foodwill2.iml" filepath="$PROJECT_DIR$/foodwill2.iml" group="foodwill2" />
+      <module fileurl="file://$PROJECT_DIR$/FORTSDKv1.5/FORTSDKv1.5.iml" filepath="$PROJECT_DIR$/FORTSDKv1.5/FORTSDKv1.5.iml" group="foodwill223456/FORTSDKv1.5" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="foodwill223456/app" />
+      <module fileurl="file://$PROJECT_DIR$/foodwill223456.iml" filepath="$PROJECT_DIR$/foodwill223456.iml" group="foodwill223456" />
     </modules>
   </component>
 </project>

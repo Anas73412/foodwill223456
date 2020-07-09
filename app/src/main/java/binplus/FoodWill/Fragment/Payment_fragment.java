@@ -55,6 +55,7 @@ import binplus.FoodWill.util.DatabaseCartHandler;
 import binplus.FoodWill.util.Session_management;
 
 import static binplus.FoodWill.Config.BaseURL.KEY_ID;
+import static binplus.FoodWill.MainActivity.cod_status;
 import static binplus.FoodWill.MainActivity.extra_charges;
 import static com.android.volley.VolleyLog.TAG;
 
@@ -138,6 +139,14 @@ public class Payment_fragment extends Fragment {
         rb_Store = (RadioButton) view.findViewById(R.id.use_store_pickup);
 //        rb_Store.setTypeface(font);
         rb_Cod = (RadioButton) view.findViewById(R.id.use_COD);
+        if (cod_status.equals("1"))
+        {
+            rb_Cod.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            rb_Cod.setVisibility(View.GONE);
+        }
         //   rb_Cod.setTypeface(font);
         rb_card = (RadioButton) view.findViewById(R.id.use_card);
         //    rb_card.setTypeface(font);

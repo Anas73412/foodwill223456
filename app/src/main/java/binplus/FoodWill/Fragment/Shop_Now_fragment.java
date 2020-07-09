@@ -89,15 +89,12 @@ public class Shop_Now_fragment extends Fragment {
     }
 
     rv_items = (RecyclerView) view.findViewById(R.id.rv_home);
-    GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
+    GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
     rv_items.setLayoutManager(gridLayoutManager);
     // rv_items.addItemDecoration(new GridSpacingItemDecoration(10, dpToPx(-25), true));
-    rv_items.setItemAnimator(new DefaultItemAnimator());
+//    rv_items.setItemAnimator(new DefaultItemAnimator());
     rv_items.setNestedScrollingEnabled(false);
-    rv_items.setItemViewCacheSize(10);
-    rv_items.setDrawingCacheEnabled(true);
-    rv_items.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_LOW);
-    rv_items.setNestedScrollingEnabled(false);
+
 
 //        GridLayoutManager layoutManager = new GridLayoutManager(getActivity(),4) {
 //
@@ -246,44 +243,6 @@ public class Shop_Now_fragment extends Fragment {
 
   }
 
-   /* public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
-
-        private int spanCount;
-        private int spacing;
-        private boolean includeEdge;
-
-        public GridSpacingItemDecoration(int spanCount, int spacing, boolean includeEdge) {
-            this.spanCount = spanCount;
-            this.spacing = spacing;
-            this.includeEdge = includeEdge;
-        }
-
-        //Defining retrofit api service
-
-        @Override
-        public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {
-            int position = parent.getChildAdapterPosition(view); // item position
-            int column = position % spanCount; // item column
-
-            if (includeEdge) {
-                outRect.left = spacing - column * spacing / spanCount; // spacing - column * ((1f / spanCount) * spacing)
-                outRect.right = (column + 1) * spacing / spanCount; // (column + 1) * ((1f / spanCount) * spacing)
-
-                if (position < spanCount) { // top edge
-                    outRect.top = spacing;
-                }
-                outRect.bottom = spacing; // item bottom
-            } else {
-                outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                if (position >= spanCount) {
-                    outRect.top = spacing; // item top
-                }
-            }
-        }
-    }*/
-
-  // Converting dp to pixel
 
   private int dpToPx(int dp) {
     Resources r = getResources();

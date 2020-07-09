@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#154D78</color>
-
-    <color name="colorPrimaryDark">#C9F1C3</color>
+    <color name="colorPrimary">#005D8A</color>
+    <color name="colorPrimaryDark">#AEEF9F</color>
     <color name="colorAccent">#7C85D3</color>
-    <color name="colorAccent1">#f2cc0b</color>
-
+    <color name="colorAccent1">#C9F1C3</color>
+    <color name="color_gradient1">#719B2D</color>
+    <color name="color_gradient2">#A9BC3B</color>
     <color name="white">#ffffff</color>
     <color name="tagline_color">#474E99</color>
     <color name="gray">#E3E3E3</color>
@@ -27,7 +27,7 @@
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
     <color name="contact">#A09F9F</color>
-    <color name="all">#F49B19</color>
+    <color name="all">#FDB750</color>
     <color name="tot">#2E7731</color>
 
 

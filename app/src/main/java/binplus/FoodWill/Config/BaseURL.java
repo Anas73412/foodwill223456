@@ -2,7 +2,7 @@ package binplus.FoodWill.Config;
 
 
 public class BaseURL {
-    static final String APP_NAME = "JabicoFresh ";
+    static final String APP_NAME = "FoodWill ";
     public static final String PREFS_NAME = "GroceryLoginPrefs";
     public static final String PREFS_NAME2 = "GroceryLoginPrefs2";
     public static final String IS_LOGIN = "isLogin";
@@ -47,10 +47,7 @@ public class BaseURL {
     public static final String STORE_ID = "STORE_ID";
 
     public static String BASE_URL = "https://www.myjewelstuff.in/";
-//    public static String BASE_URL = "http://jabicofresh.com/admin/";
-    //public static String BASE_URL = "https://myjewelstuff.in/index.php/api/index/";
 
-// public static String BASE_URL = "https://www.trolleyxpress.com/index.php/api/get_time_slot";
 
     public static String IMG_SLIDER_URL = BASE_URL + "uploads/sliders/";
     public static String IMG_CATEGORY_URL = BASE_URL + "uploads/category/";

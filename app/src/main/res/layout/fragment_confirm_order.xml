@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +14,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white"
+
         android:orientation="vertical">
 
         <binplus.FoodWill.Fonts.LatoBLack
@@ -34,7 +35,7 @@
             android:layout_width="fill_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/linearLayout2"
-            android:background="@color/all"
+
             android:layout_below="@+id/txtPaymentdetails">
 
             <LinearLayout
@@ -658,4 +659,4 @@
         </LinearLayout>
 
     </RelativeLayout>
-</androidx.cardview.widget.CardView>
+</RelativeLayout>

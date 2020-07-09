@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="#AEEF9F"
     tools:context="binplus.FoodWill.SplashActivity">
   <RelativeLayout
       android:layout_centerVertical="true"
@@ -15,7 +15,7 @@
         android:id="@+id/tv_logo"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:scaleType="centerCrop"
+
         android:layout_centerHorizontal="true"
         android:src="@drawable/splash_logo"
         />

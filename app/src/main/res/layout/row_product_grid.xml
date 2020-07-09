@@ -2,8 +2,6 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-
-
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,7 +21,7 @@
     <RelativeLayout
         android:id="@+id/relative_layout"
         android:layout_width="match_parent"
-        android:layout_height="340dp">
+        android:layout_height="360dp">
 
         <ImageView
             android:id="@+id/product_img"
@@ -160,7 +158,8 @@
 
        <RelativeLayout
            android:id="@+id/weight"
-           android:layout_below="@+id/product_name"
+           android:layout_above="@+id/rel_add"
+
            android:layout_width="match_parent"
            android:layout_height="wrap_content">
         <binplus.FoodWill.Fonts.LatoBLack
@@ -233,14 +232,15 @@
         </RelativeLayout>
        </RelativeLayout>
         <RelativeLayout
-            android:id="@+id/addbtn"
-            android:layout_below="@+id/weight"
+            android:id="@+id/rel_add"
+            android:layout_alignParentBottom="true"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:gravity="center_vertical"
-            android:layout_marginTop="@dimen/space_5"
+            android:layout_marginBottom="@dimen/space_8"
 
 
            >

@@ -41,6 +41,7 @@ import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
+import com.android.volley.TimeoutError;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.daimajia.slider.library.SliderLayout;
@@ -239,7 +240,7 @@ public class Home_fragment extends Fragment {
         //Slider
         imgSlider = (SliderLayout) view.findViewById( R.id.home_img_slider);
         banner_slider = (SliderLayout) view.findViewById( R.id.relative_banner);
-        // featuredslider = (SliderLayout) view.findViewById(R.id.featured_img_slider);
+       featuredslider = (SliderLayout) view.findViewById(R.id.featured_img_slider);
 
 
         //Catogary Icons
@@ -662,7 +663,7 @@ public class Home_fragment extends Fragment {
     }
 
 
-   /* private void makeGetFeaturedSlider() {
+  private void makeGetFeaturedSlider() {
         JsonArrayRequest req = new JsonArrayRequest(BaseURL.GET_FEAATURED_SLIDER_URL,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -675,24 +676,37 @@ public class Home_fragment extends Fragment {
                                 HashMap<String, String> url_maps = new HashMap<String, String>();
                                 url_maps.put("slider_title", jsonObject.getString("slider_title"));
                                 url_maps.put("sub_cat", jsonObject.getString("sub_cat"));
+                                url_maps.put("slider_url", jsonObject.getString("slider_url"));
+                                url_maps.put("slider_status", jsonObject.getString("slider_status"));
+
                                 url_maps.put("slider_image", BaseURL.IMG_SLIDER_URL + jsonObject.getString("slider_image"));
                                 listarray.add(url_maps);
                             }
-                            for (HashMap<String, String> name : listarray) {
+                            for (final HashMap<String, String> name : listarray) {
                                 CustomSlider textSliderView = new CustomSlider(getActivity());
-                                textSliderView.description(name.get("")).image(name.get("slider_image")).setScaleType(BaseSliderView.ScaleType.Fit);
+                                textSliderView.description(name.get("")).image(name.get("slider_image")).setScaleType( BaseSliderView.ScaleType.Fit);
                                 textSliderView.bundle(new Bundle());
-                                //  textSliderView.getBundle().putString("extra", name.get("slider_title"));
+                                textSliderView.getBundle().putString("extra", name.get("slider_title"));
                                 textSliderView.getBundle().putString("extra", name.get("sub_cat"));
                                 featuredslider.addSlider(textSliderView);
                                 final String sub_cat = (String) textSliderView.getBundle().get("extra");
                                 textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
                                     @Override
                                     public void onSliderClick(BaseSliderView slider) {
-                                        //   Toast.makeText(getActivity(), "" + sub_cat, Toast.LENGTH_SHORT).show();
+
                                         Bundle args = new Bundle();
-                                        binplus.Jabico.Fragment fm = new Product_fragment();
-                                        args.putString("id", sub_cat);
+                                        Fragment fm = null;
+                                        args.putString("cat_id", sub_cat);
+                                        args.putString("title",name.get("slider_title"));
+                                        session_management.setCategoryId(sub_cat);
+                                        if(name.get("parent").equals("0"))
+                                        {
+                                            fm=new SubCategory_Fragment();
+                                        }
+                                        else {
+                                            //   Toast.makeText(getActivity(), "" + sub_cat, Toast.LENGTH_SHORT).show();
+                                            fm = new Product_fragment();
+                                        }
                                         fm.setArguments(args);
                                         FragmentManager fragmentManager = getFragmentManager();
                                         fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
@@ -700,25 +714,28 @@ public class Home_fragment extends Fragment {
                                     }
                                 });
 
-                            }
 
+                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
-                            Toast.makeText(getActivity(), "Error: " + e.getMessage(), Toast.LENGTH_LONG).show();
+                            Toast.makeText(getActivity(),
+                                    "Error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG).show();
                         }
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
-                    Toast.makeText(getActivity(), getResources().getString(R.string.connection_time_out), Toast.LENGTH_SHORT).show();
+                String msg=module.VolleyErrorMessage(error);
+                if(!msg.equals(""))
+                {
+                    Toast.makeText(getActivity(),""+msg,Toast.LENGTH_LONG).show();
                 }
             }
         });
-        AppController.getInstance().addToRequestQueue(req);
+      AppController.getInstance().addToRequestQueue(req);
 
-    }*/
+    }
 
 
     private void makeGetCategoryRequest() {
@@ -1187,7 +1204,7 @@ public class Home_fragment extends Fragment {
         CustomVolleyJsonRequest request=new CustomVolleyJsonRequest(Request.Method.POST, BaseURL.GET_VERSTION_DATA, map, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-//                Log.d("app_setting",response.toString());
+                Log.d("app_setting",response.toString());
                 loadingBar.dismiss();
                 try
                 {
@@ -1204,11 +1221,8 @@ public class Home_fragment extends Fragment {
                                 makeGetCategoryRequest();
                                 makeGetSliderRequest();
                                 make_menu_items();
-
-
+                                makeGetFeaturedSlider();
                                 makeGetBannerSliderRequest();
-
-
                                 new_products();
                                 //make_deal_od_the_day();
                                 make_top_selling();

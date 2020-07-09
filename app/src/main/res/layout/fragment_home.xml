@@ -312,7 +312,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/image"
+
                     android:scaleType="fitXY"></ImageView>
             </androidx.cardview.widget.CardView>
 
@@ -387,47 +387,19 @@
                 app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
-            <!--                </FrameLayout>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:background="@color/white"
+           >
+                <com.daimajia.slider.library.SliderLayout
+                    android:id="@+id/featured_img_slider"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/space_5"
+                 />
 
-            <!--            </FrameLayout>-->
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="@dimen/slider_one_height"-->
-            <!--                android:background="@color/white"-->
-            <!--                android:layout_marginTop="-30dp">-->
-
-            <!--                <com.daimajia.slider.library.SliderLayout-->
-            <!--                    android:id="@+id/relative_banner"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="match_parent"-->
-            <!--                    android:layout_marginLeft="@dimen/space_5"-->
-            <!--                    android:layout_marginTop="@dimen/space_5"-->
-            <!--                    android:layout_marginRight="@dimen/space_5"-->
-            <!--                    android:layout_marginBottom="@dimen/space_5">-->
-
-            <!--                </com.daimajia.slider.library.SliderLayout>-->
-            <!--            </LinearLayout>-->
-
-
-            <!--            <LinearLayout-->
-            <!--                android:layout_width="match_parent"-->
-            <!--                android:layout_height="48dp"-->
-            <!--                android:layout_gravity="center"-->
-            <!--                android:layout_marginTop="@dimen/space_4"-->
-            <!--                android:background="@color/colorPrimary"-->
-            <!--                android:gravity="center">-->
-
-            <!--                <binplus.Jabico.Fonts.LatoBLack-->
-            <!--                    android:id="@+id/firebase"-->
-            <!--                    android:layout_width="match_parent"-->
-            <!--                    android:layout_height="wrap_content"-->
-            <!--                    android:gravity="center"-->
-            <!--                    android:text="@string/shop_by_category"-->
-            <!--                    android:textColor="#837e7e"-->
-            <!--                    android:textSize="@dimen/text_size_normal" />-->
-
-
-            <!--            </LinearLayout>-->
+        </LinearLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -471,89 +443,4 @@
     </ScrollView>
 
 
-    <!--    <LinearLayout-->
-    <!--        android:id="@+id/bottom"-->
-    <!--        android:layout_alignParentBottom="true"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="50dp"-->
-    <!--        android:layout_marginTop="12dp"-->
-    <!--        android:background="#fff"-->
-    <!--        android:orientation="horizontal"-->
-    <!--        android:weightSum="2">-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight=".5"-->
-    <!--            android:gravity="center">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/iv_call"-->
-    <!--                android:layout_width="25dp"-->
-    <!--                android:layout_height="25dp"-->
-    <!--                android:src="@drawable/call_answer" />-->
-
-
-    <!--        </LinearLayout>-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight=".5"-->
-    <!--            android:gravity="center">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/iv_whatsapp"-->
-    <!--                android:layout_width="25dp"-->
-    <!--                android:layout_height="25dp"-->
-    <!--                android:src="@drawable/mywhatsapp" />-->
-
-    <!--        </LinearLayout>-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight=".5"-->
-    <!--            android:gravity="center">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/reviews"-->
-    <!--                android:layout_width="35dp"-->
-    <!--                android:layout_height="35dp"-->
-    <!--                android:src="@drawable/reviews" />-->
-
-    <!--        </LinearLayout>-->
-
-    <!--        <LinearLayout-->
-    <!--            android:layout_width="0dp"-->
-    <!--            android:layout_height="50dp"-->
-    <!--            android:layout_weight=".5"-->
-    <!--            android:gravity="center">-->
-
-    <!--            <ImageView-->
-    <!--                android:id="@+id/share_via"-->
-    <!--                android:layout_width="25dp"-->
-    <!--                android:layout_height="25dp"-->
-    <!--                android:src="@drawable/share_via" />-->
-
-    <!--        </LinearLayout>-->
-    <!--    </LinearLayout>-->
-    <!--<RelativeLayout-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="20dp"-->
-    <!--android:layout_alignParentBottom="true"-->
-    <!--android:background="#00acc1">-->
-    <!--<TextView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:textColor="#fff"-->
-    <!--android:layout_marginLeft="5dp"-->
-    <!--android:text="Developed by Binplus Technologies"/>-->
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_marginLeft="250dp"-->
-    <!--android:textColor="#fff"-->
-    <!--android:text="About us"/>-->
-    <!--</RelativeLayout>-->
 </LinearLayout>

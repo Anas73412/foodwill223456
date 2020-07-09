@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.nispok:snackbar:2.11.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc3cb0d4697bb2a893fee3840b68fa01/jetified-snackbar-2.11.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bc3382dece3326e5d0f4fcf2283d923/jetified-snackbar-2.11.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc3cb0d4697bb2a893fee3840b68fa01/jetified-snackbar-2.11.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fc3cb0d4697bb2a893fee3840b68fa01/jetified-snackbar-2.11.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bc3382dece3326e5d0f4fcf2283d923/jetified-snackbar-2.11.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bc3382dece3326e5d0f4fcf2283d923/jetified-snackbar-2.11.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
