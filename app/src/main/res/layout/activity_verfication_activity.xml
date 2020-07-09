@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Verfication_activity"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    >
+    <FrameLayout
+        android:id="@+id/varify_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+      <TextView
+          android:id="@+id/txt_reg_back"
+          android:background="@drawable/ic_keyboard_backspace_black_24dp"
+          android:backgroundTint="@color/colorPrimary"
+          android:backgroundTintMode="src_in"
+          android:layout_margin="@dimen/space_20"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"/>
+
+
+
+
+
+
+
+  </RelativeLayout>
+
+
+</RelativeLayout>

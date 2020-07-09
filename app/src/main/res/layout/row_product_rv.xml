@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+android:layout_margin="@dimen/space_4"
+        card_view:cardCornerRadius="5dp">
+    <RelativeLayout
+        android:id="@+id/rel_click"
+        android:layout_width="match_parent"
+        android:layout_height="320dp">
+
+
+        <RelativeLayout
+            android:id="@+id/rel1"
+            android:layout_width="match_parent"
+            android:layout_margin="@dimen/space_10"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/iv_subcat_img"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+              android:layout_margin="@dimen/space_5"
+
+                android:src="@drawable/icon"
+                android:layout_centerHorizontal="true"
+                android:scaleType="fitXY"/>
+
+
+            <LinearLayout
+                android:layout_below="@+id/iv_subcat_img"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+
+                android:orientation="vertical">
+
+
+
+                <binplus.FoodWill.Fonts.LatoBLack
+
+                    android:id="@+id/tv_subcat_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAlignment="gravity"
+                    android:textStyle="bold"
+                  android:gravity="center"
+                    android:text="Product Name"
+                    android:textColor="#837e7e"
+                    android:maxLines="2"
+                    android:ellipsize="end"
+                    android:textSize="18dp" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/pricelay"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+
+                    <binplus.FoodWill.Fonts.LatoBLack
+                        android:id="@+id/tv_subcat_price"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Price :"
+                        android:textColor="#837e7e"
+                        android:textSize="16dp" />
+
+                    <binplus.FoodWill.Fonts.LatoBLack
+                        android:id="@+id/product_mrp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@id/tv_subcat_price"
+                        android:paddingTop="3dp"
+                        android:text="Price"
+                        android:textColor="@color/color_3"
+                        android:textSize="13dp" />
+
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="@dimen/space_5"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+android:layout_gravity="center"
+                    android:gravity="center"
+                    >
+                    <binplus.FoodWill.Fonts.LatoBLack
+                        android:id="@+id/txtId"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+
+                        android:textSize="10dp"
+                        android:text="Weight :"
+
+
+                        android:visibility="invisible"
+                        />
+                    <binplus.FoodWill.Fonts.LatoBLack
+                        android:id="@+id/txtVar"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+
+                        android:textSize="10dp"
+                        android:text="Weight :"
+                        android:gravity="center"
+                        android:visibility="invisible"
+                        />
+                    <binplus.FoodWill.Fonts.LatoBLack
+                        android:id="@+id/single_varient"
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+
+                        android:text="1kg"
+                        android:gravity="center"
+                       android:textAlignment="gravity"
+                        android:layout_centerVertical="true"
+
+                       />
+                    <RelativeLayout
+                        android:id="@+id/rel_variant"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                       android:layout_marginTop="@dimen/space_5"
+                        android:layout_marginLeft="22dp"
+                        android:layout_marginRight="22dp"
+                        android:visibility="gone"
+                        android:background="@drawable/relative_unit_layout">
+                        <binplus.FoodWill.Fonts.LatoBLack
+                            android:id="@+id/unit_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="30dp"
+                           android:paddingTop="5dp"
+                            android:paddingRight="@dimen/space_2"
+                            android:layout_centerHorizontal="true"
+                            android:layout_centerVertical="true"
+                            android:text="text"
+                            android:textColor="@color/black"
+                            android:textSize="15sp" />
+                        <ImageView
+                           android:layout_alignParentEnd="true"
+                            android:background="@drawable/ic_arrow_drop_down_black_24dp"
+                            android:layout_width="30dp"
+
+                            android:layout_height="30dp">
+
+                        </ImageView>
+
+                    </RelativeLayout>
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    >
+
+
+                    <Button
+                        android:fontFamily="@font/bold"
+                        android:id="@+id/btn_add"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:layout_toRightOf="@+id/varient"
+                        android:background="@drawable/bg_rounded_button"
+                        android:clickable="true"
+                        android:text="Add"
+                        android:textColor="@color/white"
+
+                        />
+                    <com.cepheuen.elegantnumberbutton.view.ElegantNumberButton
+                        android:id="@+id/elegantButton"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_centerInParent="true"
+                        android:layout_marginRight="@dimen/space_10"
+                        android:layout_toRightOf="@+id/varient"
+
+                        app:backGroundColor="@color/colorAccent"
+                        app:backgroundDrawable="@drawable/bg_rounded_button"
+
+                        android:elevation="6dp"
+                        app:textSize="7dp"
+                        app:initialNumber="1"
+                        app:finalNumber="10"
+                        android:gravity="center_vertical"
+                        app:textColor="@color/white"
+                        android:visibility="gone"
+
+                        />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/space_8"
+            android:id="@+id/rel_wish">
+
+
+            <ImageView
+                android:id="@+id/wish_before"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+                app:srcCompat="@drawable/wish_before"
+                />
+
+            <ImageView
+                android:id="@+id/wish_after"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+
+
+                app:srcCompat="@drawable/wish_after"
+                android:visibility="gone"
+                />
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/img_cart"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_alignParentEnd="true"
+            android:layout_margin="@dimen/space_8"
+            android:layout_below="@+id/rel_wish"
+            app:srcCompat="@drawable/icons_cart"
+            android:tint="@color/dark_gray"
+            android:visibility="gone"
+            />
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            >
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="fitXY"
+                android:layout_centerVertical="true"
+                android:background="@drawable/dis_banner"
+                />
+            <binplus.FoodWill.Fonts.LatoBLack
+                android:id="@+id/dis"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text=" discount"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:padding="2dp"
+                android:textColor="@android:color/white"/>
+        </RelativeLayout>
+
+        </RelativeLayout>
+        <View
+            android:layout_below="@+id/rel1"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/space_1"
+            android:visibility="gone"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="@dimen/space_5"></View>
+
+
+<RelativeLayout
+android:id="@+id/rel_out"
+    android:layout_gravity="top"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:clickable="false"
+    android:gravity="right"
+    android:layout_alignParentRight="true"
+    android:visibility="gone"
+    >
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/soldout"/>
+</RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
+</RelativeLayout>

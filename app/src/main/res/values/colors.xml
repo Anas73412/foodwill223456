@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#154D78</color>
+
+    <color name="colorPrimaryDark">#C9F1C3</color>
+    <color name="colorAccent">#7C85D3</color>
+    <color name="colorAccent1">#f2cc0b</color>
+
+    <color name="white">#ffffff</color>
+    <color name="tagline_color">#474E99</color>
+    <color name="gray">#E3E3E3</color>
+    <color name="black">#000000</color>
+    <color name="bgcolor2">#eff0f4</color>
+    <color name="dark_black">#000000</color>
+    <color name="dark_gray">#676565</color>
+    <color name="color_1">#1bdc84</color>
+    <color name="color_2">#1b4ddc</color>
+    <color name="color_3">#ff0023</color>
+    <color name="orange">#ffbb00</color>
+    <color name="yelow">#ffee05</color>
+    <color name="purple">#ed0bc0</color>
+    <color name="green">#CA7CD5</color>
+    <color name="gray_trans">#BAE3E3E3</color>
+
+
+    <color name="light_gray">#c7c5c5</color>
+    <color name="contact_name">#333333</color>
+    <color name="contact_number">#8c8c8c</color>
+    <color name="contact">#A09F9F</color>
+    <color name="all">#F49B19</color>
+    <color name="tot">#2E7731</color>
+
+
+</resources>
