@@ -15,6 +15,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -51,8 +53,8 @@ public class Search_fragment extends Fragment {
 
   Module module;
   private static String TAG = Search_fragment.class.getSimpleName();
-  private AutoCompleteTextView acTextView;
-  private RelativeLayout btn_search;
+  private EditText acTextView;
+  private Button btn_search;
   private RecyclerView rv_search;
   ImageView img_no_products;
   String search_text="";
@@ -86,14 +88,13 @@ public class Search_fragment extends Fragment {
     loadingBar.setContentView( R.layout.progressbar );
     loadingBar.setCanceledOnTouchOutside(false);
 
-    acTextView = (AutoCompleteTextView) view.findViewById(R.id.et_search);
+    acTextView = (EditText) view.findViewById(R.id.et_search);
     img_no_products = (ImageView) view.findViewById(R.id.img_no_products);
     progress=view.findViewById(R.id.spin_kit);
 
-    acTextView.setAdapter(new SuggestionAdapter(getActivity(), acTextView.getText().toString()));
+//    acTextView.setAdapter(new SuggestionAdapter(getActivity(), acTextView.getText().toString()));
 
-    acTextView.setTextColor(getResources().getColor(R.color.colorPrimary));
-    btn_search = (RelativeLayout) view.findViewById(R.id.btn_search);
+    btn_search = (Button) view.findViewById(R.id.btn_search);
     rv_search = (RecyclerView) view.findViewById(R.id.rv_search);
 //    rv_search.setNestedScrollingEnabled(false);
     manager=new GridLayoutManager(getActivity(),2);
@@ -105,6 +106,7 @@ public class Search_fragment extends Fragment {
     btn_search.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View view) {
+
         String get_search_txt ="%"+ acTextView.getText().toString() +"%";
         if (acTextView.length()<=0) {
           acTextView.setError( "Enter product to search" );
@@ -112,6 +114,7 @@ public class Search_fragment extends Fragment {
           // Toast.makeText(getActivity(), getResources().getString(R.string.enter_keyword), Toast.LENGTH_SHORT).show();
         }
         else {
+          pagenumber="";
           search_text=get_search_txt;
           if (ConnectivityReceiver.isConnected()) {
             makeGetProductRequest(get_search_txt);
@@ -119,6 +122,7 @@ public class Search_fragment extends Fragment {
             ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
           }
         }
+        Log.e("asdasd",""+get_search_txt);
 
       }
     });
@@ -207,6 +211,7 @@ public class Search_fragment extends Fragment {
     params.put("search", search_text);
     if(pagenumber.isEmpty())
     {
+      product_modelList.clear();
       params.put("page", "1");
       loadingBar.show();
     }

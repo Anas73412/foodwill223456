@@ -19,7 +19,7 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/colorPrimaryDark"
+            android:background="#CAF1C4"
             app:titleTextAppearance="@style/RobotoBoldTextAppearance"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 

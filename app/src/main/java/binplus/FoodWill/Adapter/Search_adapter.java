@@ -4,6 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.graphics.Paint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -303,7 +305,15 @@ public class Search_adapter extends RecyclerView.Adapter<Search_adapter.MyViewHo
                 .dontAnimate()
                 .into(holder.iv_logo);
 
-        holder.tv_title.setText(mList.getProduct_name());
+//        holder.tv_title.setText(mList.getProduct_name());
+        if(mList.getProduct_name_hindi().isEmpty())
+        {
+            holder.tv_title.setText(mList.getProduct_name());
+        }
+        else
+        {
+            holder.tv_title.setText(mList.getProduct_name() +"\n( "+mList.getProduct_name_hindi()+" )");
+        }
         holder.tv_reward.setText(mList.getRewards());
         // holder.tv_price.setText(context.getResources().getString(R.string.currency)+ mList.getPrice()+" / "+ mList.getUnit_value()+" "+mList.getUnit());
 
@@ -434,6 +444,7 @@ public class Search_adapter extends RecyclerView.Adapter<Search_adapter.MyViewHo
         Double price = Double.parseDouble(mList.getPrice());
         Double reward = Double.parseDouble(mList.getRewards());
         holder.tv_reward.setText("" + reward * items);
+        holder.tv_mrp.setPaintFlags( holder.tv_mrp.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
 
 
 //        holder.tv_total.setText("" + price * items);

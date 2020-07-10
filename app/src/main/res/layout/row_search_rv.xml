@@ -5,14 +5,14 @@
     xmlns:tools="http://schemas.android.com/tools"
 
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="270dp"
 
     app:cardUseCompatPadding="true"
     card_view:cardCornerRadius="4dp">
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_margin="@dimen/space_4"
         app:cardUseCompatPadding="true"
         card_view:cardCornerRadius="5dp">
@@ -56,19 +56,18 @@
 
 
                 <binplus.FoodWill.Fonts.LatoBLack
-
                     android:id="@+id/tv_subcat_title"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textAlignment="gravity"
                     android:textStyle="bold"
                    android:gravity="center"
                     android:layout_gravity="center"
                     android:text="Product Name"
-                    android:textColor="#837e7e"
-                    android:maxLines="2"
+                    android:maxLines="4"
                     android:ellipsize="end"
-                    android:textSize="18dp" />
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
 
 
                 <RelativeLayout
@@ -88,7 +87,7 @@
                         android:layout_marginTop="2dp"
                         android:text="Price :"
                         android:textColor="#837e7e"
-                        android:textSize="16dp" />
+                        android:textSize="14sp"/>
 
                     <binplus.FoodWill.Fonts.LatoBLack
                         android:id="@+id/product_mrp"
@@ -100,7 +99,7 @@
                         android:paddingTop="3dp"
                         android:text="Price"
                         android:textColor="@color/color_3"
-                        android:textSize="13dp" />
+                        android:textSize="13sp" />
                     <binplus.FoodWill.Fonts.LatoBLack
                         android:id="@+id/dis"
                         android:layout_width="wrap_content"

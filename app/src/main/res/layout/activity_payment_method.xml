@@ -253,15 +253,18 @@
                             android:visibility="gone"
                             />
 
+
                         <RadioButton
                             android:id="@+id/use_COD"
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_4"
                             android:layout_marginRight="@dimen/space_4"
                             android:text="@string/cash"
                             android:layout_margin="@dimen/space_5"
+                            android:drawableRight="@drawable/cash"
                             android:textSize="20dp" />
+
 
                         <RadioButton
                             android:id="@+id/pay_now"

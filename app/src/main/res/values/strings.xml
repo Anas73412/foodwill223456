@@ -210,7 +210,7 @@
     <string name="past" translatable="false">Past Order</string>
     <string name="add" translatable="false">Address</string>
     <string name="searchh" translatable="false">Search</string>
-    <string name="search_msg" translatable="false">Search Your Product</string>
+    <string name="search_msg" translatable="false">Search for products/ categories/ sellers</string>
     <string name="change_password">Change Password</string>
     <string name="old_password">Old Password (Required)</string>
     <string name="new_password">New Password (Required)</string>

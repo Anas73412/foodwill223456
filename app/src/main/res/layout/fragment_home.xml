@@ -325,6 +325,7 @@
                 android:paddingLeft="@dimen/space_10"
                 android:textSize="@dimen/space_16"
                 android:textColor="@color/colorPrimary"
+                android:textStyle="bold"
                 android:text="Products in Demand"/>
 
             <RelativeLayout
@@ -371,6 +372,7 @@
                 android:layout_marginTop="5dp"
                 android:textSize="@dimen/space_16"
                 android:paddingLeft="@dimen/space_10"
+                android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:text="Proudly Delivered"/>
 
