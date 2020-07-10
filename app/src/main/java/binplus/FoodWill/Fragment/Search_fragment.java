@@ -3,6 +3,10 @@ package binplus.FoodWill.Fragment;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,19 +43,29 @@ import java.util.Map;
 
 import binplus.FoodWill.Adapter.Search_adapter;
 import binplus.FoodWill.Adapter.SuggestionAdapter;
+import binplus.FoodWill.Adapter.gridAdapter;
 import binplus.FoodWill.Config.BaseURL;
 import binplus.FoodWill.Config.Module;
 import binplus.FoodWill.Model.Product_model;
 import binplus.FoodWill.AppController;
 import binplus.FoodWill.MainActivity;
+import binplus.FoodWill.Model.Top_Selling_model;
 import binplus.FoodWill.R;
 import binplus.FoodWill.util.ConnectivityReceiver;
 import binplus.FoodWill.util.CustomVolleyJsonRequest;
+import binplus.FoodWill.util.DatabaseCartHandler;
 import binplus.FoodWill.util.RecyclerTouchListener;
+import binplus.FoodWill.util.Session_management;
+import binplus.FoodWill.util.WishlistHandler;
+
+import static binplus.FoodWill.Config.BaseURL.KEY_ID;
 
 public class Search_fragment extends Fragment {
 
+  DatabaseCartHandler db_cart;
+  WishlistHandler db_wish;
   Module module;
+  Session_management session_management;
   private static String TAG = Search_fragment.class.getSimpleName();
   private EditText acTextView;
   private Button btn_search;
@@ -61,7 +75,8 @@ public class Search_fragment extends Fragment {
   SpinKitView progress;
   String pagenumber="";
   private List<Product_model> product_modelList = new ArrayList<>();
-  private Search_adapter adapter_product;
+  private gridAdapter adapter_product;
+
   Dialog loadingBar ;
   boolean is_scrolling=false;
   int currentItems,totalItems,scrollOutItems;
@@ -87,7 +102,9 @@ public class Search_fragment extends Fragment {
     loadingBar=new Dialog(getActivity(),android.R.style.Theme_Translucent_NoTitleBar);
     loadingBar.setContentView( R.layout.progressbar );
     loadingBar.setCanceledOnTouchOutside(false);
-
+    session_management=new Session_management(getActivity());
+    db_cart=new DatabaseCartHandler(getActivity());
+    db_wish=new WishlistHandler(getActivity());
     acTextView = (EditText) view.findViewById(R.id.et_search);
     img_no_products = (ImageView) view.findViewById(R.id.img_no_products);
     progress=view.findViewById(R.id.spin_kit);
@@ -99,7 +116,7 @@ public class Search_fragment extends Fragment {
 //    rv_search.setNestedScrollingEnabled(false);
     manager=new GridLayoutManager(getActivity(),2);
     rv_search.setLayoutManager(manager);
-    adapter_product = new Search_adapter(product_modelList, getActivity());
+    adapter_product = new gridAdapter(product_modelList, getActivity());
 
     rv_search.setAdapter(adapter_product);
 
@@ -154,48 +171,48 @@ public class Search_fragment extends Fragment {
       }
     });
 
-    rv_search.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_search, new RecyclerTouchListener.OnItemClickListener() {
-      @Override
-      public void onItemClick(View view, int position) {
-
-
-
-        Fragment details_fragment = new Details_Fragment();
-        // bundle.putString("data",as);
-        Bundle args = new Bundle();
-
-        //Intent intent=new Intent(context, Product_details.class);
-        args.putString("cat_id", product_modelList.get(position).getCategory_id());
-        args.putString("product_id", product_modelList.get(position).getProduct_id());
-        args.putString("product_images", product_modelList.get(position).getProduct_image());
-        args.putString("product_name", product_modelList.get(position).getProduct_name());
-        args.putString("product_description", product_modelList.get(position).getProduct_description());
-        args.putString("stock", product_modelList.get(position).getStock());
-        args.putString("in_stock", product_modelList.get(position).getIn_stock());
-        args.putString("product_attribute", product_modelList.get(position).getProduct_attribute());
-        args.putString("price", product_modelList.get(position).getPrice());
-        args.putString("mrp", product_modelList.get(position).getMrp());
-        args.putString("unit_value", product_modelList.get(position).getUnit_value());
-        args.putString("unit", product_modelList.get(position).getUnit());
-        args.putString("rewards", product_modelList.get(position).getRewards());
-        args.putString("increment", product_modelList.get(position).getIncreament());
-        args.putString("title", product_modelList.get(position).getTitle());
-        args.putString("product_name_hindi", product_modelList.get(position).getProduct_name_hindi());
-
-        details_fragment.setArguments(args);
-        FragmentManager fragmentManager = getFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.contentPanel, details_fragment)
-
-                .addToBackStack(null).commit();
-
-
-      }
-
-      @Override
-      public void onLongItemClick(View view, int position) {
-
-      }
-    }));
+////    rv_search.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_search, new RecyclerTouchListener.OnItemClickListener() {
+////      @Override
+////      public void onItemClick(View view, int position) {
+////
+////
+////
+////        Fragment details_fragment = new Details_Fragment();
+////        // bundle.putString("data",as);
+////        Bundle args = new Bundle();
+////
+////        //Intent intent=new Intent(context, Product_details.class);
+////        args.putString("cat_id", product_modelList.get(position).getCategory_id());
+////        args.putString("product_id", product_modelList.get(position).getProduct_id());
+////        args.putString("product_images", product_modelList.get(position).getProduct_image());
+////        args.putString("product_name", product_modelList.get(position).getProduct_name());
+////        args.putString("product_description", product_modelList.get(position).getProduct_description());
+////        args.putString("stock", product_modelList.get(position).getStock());
+////        args.putString("in_stock", product_modelList.get(position).getIn_stock());
+////        args.putString("product_attribute", product_modelList.get(position).getProduct_attribute());
+////        args.putString("price", product_modelList.get(position).getPrice());
+////        args.putString("mrp", product_modelList.get(position).getMrp());
+////        args.putString("unit_value", product_modelList.get(position).getUnit_value());
+////        args.putString("unit", product_modelList.get(position).getUnit());
+////        args.putString("rewards", product_modelList.get(position).getRewards());
+////        args.putString("increment", product_modelList.get(position).getIncreament());
+////        args.putString("title", product_modelList.get(position).getTitle());
+////        args.putString("product_name_hindi", product_modelList.get(position).getProduct_name_hindi());
+////
+////        details_fragment.setArguments(args);
+////        FragmentManager fragmentManager = getFragmentManager();
+////        fragmentManager.beginTransaction().replace(R.id.contentPanel, details_fragment)
+////
+////                .addToBackStack(null).commit();
+////
+////
+////      }
+//
+//      @Override
+//      public void onLongItemClick(View view, int position) {
+//
+//      }
+//    }));
     return view;
   }
 
@@ -289,5 +306,49 @@ public class Search_fragment extends Fragment {
     // Adding request to request queue
     AppController.getInstance().addToRequestQueue(jsonObjReq, tag_json_obj);
   }
+  private BroadcastReceiver mCart = new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
 
+      String type = intent.getStringExtra("type");
+
+      if (type.contentEquals("update")) {
+        updateData();
+      }
+    }
+  };
+
+  private BroadcastReceiver mWish = new BroadcastReceiver() {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+      String type = intent.getStringExtra("type");
+
+      if (type.contentEquals("update")) {
+        updateData();
+      }
+    }
+  };
+
+  private void updateData() {
+
+    ((MainActivity) getActivity()).setCartCounter("" + db_cart.getCartCount());
+    ((MainActivity) getActivity()).setWishCounter("" + db_wish.getWishtableCount(session_management.getUserDetails().get(KEY_ID)));
+  }
+
+
+  @Override
+  public void onPause() {
+    super.onPause();
+    // unregister reciver
+    getActivity().unregisterReceiver(mCart);
+    getActivity().unregisterReceiver(mWish);
+  }
+  @Override
+  public void onResume() {
+    super.onResume();
+    // register reciver
+    getActivity().registerReceiver(mCart, new IntentFilter("Grocery_cart"));
+    getActivity().registerReceiver(mWish, new IntentFilter("Grocery_wish"));
+  }
 }
