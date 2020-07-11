@@ -256,7 +256,7 @@
             android:layout_height="30dp"
             android:text="add"
             android:fontFamily="@font/bold"
-        android:textColor="@color/white"
+            android:textColor="@color/white"
             android:drawablePadding="5dp"
 
             />

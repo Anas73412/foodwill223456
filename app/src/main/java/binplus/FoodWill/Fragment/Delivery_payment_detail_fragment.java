@@ -6,26 +6,37 @@ import android.app.FragmentManager;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import binplus.FoodWill.AppController;
 import binplus.FoodWill.Config.BaseURL;
 import binplus.FoodWill.Config.Module;
 import binplus.FoodWill.Config.SharedPref;
 import binplus.FoodWill.MainActivity;
 import binplus.FoodWill.R;
 import binplus.FoodWill.util.ConnectivityReceiver;
+import binplus.FoodWill.util.CustomVolleyJsonRequest;
 import binplus.FoodWill.util.DatabaseCartHandler;
 import binplus.FoodWill.util.Session_management;
 
 import static android.content.Context.MODE_PRIVATE;
 
+import static binplus.FoodWill.Config.BaseURL.GET_USER_STATUS;
+import static binplus.FoodWill.Config.BaseURL.KEY_ID;
 import static binplus.FoodWill.MainActivity.delivery_msg;
 import static binplus.FoodWill.MainActivity.extra_charges;
 
@@ -165,22 +176,8 @@ public class Delivery_payment_detail_fragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (ConnectivityReceiver.isConnected()) {
-                    Fragment fm = new Payment_fragment();
-                    Bundle args = new Bundle();
-                    args.putString("total", String.valueOf(total));
-                    args.putString("getdate", getdate);
-                    args.putString("gettime", gettime);
-                    args.putString("deli_charges",String.valueOf(deli_charges));
-                    args.putString("getlocationid", getlocation_id);
-                    args.putString("getstoreid", getstore_id);
-                    args.putString( "deli_charges", String.valueOf( deli_charges ) );
-
-                    fm.setArguments(args);
-                    FragmentManager fragmentManager = getFragmentManager();
-                    fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
-                            .addToBackStack(null).commit();
-                    SharedPref.putString(getActivity(),BaseURL.TOTAL_AMOUNT, String.valueOf(total));
-                } else {
+                    getUserStatus();
+                              } else {
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
                 }
             }
@@ -301,4 +298,60 @@ public class Delivery_payment_detail_fragment extends Fragment {
         //Toast.makeText(getActivity(),""+sum,Toast.LENGTH_LONG).show();
     }
 
+    public void getUserStatus()
+    {
+      loadingBar.show();
+      HashMap<String,String> params=new HashMap<>();
+      params.put("user_id",sessionManagement.getUserDetails().get(KEY_ID));
+        CustomVolleyJsonRequest request=new CustomVolleyJsonRequest(Request.Method.POST, GET_USER_STATUS, params, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+            loadingBar.dismiss();
+                Log.e("status-data",""+response.toString());
+            try
+            {
+                boolean resp=response.getBoolean("responce");
+                if(resp)
+                {
+                    Fragment fm = new Payment_fragment();
+                    Bundle args = new Bundle();
+                    args.putString("total", String.valueOf(total));
+                    args.putString("getdate", getdate);
+                    args.putString("gettime", gettime);
+                    args.putString("deli_charges",String.valueOf(deli_charges));
+                    args.putString("getlocationid", getlocation_id);
+                    args.putString("getstoreid", getstore_id);
+                    args.putString( "deli_charges", String.valueOf( deli_charges ) );
+
+                    fm.setArguments(args);
+                    FragmentManager fragmentManager = getFragmentManager();
+                    fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
+                            .addToBackStack(null).commit();
+                    SharedPref.putString(getActivity(),BaseURL.TOTAL_AMOUNT, String.valueOf(total));
+
+                }
+                else
+                {
+                    module.showToast(""+response.getString("error").toString());
+                }
+            }
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+                module.showToast(""+ex.getMessage().toString());
+            }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadingBar.dismiss();
+                String msg=module.VolleyErrorMessage(error);
+                if(!msg.isEmpty())
+                {
+                    module.showToast(""+msg);
+                }
+            }
+        });
+        AppController.getInstance().addToRequestQueue(request);
+    }
 }

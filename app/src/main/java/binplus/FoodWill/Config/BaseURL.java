@@ -160,4 +160,5 @@ public class BaseURL {
     public static String URL_GET_COUPON = BASE_URL + "index.php/api/get_coupon";
     public static String URL_GENERATE_PDF = BASE_URL + "index.php/api/pdf_details";
     public static String URL_MASTER_SEARCH = BASE_URL + "index.php/api/master_search";
+    public static String GET_USER_STATUS = BASE_URL + "index.php/api/get_user_status";
 }

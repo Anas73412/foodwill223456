@@ -207,7 +207,7 @@ public class SmsVerificationActivity extends AppCompatActivity implements View.O
         }
     }
 
-    private void verifyRegisterMobileWithOtp(final String number, String otp,String name,String wStatus) {
+    private void verifyRegisterMobileWithOtp(final String number, String otp, final String name, String wStatus) {
         loadingBar.show();
         String json_tag="json_verification";
         HashMap<String,String> map=new HashMap<>();
@@ -234,7 +234,7 @@ public class SmsVerificationActivity extends AppCompatActivity implements View.O
                         String wallet_ammount = obj.getString("wallet");
                         String reward_points = obj.getString("rewards");
 
-                        session_management.createLoginSession(user_id, user_phone, "", user_phone, "", "0", "0", "", "", "", "", "");
+                        session_management.createLoginSession(user_id, user_phone, name, user_phone, "", "0", "0", "", "", "", "", "");
 
                         Intent intent = new Intent( SmsVerificationActivity.this,MainActivity.class );
                         intent.putExtra( "mobile", number );

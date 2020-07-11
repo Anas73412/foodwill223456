@@ -164,7 +164,7 @@ public class View_time_fragment extends Fragment {
 
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("tm_slot", response.toString());
+                Log.e("tm_slot", response.toString());
                 try {
                     loadingBar.dismiss();
                     String status=response.getString("status");
@@ -202,32 +202,32 @@ public class View_time_fragment extends Fragment {
 
 //                            long current_time=date3.getTime();
 //                            long cur=(current_time/1000)/60;
-                            if (as <=0)
-                            {
+//                            if (as <=0)
+//                            {
                                 flag++;
                                 time_c_list.add( tm + " - " + to_tm );
                                 //      Toast.makeText( getActivity(), "< \n" + as + "\n" + c, Toast.LENGTH_LONG ).show();
 
-                            }
-
-                            else
-                            //if (as>0)
-                            {
-//                                if (c<0)
-//                                {
-//                                    time_list.add( tm + " - " + to_tm );
-//                                    Toast.makeText( getActivity(), "< \n" + as + "\n" + c, Toast.LENGTH_LONG ).show();
-//                                }
 //                            }
-//
-//                            else
-//                                {
-//
-//                               Toast.makeText( getActivity(), "time \n" + as + "\n" + c, Toast.LENGTH_LONG ).show();
-                                //  Toast.makeText( getActivity(),"time \n" +current + "\n"+tmstart +"\n"+tmend,Toast.LENGTH_LONG ).show();
 
-                                time_list.add(tm+" - "+to_tm);
-                            }
+//                            else
+//                            //if (as>0)
+//                            {
+////                                if (c<0)
+////                                {
+////                                    time_list.add( tm + " - " + to_tm );
+////                                    Toast.makeText( getActivity(), "< \n" + as + "\n" + c, Toast.LENGTH_LONG ).show();
+////                                }
+////                            }
+////
+////                            else
+////                                {
+////
+////                               Toast.makeText( getActivity(), "time \n" + as + "\n" + c, Toast.LENGTH_LONG ).show();
+//                                //  Toast.makeText( getActivity(),"time \n" +current + "\n"+tmstart +"\n"+tmend,Toast.LENGTH_LONG ).show();
+//
+//                                time_list.add(tm+" - "+to_tm);
+//                            }
 
                         }
                         View_time_adapter view_time_adapter;

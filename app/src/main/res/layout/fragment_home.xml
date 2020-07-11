@@ -96,13 +96,15 @@
 
                 </androidx.recyclerview.widget.RecyclerView>
                 <ImageView
-                    android:layout_marginTop="50dp"
+                    android:layout_marginTop="5dp"
                     android:layout_alignParentRight="true"
-                    android:layout_width="30dp"
+                    android:layout_width="15dp"
                     android:rotation="180"
+                    android:tint="@color/colorPrimary"
+
                     android:layout_marginRight="@dimen/space_5"
                     android:src="@drawable/slide_ind"
-                    android:layout_height="20dp"/>
+                    android:layout_height="15dp"/>
             </RelativeLayout>
             <RelativeLayout
                 android:layout_width="match_parent"

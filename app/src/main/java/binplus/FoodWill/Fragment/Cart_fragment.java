@@ -108,7 +108,7 @@ public class Cart_fragment extends Fragment implements View.OnClickListener {
     tvSubTotal =(TextView)view.findViewById( R.id.subtotal ) ;
     btn_checkout = (RelativeLayout) view.findViewById(R.id.btn_cart_checkout);
     rv_cart = (RecyclerView) view.findViewById(R.id.rv_cart);
-   rv_cart.setNestedScrollingEnabled(true);
+   rv_cart.setNestedScrollingEnabled(false);
     linear_cart = (LinearLayout)view.findViewById(R.id.lin_cart);
     linear_empty =view.findViewById(R.id.linear_empty);
 

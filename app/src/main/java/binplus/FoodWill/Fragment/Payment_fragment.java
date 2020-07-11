@@ -563,7 +563,7 @@ public class Payment_fragment extends Fragment {
                 BaseURL.ADD_ORDER_URL, params, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
-                Log.d("odd", response.toString());
+                Log.e("odd", response.toString());
 
                 try {
                     Boolean status = response.getBoolean("responce");
