@@ -690,30 +690,6 @@ public class Home_fragment extends Fragment {
                                 textSliderView.getBundle().putString("extra", name.get("sub_cat"));
                                 featuredslider.addSlider(textSliderView);
                                 final String sub_cat = (String) textSliderView.getBundle().get("extra");
-                                textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                                    @Override
-                                    public void onSliderClick(BaseSliderView slider) {
-
-                                        Bundle args = new Bundle();
-                                        Fragment fm = null;
-                                        args.putString("cat_id", sub_cat);
-                                        args.putString("title",name.get("slider_title"));
-                                        session_management.setCategoryId(sub_cat);
-                                        if(name.get("parent").equals("0"))
-                                        {
-                                            fm=new SubCategory_Fragment();
-                                        }
-                                        else {
-                                            //   Toast.makeText(getActivity(), "" + sub_cat, Toast.LENGTH_SHORT).show();
-                                            fm = new Product_fragment();
-                                        }
-                                        fm.setArguments(args);
-                                        FragmentManager fragmentManager = getFragmentManager();
-                                        fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
-                                                .addToBackStack(null).commit();
-                                    }
-                                });
-
 
                             }
                         } catch (JSONException e) {

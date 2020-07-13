@@ -574,8 +574,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         final MenuItem cart_item = menu.findItem(R.id.action_cart);
         final MenuItem wish_item = menu.findItem(R.id.action_wishlist);
+        final MenuItem search_item = menu.findItem(R.id.action_search);
         cart_item.setVisible(true);
         wish_item.setVisible(true);
+        if(stop_order.equals("1"))
+        {
+            search_item.setVisible(true);
+        }
+        else if(stop_order.equals("0"))
+        {
+            search_item.setVisible(false);
+        }
 
         View count = cart_item.getActionView();
         View count_wish = wish_item.getActionView();

@@ -319,16 +319,34 @@
             </androidx.cardview.widget.CardView>
 
 
-
-            <binplus.FoodWill.Fonts.LatoBLack
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:paddingLeft="@dimen/space_10"
-                android:textSize="@dimen/space_16"
-                android:textColor="@color/colorPrimary"
-                android:textStyle="bold"
-                android:text="Products in Demand"/>
+                android:layout_height="wrap_content">
+                <binplus.FoodWill.Fonts.LatoBLack
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:paddingLeft="@dimen/space_10"
+                    android:textSize="@dimen/space_16"
+                    android:textColor="@color/colorPrimary"
+                    android:textStyle="bold"
+                    android:text="Products in Demand"/>
+                <ImageView
+                    android:layout_marginLeft="10dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_width="15dp"
+                    android:rotation="180"
+                    android:layout_marginTop="2dp"
+                    android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                    android:layout_marginRight="@dimen/space_5"
+                    android:src="@drawable/slide_ind"
+                    android:layout_height="15dp"/>
+
+            </LinearLayout>
+
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -367,9 +385,14 @@
             </LinearLayout>
 
 
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <binplus.FoodWill.Fonts.LatoBLack
-                android:layout_width="match_parent"
+        <binplus.FoodWill.Fonts.LatoBLack
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:textSize="@dimen/space_16"
@@ -377,6 +400,20 @@
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
                 android:text="Proudly Delivered"/>
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:layout_alignParentRight="true"
+                android:layout_width="15dp"
+                android:rotation="180"
+                android:layout_marginTop="2dp"
+                android:tint="@color/colorPrimary"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/space_5"
+                android:src="@drawable/slide_ind"
+                android:layout_height="15dp"/>
+
+        </LinearLayout>
+
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/top_selling_recycler"
