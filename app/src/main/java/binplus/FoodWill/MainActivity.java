@@ -53,6 +53,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.google.firebase.FirebaseApp;
+import com.onesignal.OneSignal;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -159,6 +160,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         editor = sharedPreferences.edit();
 
         editor.putString("language", "english");
+        SharedPreferences.Editor editor = getSharedPreferences("push", MODE_PRIVATE).edit();
+        editor.putBoolean("status",false);
+        editor.apply();
         if (getIntent().getExtras() != null) {
 
             for (String key : getIntent().getExtras().keySet()) {

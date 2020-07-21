@@ -389,7 +389,7 @@ String address=""+getIntent().getStringExtra("address")+", "+getIntent().getStri
 
                 // check internet connection
                 if (ConnectivityReceiver.isConnected()) {
-                    //  makeDeleteOrderRequest(sale_id, user_id);
+//                      makeDeleteOrderRequest(sale_id, user_id);
                 }
 
                 dialogInterface.dismiss();

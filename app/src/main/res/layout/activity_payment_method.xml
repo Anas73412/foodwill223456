@@ -274,8 +274,8 @@
                             android:layout_marginLeft="@dimen/space_4"
                             android:layout_marginRight="@dimen/space_4"
                             android:text="@string/pay_now"
-                            android:textSize="@dimen/text_size_small"
-                            android:visibility="gone"/>
+                            android:textSize="20dp"
+                            />
 
 
                         <View

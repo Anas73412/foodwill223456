@@ -40,8 +40,6 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.PhoneAuthProvider;
 import com.travijuu.numberpicker.library.NumberPicker;
 
 import org.json.JSONArray;
@@ -86,8 +84,6 @@ public class Details_Fragment extends Fragment {
     Context context;
     Button btn_add;
     Module module;
-    private FirebaseAuth mAuth;
-    PhoneAuthProvider.OnVerificationStateChangedCallbacks  mCallBack;
     String mVerificationId;
     ArrayList<ProductVariantModel> variantList;
     ProductVariantAdapter productVariantAdapter;

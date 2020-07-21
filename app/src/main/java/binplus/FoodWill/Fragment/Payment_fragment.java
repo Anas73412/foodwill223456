@@ -45,6 +45,9 @@ import binplus.FoodWill.Config.Module;
 import binplus.FoodWill.Config.SharedPref;
 import binplus.FoodWill.AppController;
 import binplus.FoodWill.MainActivity;
+import binplus.FoodWill.PaymentActivities.WebViewActivity;
+import binplus.FoodWill.Utility.AvenuesParams;
+import binplus.FoodWill.Utility.ServiceUtility;
 import binplus.FoodWill.networkconnectivity.NetworkConnection;
 import binplus.FoodWill.networkconnectivity.NetworkError;
 
@@ -57,6 +60,16 @@ import binplus.FoodWill.util.Session_management;
 import static binplus.FoodWill.Config.BaseURL.KEY_ID;
 import static binplus.FoodWill.MainActivity.cod_status;
 import static binplus.FoodWill.MainActivity.extra_charges;
+import static binplus.FoodWill.Utility.Constants.PAY_AMT;
+import static binplus.FoodWill.Utility.Constants.PAY_COUPON_CODE;
+import static binplus.FoodWill.Utility.Constants.PAY_DATE;
+import static binplus.FoodWill.Utility.Constants.PAY_DELIVERY;
+import static binplus.FoodWill.Utility.Constants.PAY_DISCOUNT;
+import static binplus.FoodWill.Utility.Constants.PAY_DISINFECTION;
+import static binplus.FoodWill.Utility.Constants.PAY_LOCATION;
+import static binplus.FoodWill.Utility.Constants.PAY_METHOD;
+import static binplus.FoodWill.Utility.Constants.PAY_STATUS;
+import static binplus.FoodWill.Utility.Constants.PAY_TIME;
 import static com.android.volley.VolleyLog.TAG;
 
 
@@ -68,14 +81,14 @@ public class Payment_fragment extends Fragment {
     private Session_management sessionManagement;
     TextView payble_ammount, my_wallet_ammount, used_wallet_ammount, used_coupon_ammount, order_ammount;
     private String getlocation_id = "";
-    private String getstore_id = "";
+    private String getstore_id = "",order_pay_id="",arr_cart_data="";
     String couponValue="0",couponCode="";
     private double wamt=0;
     private String gettime = "";
     private String getdate = "";
     private String getuser_id = "";
     private Double rewards;
-    RadioButton rb_Store, rb_Cod, rb_card, rb_Netbanking, rb_paytm;
+    RadioButton rb_Store, rb_Cod,pay_now, rb_card, rb_Netbanking, rb_paytm;
     CheckBox checkBox_Wallet;
     CheckBox checkBox_coupon;
     EditText et_Coupon;
@@ -139,6 +152,7 @@ public class Payment_fragment extends Fragment {
         rb_Store = (RadioButton) view.findViewById(R.id.use_store_pickup);
 //        rb_Store.setTypeface(font);
         rb_Cod = (RadioButton) view.findViewById(R.id.use_COD);
+        pay_now = (RadioButton) view.findViewById(R.id.pay_now);
         if (cod_status.equals("1"))
         {
             rb_Cod.setVisibility(View.VISIBLE);
@@ -390,7 +404,7 @@ public class Payment_fragment extends Fragment {
                          }
                            couponValue=String.valueOf(cpValue);
                            fAmount=String.valueOf(orderAmount-cpValue);
-                         total_amount=total_amount;
+                         total_amount=fAmount;
                            payble_ammount.setText(getResources().getString(R.string.currency)+fAmount);
                            used_coupon_ammount.setText("-(" + getActivity().getResources().getString(R.string.currency) + String.valueOf(cpValue) + ")");
                            used_coupon_ammount.setVisibility(View.VISIBLE);
@@ -440,6 +454,8 @@ public class Payment_fragment extends Fragment {
         // Toast.makeText(getActivity(),""+getuser_id,Toast.LENGTH_LONG).show();
         getWalletAmount(getuser_id);
 
+        Integer randomNum = ServiceUtility.randInt(0, 9999999);
+        order_pay_id=randomNum.toString();
 
     }
 
@@ -523,6 +539,18 @@ public class Payment_fragment extends Fragment {
                 //    gettime=t+" - "+t.toString();
                 //   Toast.makeText(getActivity(),"Time"+t,Toast.LENGTH_LONG).show();
                 getdate=g;
+         if(sessionManagement.isOnlinePay())
+         {
+            getdate=sessionManagement.getPayDetails().get(PAY_DATE);
+            gettime=sessionManagement.getPayDetails().get(PAY_TIME);
+            getlocation_id=sessionManagement.getPayDetails().get(PAY_LOCATION);
+            getvalue=sessionManagement.getPayDetails().get(PAY_METHOD);
+            total_amount=sessionManagement.getPayDetails().get(PAY_AMT);
+            couponCode=sessionManagement.getPayDetails().get(PAY_COUPON_CODE);
+            couponValue=sessionManagement.getPayDetails().get(PAY_DISCOUNT);
+            getcharge=sessionManagement.getPayDetails().get(PAY_DELIVERY);
+
+         }
 
                 //gettime="03:00 PM - 03:30 PM";
                 // getdate="2019-7-23";
@@ -555,7 +583,15 @@ public class Payment_fragment extends Fragment {
         //coupon code
         params.put("coupon_code", couponCode);
         params.put("discount_amt", couponValue);
-        params.put("disinfection_charge", String.valueOf(extra_charges));
+        if(sessionManagement.isOnlinePay())
+        {
+            params.put("disinfection_charge", sessionManagement.getPayDetails().get(PAY_DISINFECTION));
+        }
+        else
+        {
+            params.put("disinfection_charge", String.valueOf(extra_charges));
+        }
+
         params.put("data", passArray.toString());
         Log.e("order_details",""+params.toString());
 //        // Toast.makeText(getActivity(),""+passArray,Toast.LENGTH_LONG).show();
@@ -832,6 +868,10 @@ public class Payment_fragment extends Fragment {
             //Toast.makeText(getActivity(),"rb_Cod",Toast.LENGTH_LONG).show();
             attemptOrder();
         }
+        else if(pay_now.isChecked())
+        {
+            onlinePay();
+        }
         else {
             Toast.makeText(getActivity(), "Please Select Payment Method", Toast.LENGTH_SHORT).show();
         }
@@ -893,6 +933,40 @@ public class Payment_fragment extends Fragment {
 
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(sessionManagement.isOnlinePay() && sessionManagement.getPayDetails().get(PAY_STATUS).equalsIgnoreCase("success"))
+        {
+            attemptOrder();
+        }
+    }
+
+    private void onlinePay() {
+        String vAccessCode = ServiceUtility.chkNull(getResources().getString(R.string.access_code)).toString().trim();
+        String vMerchantId = ServiceUtility.chkNull(getResources().getString(R.string.merchant_id)).toString().trim();
+        String vCurrency = ServiceUtility.chkNull(getResources().getString(R.string.pay_currency)).toString().trim();
+        String vAmount = ServiceUtility.chkNull(total_amount).toString().trim();
+        if(!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals("")){
+
+            sessionManagement.updatePaySection(getdate,gettime,getlocation_id,deli_charges,getvalue,couponCode,couponValue,String.valueOf(extra_charges));
+            Intent intent = new Intent(getActivity(), WebViewActivity.class);
+            intent.putExtra(AvenuesParams.ACCESS_CODE, ServiceUtility.chkNull(getResources().getString(R.string.access_code)).toString().trim());
+            intent.putExtra(AvenuesParams.MERCHANT_ID, ServiceUtility.chkNull(getResources().getString(R.string.merchant_id)).toString().trim());
+            intent.putExtra(AvenuesParams.ORDER_ID, ServiceUtility.chkNull(order_pay_id).toString().trim());
+            intent.putExtra(AvenuesParams.CURRENCY, ServiceUtility.chkNull(getResources().getString(R.string.pay_currency)).toString().trim());
+//            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(total_amount).toString().trim());
+            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull("1").toString().trim());
+            intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(BaseURL.PAY_REDIRECT_URL).toString().trim());
+            intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(BaseURL.PAY_CANCEL_URL).toString().trim());
+            intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(BaseURL.PAY_RSA_URL).toString().trim());
+            startActivity(intent);
+        }else{
+            module.showToast("All parameters are mandatory.");
+        }
+    }
+
 
 
 }

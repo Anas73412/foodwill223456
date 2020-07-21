@@ -1,10 +1,27 @@
+buildscript {
+    repositories {
+        maven { url 'https://plugins.gradle.org/m2/'}
+    }
+    dependencies {
+        classpath 'gradle.plugin.com.onesignal:onesignal-gradle-plugin:[0.11.0, 0.99.99]'
+    }
+}
+apply plugin: 'com.onesignal.androidsdk.onesignal-gradle-plugin'
+
+repositories {
+    maven { url 'https://maven.google.com' }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 
 android {
     compileSdkVersion 28
     // buildToolsVersion '28.0.3'
     defaultConfig {
         applicationId "binplus.FoodWill"
+        manifestPlaceholders = [onesignal_app_id: '253f1edd-73d8-457b-9bf7-2f942d7dc2b9',
+                                // Project number pulled from dashboard, local value is ignored.
+                                onesignal_google_project_number: 'REMOTE']
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
@@ -13,6 +30,7 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         dexOptions {
             preDexLibraries = false
         }
@@ -22,6 +40,7 @@ android {
             // but continue the build even when errors are found:
             //abortOnError false
         }
+
     }
     buildTypes {
         release {
@@ -96,7 +115,9 @@ dependencies {
     implementation 'commons-codec:commons-codec:1.10'
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation files('libs/httpmime-4.2.5-sources.jar')
+    // OneSignal SDK
+    implementation ('com.onesignal:OneSignal:[3.9.2, 3.99.99]'){
+                exclude group: 'com.google.android.gms'
+            }
 
 }
-// ADD THIS AT THE BOTTOM
-apply plugin: 'com.google.gms.google-services'

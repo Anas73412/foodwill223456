@@ -1,8 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.tuyenmonkey:mkloader:1.4.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2ca2fa9f677ccbc493916c0e99f8f383/mkloader-1.4.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2ca2fa9f677ccbc493916c0e99f8f383/mkloader-1.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d1e005d945ffac6b96c764a9799a0e98/jetified-mkloader-1.4.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d1e005d945ffac6b96c764a9799a0e98/jetified-mkloader-1.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d1e005d945ffac6b96c764a9799a0e98/jetified-mkloader-1.4.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.tuyenmonkey/mkloader/1.4.0/13b67b67e06f948a798be597a9cca3be57b5f1a2/mkloader-1.4.0-javadoc.jar!/" />

@@ -73,6 +73,7 @@ import binplus.FoodWill.AppController;
 import binplus.FoodWill.CustomSlider;
 import binplus.FoodWill.LoginActivity;
 import binplus.FoodWill.MainActivity;
+import binplus.FoodWill.PaymentActivities.InitialScreenActivity;
 import binplus.FoodWill.R;
 import binplus.FoodWill.util.ConnectivityReceiver;
 import binplus.FoodWill.util.CustomVolleyJsonRequest;
@@ -689,6 +690,15 @@ public class Home_fragment extends Fragment {
                                 textSliderView.getBundle().putString("extra", name.get("slider_title"));
                                 textSliderView.getBundle().putString("extra", name.get("sub_cat"));
                                 featuredslider.addSlider(textSliderView);
+                                textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+                                    @Override
+                                    public void onSliderClick(BaseSliderView slider) {
+
+                                        Intent intent=new Intent(getActivity(), InitialScreenActivity.class);
+                                        startActivity(intent);
+
+                                    }
+                                });
                                 final String sub_cat = (String) textSliderView.getBundle().get("extra");
 
                             }

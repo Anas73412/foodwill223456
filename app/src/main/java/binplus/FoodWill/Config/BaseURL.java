@@ -28,6 +28,7 @@ public class BaseURL {
     public static final String KEY_CAT = "category_id";
 
 
+
     //Store Selection
 
     public static final String KEY_STORE_COUNT = "STORE_COUNT";
@@ -161,4 +162,11 @@ public class BaseURL {
     public static String URL_GENERATE_PDF = BASE_URL + "index.php/api/pdf_details";
     public static String URL_MASTER_SEARCH = BASE_URL + "index.php/api/master_search";
     public static String GET_USER_STATUS = BASE_URL + "index.php/api/get_user_status";
+
+
+    //Payment Gateway urls
+    public static String PAY_REDIRECT_URL = "https://www.myjewelstuff.in/pay/ccavResponseHandler.php";
+    public static String PAY_CANCEL_URL = "https://www.myjewelstuff.in/pay/ccavResponseHandler.php";
+    public static String PAY_RSA_URL = "https://www.myjewelstuff.in/pay/GetRSA.php";
+
 }

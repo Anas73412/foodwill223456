@@ -322,7 +322,7 @@ public class Delivery_payment_detail_fragment extends Fragment {
                     args.putString("getlocationid", getlocation_id);
                     args.putString("getstoreid", getstore_id);
                     args.putString( "deli_charges", String.valueOf( deli_charges ) );
-
+                    sessionManagement.createPaySection();
                     fm.setArguments(args);
                     FragmentManager fragmentManager = getFragmentManager();
                     fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)

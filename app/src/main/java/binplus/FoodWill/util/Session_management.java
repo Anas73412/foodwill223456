@@ -30,7 +30,8 @@ import static binplus.FoodWill.Config.BaseURL.KEY_WALLET_Ammount;
 import static binplus.FoodWill.Config.BaseURL.PREFS_NAME;
 import static binplus.FoodWill.Config.BaseURL.PREFS_NAME2;
 import static binplus.FoodWill.Config.BaseURL.TOTAL_AMOUNT;
-
+import static binplus.FoodWill.MainActivity.extra_charges;
+import static binplus.FoodWill.Utility.Constants.*;
 
 
 public class Session_management {
@@ -77,6 +78,53 @@ public class Session_management {
         editor.commit();
     }
 
+    public void createPaySection()
+    {
+        editor2.putBoolean(PAY_CHECK,false);
+        editor2.putString(PAY_ID,"");
+        editor2.putString(PAY_STATUS,"");
+        editor2.putString(PAY_AMT,"");
+        editor2.putString(PAY_DATE,"");
+        editor2.putString(PAY_TIME,"");
+        editor2.putString(PAY_LOCATION,"");
+        editor2.putString(PAY_DELIVERY,"");
+        editor2.putString(PAY_METHOD,"");
+        editor2.putString(PAY_DISCOUNT,"");
+        editor2.putString(PAY_DISINFECTION,"");
+        editor2.putString(PAY_COUPON_CODE,"");
+        editor2.commit();
+
+    }
+
+    public void updatePaySection(String date,String time,
+                                 String location,String deli_charges,String method,String dis_amt,String disinfection,String coupon_code)
+    {
+        editor2.putBoolean(PAY_CHECK,true);
+        editor2.putString(PAY_DATE,date);
+        editor2.putString(PAY_TIME,time);
+        editor2.putString(PAY_LOCATION,location);
+        editor2.putString(PAY_DELIVERY,deli_charges);
+        editor2.putString(PAY_METHOD,method);
+        editor2.putString(PAY_DISCOUNT,dis_amt);
+        editor2.putString(PAY_DISINFECTION,disinfection);
+        editor2.putString(PAY_COUPON_CODE,coupon_code);
+        editor2.apply();
+
+    }
+    public void updatePaymentSection(String pay_order_id,String pay_status,String amt)
+    {
+        editor2.putString(PAY_ID,pay_order_id);
+        editor2.putString(PAY_STATUS,pay_status);
+        editor2.putString(PAY_AMT,amt);
+        editor2.apply();
+
+    }
+    public boolean isOnlinePay()
+    {
+        return prefs2.getBoolean(PAY_CHECK,false);
+    }
+
+
     public void checkLogin() {
 
         if (!this.isLoggedIn()) {
@@ -91,6 +139,27 @@ public class Session_management {
         }
     }
 
+    public HashMap<String,String> getPayDetails()
+    {
+        HashMap<String, String> pay = new HashMap<String, String>();
+        pay.put(PAY_ID, prefs2.getString(PAY_ID, null));
+        pay.put(PAY_STATUS, prefs2.getString(PAY_STATUS, null));
+        pay.put(PAY_AMT, prefs2.getString(PAY_AMT, null));
+        pay.put(PAY_DATE, prefs2.getString(PAY_DATE, null));
+        pay.put(PAY_TIME, prefs2.getString(PAY_TIME, null));
+        pay.put(PAY_LOCATION, prefs2.getString(PAY_LOCATION, null));
+        pay.put(PAY_DELIVERY, prefs2.getString(PAY_DELIVERY, null));
+        pay.put(PAY_METHOD, prefs2.getString(PAY_METHOD, null));
+        pay.put(PAY_DISCOUNT, prefs2.getString(PAY_DISCOUNT, null));
+        pay.put(PAY_DISINFECTION, prefs2.getString(PAY_DISINFECTION, null));
+        pay.put(PAY_COUPON_CODE, prefs2.getString(PAY_COUPON_CODE, null));
+        return pay;
+    }
+
+    public void clearPay()
+    {
+        editor2.clear();
+    }
     /**
      * Get stored session data
      */
@@ -143,8 +212,8 @@ public class Session_management {
     public void logoutSession() {
         editor.clear();
         editor.commit();
-
         cleardatetime();
+
 
         Intent logout = new Intent(context, MainActivity.class);
         // Closing all the Activities
@@ -159,7 +228,6 @@ public class Session_management {
     public void logoutSessionwithchangepassword() {
         editor.clear();
         editor.commit();
-
         cleardatetime();
 
         Intent logout = new Intent(context, LoginActivity.class);
@@ -172,17 +240,6 @@ public class Session_management {
         context.startActivity(logout);
     }
 
-    public void creatdatetime(String date, String time) {
-        editor2.putString(KEY_DATE, date);
-        editor2.putString(KEY_TIME, time);
-
-        editor2.commit();
-    }
-
-    public void cleardatetime() {
-        editor2.clear();
-        editor2.commit();
-    }
 
     public HashMap<String, String> getdatetime() {
         HashMap<String, String> user = new HashMap<String, String>();
@@ -230,4 +287,15 @@ public class Session_management {
         return prefs.getString(KEY_CAT,"");
     }
 
+    public void creatdatetime(String date, String time) {
+        editor2.putString(KEY_DATE, date);
+        editor2.putString(KEY_TIME, time);
+
+        editor2.commit();
+    }
+
+    public void cleardatetime() {
+        editor2.clear();
+        editor2.commit();
+    }
 }
