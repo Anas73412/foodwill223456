@@ -985,7 +985,7 @@ redirect(fb_link);
                         nav_menu.findItem(R.id.nav_shop_now).setVisible(false);
 //
                     }
-                    else
+                    else if(stop_order.equalsIgnoreCase("1"))
                     {
                         Fragment fm = new Home_fragment();
                         FragmentManager fragmentManager = getFragmentManager();

@@ -957,7 +957,7 @@ public class Payment_fragment extends Fragment {
             intent.putExtra(AvenuesParams.ORDER_ID, ServiceUtility.chkNull(order_pay_id).toString().trim());
             intent.putExtra(AvenuesParams.CURRENCY, ServiceUtility.chkNull(getResources().getString(R.string.pay_currency)).toString().trim());
 //            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(total_amount).toString().trim());
-            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull("1").toString().trim());
+            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull("10").toString().trim());
             intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(BaseURL.PAY_REDIRECT_URL).toString().trim());
             intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(BaseURL.PAY_CANCEL_URL).toString().trim());
             intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(BaseURL.PAY_RSA_URL).toString().trim());

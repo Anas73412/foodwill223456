@@ -96,7 +96,7 @@ Session_management session_management;
                     String pay_status="";
                     Log.e("responseeeee",""+html.toString());
                     if (html.indexOf("Failure") != -1) {
-                        pay_status="falied";
+                        pay_status="failed";
                         status = "Transaction Declined!";
                     } else if (html.indexOf("Success") != -1) {
                         pay_status="success";

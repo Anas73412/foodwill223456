@@ -257,8 +257,13 @@
     <string name="one_signalapp_number" translatable="false">REMOTE</string>
 
     <!-- Payment unique data-->
-    <string name="access_code" translatable="false">AVTZ03HG31BR62ZTRB</string>
+
+    <string name="access_code_test" translatable="false">AVTZ03HG31BR62ZTRB</string>
+    <string name="access_code" translatable="false">AVWH93HG57BJ59HWJB</string>
     <string name="merchant_id" translatable="false">266036</string>
     <string name="pay_currency" translatable="false">INR</string>
+
+
+    <string name="default_notification_channel_id" translatable="false">Channel ID</string>
 
 </resources>

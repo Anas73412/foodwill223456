@@ -690,15 +690,15 @@ public class Home_fragment extends Fragment {
                                 textSliderView.getBundle().putString("extra", name.get("slider_title"));
                                 textSliderView.getBundle().putString("extra", name.get("sub_cat"));
                                 featuredslider.addSlider(textSliderView);
-                                textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
-                                    @Override
-                                    public void onSliderClick(BaseSliderView slider) {
-
-                                        Intent intent=new Intent(getActivity(), InitialScreenActivity.class);
-                                        startActivity(intent);
-
-                                    }
-                                });
+//                                textSliderView.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+//                                    @Override
+//                                    public void onSliderClick(BaseSliderView slider) {
+//
+//                                        Intent intent=new Intent(getActivity(), InitialScreenActivity.class);
+//                                        startActivity(intent);
+//
+//                                    }
+//                                });
                                 final String sub_cat = (String) textSliderView.getBundle().get("extra");
 
                             }
