@@ -574,7 +574,7 @@ public class Details_Fragment extends Fragment {
 
                     String tot1 = txtTotal.getText().toString().trim();
                     String tot_amount = tot1.substring(1, tot1.length());
-                    float qty = numberButton.getValue();
+                    float qty =numberButton.getValue();
 
                     String atr = String.valueOf(details_product_attribute);
                     if (atr.equals("[]")) {
@@ -585,8 +585,11 @@ public class Details_Fragment extends Fragment {
                             mapProduct.put( "product_id", product_id );
                             mapProduct.put( "product_image", product_images );
                             mapProduct.put( "cat_id", cat_id );
+                        double pr = Double.parseDouble( details_product_price );
+                            double qr=(double)qty;
+                        double amt = pr * qty;
                             mapProduct.put( "product_name", details_product_name );
-                            mapProduct.put( "price", details_product_price );
+                            mapProduct.put( "price",String.valueOf(amt));
                             mapProduct.put( "unit_price", details_product_price );
                             mapProduct.put( "stock", details_stock );
                             mapProduct.put( "unit", unt );
@@ -627,6 +630,9 @@ public class Details_Fragment extends Fragment {
                             String st2 = String.valueOf( st[2] );
                             String[] str = str_id.split( "@" );
                             String at_id = String.valueOf( str[0] );
+                        double pr = Double.parseDouble( st0 );
+                        double qr=(double)qty;
+                        double amt = pr * qty;
                             int j = Integer.parseInt( String.valueOf( str[1] ) );
                             //       Toast.makeText(context,""+str[0].toString()+"\n"+str[1].toString(),Toast.LENGTH_LONG).show();
                             HashMap<String, String> mapProduct = new HashMap<String, String>();
@@ -635,7 +641,7 @@ public class Details_Fragment extends Fragment {
                             mapProduct.put( "product_image", product_images );
                             mapProduct.put( "cat_id", cat_id );
                             mapProduct.put( "product_name", details_product_name );
-                            mapProduct.put( "price", st0 );
+                            mapProduct.put( "price", String.valueOf(amt) );
                             mapProduct.put( "unit_price", st0 );
                             mapProduct.put( "stock", details_stock );
                             mapProduct.put( "unit", st1 );
