@@ -168,7 +168,7 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
 
             location_id = modelList.get(0).getLocation_id();
 
-            // gethouse = modelList.get(0).getHouse_no();
+             gethouse = modelList.get(0).getHouse_no();
             getname = modelList.get(0).getReceiver_name();
             getphone = modelList.get(0).getReceiver_mobile();
             getsocity = modelList.get(0).getHouse_no();

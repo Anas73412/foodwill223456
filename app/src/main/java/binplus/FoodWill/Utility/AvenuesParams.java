@@ -12,4 +12,14 @@ public class AvenuesParams{
 	public static final String CANCEL_URL = "cancel_url";
 	public static final String RSA_KEY_URL = "rsa_key_url";
 
+	public static final String BILLING_NAME = "billing_name";
+	public static final String BILLING_ADDRESS = "billing_address";
+	public static final String BILLING_ZIP = "billing_zip";
+	public static final String BILLING_EMAIL = "billing_email";
+	public static final String BILLING_TEL = "billing_tel";
+	public static final String BILLING_CITY = "billing_city";
+	public static final String BILLING_STATE = "billing_state";
+	public static final String BILLING_COUNTRY = "billing_country";
+
+
 }

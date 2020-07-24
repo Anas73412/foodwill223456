@@ -165,10 +165,13 @@ public class BaseURL {
 
 
     //Payment Gateway urls
-    public static String PAY_REDIRECT_URL = "https://www.myjewelstuff.in/pay/ccavResponseHandler.php";
+//    public static String PAY_REDIRECT_URL = "https://trolleyxpress.com/ccavenue/ccavResponseHandler.php";
+    public static String PAY_REDIRECT_URL = "https://www.myjewelstuff.in/merchant/ccavResponseHandler.php";
 //    public static String PAY_REDIRECT_URL = "http://51.89.128.9/merchant/ccavResponseHandler.jsp";
-    public static String PAY_CANCEL_URL = "https://www.myjewelstuff.in/pay/ccavResponseHandler.php";
+    public static String PAY_CANCEL_URL = "https://www.myjewelstuff.in/merchant/ccavResponseHandler.php";
+//    public static String PAY_CANCEL_URL = "https://trolleyxpress.com/ccavenue/ccavResponseHandler.php";
 //    public static String PAY_CANCEL_URL = "http://51.89.128.9/merchant/ccavResponseHandler.jsp";
-    public static String PAY_RSA_URL = "https://www.myjewelstuff.in/pay/GetRSA.php";
+    public static String PAY_RSA_URL = "https://www.myjewelstuff.in/merchant/GetRSA.php";
+//    public static String PAY_RSA_URL = "https://trolleyxpress.com/ccavenue/GetRSA.php";
 
 }

@@ -660,9 +660,7 @@ public class Home_fragment extends Fragment {
             }
         });
         AppController.getInstance().addToRequestQueue(req);
-
     }
-
 
   private void makeGetFeaturedSlider() {
         JsonArrayRequest req = new JsonArrayRequest(BaseURL.GET_FEAATURED_SLIDER_URL,

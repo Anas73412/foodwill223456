@@ -258,10 +258,15 @@
 
     <!-- Payment unique data-->
 
-    <string name="access_code_test" translatable="false">AVTZ03HG31BR62ZTRB</string>
+
+    <string name="access_code_test1" translatable="false">AVWH93HG57BJ59HWJB</string>
     <string name="access_code" translatable="false">AVWH93HG57BJ59HWJB</string>
     <string name="merchant_id" translatable="false">266036</string>
     <string name="pay_currency" translatable="false">INR</string>
+    <string name="billing_city" translatable="false">Bikaner</string>
+    <string name="billing_state" translatable="false">Rajasthan</string>
+    <string name="billing_email" translatable="false">foodwillindia@gmail.com</string>
+    <string name="billing_country" translatable="false">India</string>
 
 
     <string name="default_notification_channel_id" translatable="false">Channel ID</string>

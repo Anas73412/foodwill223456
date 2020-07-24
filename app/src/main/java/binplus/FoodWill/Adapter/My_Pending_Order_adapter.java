@@ -151,8 +151,8 @@ public class My_Pending_Order_adapter extends RecyclerView.Adapter<My_Pending_Or
             holder.linearLayout.setVisibility(View.GONE);
         }
 
-        if (mList.getPayment_method().equals("Store Pick Up")) {
-            holder.tv_methid1.setText("Store Pick Up");
+        if (mList.getPayment_method().equals("Pay Now")) {
+            holder.tv_methid1.setText("Paid");
         } else if (mList.getPayment_method().equals("Cash On Delivery")) {
             holder.tv_methid1.setText(context.getResources().getString(R.string.cash));
         } else if (mList.getPayment_method().equals("Debit / Credit Card")) {

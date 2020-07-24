@@ -161,7 +161,11 @@ public class My_Past_Order_adapter extends RecyclerView.Adapter<My_Past_Order_ad
             holder.tv_status.setTextColor(context.getResources().getColor(R.color.colorPrimary));
         }
 
-        holder.tv_methid1.setText(mList.getPayment_method());
+        if (mList.getPayment_method().equals("Pay Now")) {
+            holder.tv_methid1.setText("Paid");
+        } else if (mList.getPayment_method().equals("Cash On Delivery")) {
+            holder.tv_methid1.setText(context.getResources().getString(R.string.cash));
+        }
         holder.tv_date.setText(mList.getOn_date());
         holder.tv_tracking_date.setText(mList.getDelivered_date());
 

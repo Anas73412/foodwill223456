@@ -58,6 +58,7 @@ public class Delivery_payment_detail_fragment extends Fragment {
     private String getdate = "";
     private String getuser_id = "";
     private String getstore_id = "";
+    String bill_name="",bill_address="",bill_pincode="",bill_mobile="";
     Dialog loadingBar ;
     TextView tvItems,tvMrp,tvDiscount,tvDelivary,tvSubTotal,tv_total ,tv_extra_charge;
     TextView reciver_name ,mobile_no ,pincode,house_no,society,txtNote ;
@@ -136,6 +137,10 @@ public class Delivery_payment_detail_fragment extends Fragment {
         String house = getArguments().getString( "house" );
         String pin = getArguments().getString( "pin" );
         String societys = getArguments().getString( "society" );
+        bill_name = getArguments().getString("name");
+        bill_mobile = getArguments().getString( "phone" );
+        bill_address = getArguments().getString( "house" );
+        bill_pincode = getArguments().getString( "pin" );
         //   Toast.makeText( getActivity(),"charge"+deli_charges ,Toast.LENGTH_LONG ).show();
 
         tv_timeslot.setText(gettime);
@@ -322,6 +327,11 @@ public class Delivery_payment_detail_fragment extends Fragment {
                     args.putString("getlocationid", getlocation_id);
                     args.putString("getstoreid", getstore_id);
                     args.putString( "deli_charges", String.valueOf( deli_charges ) );
+                    args.putString( "bill_pincode", bill_pincode );
+                    args.putString( "bill_name", bill_name);
+                    args.putString( "bill_address", bill_address );
+                    args.putString( "bill_mobile", bill_mobile );
+
                     sessionManagement.createPaySection();
                     fm.setArguments(args);
                     FragmentManager fragmentManager = getFragmentManager();

@@ -105,7 +105,7 @@ public class Payment_fragment extends Fragment {
     String getcharge ;
     LinearLayout Promo_code_layout, Coupon_and_wallet;
     RelativeLayout Apply_Coupon_Code, Relative_used_wallet, Relative_used_coupon;
-
+    String bill_name="",bill_address="",bill_pincode="",bill_mobile="";
     public Payment_fragment() {
 
     }
@@ -146,6 +146,11 @@ public class Payment_fragment extends Fragment {
         });
 
 
+        bill_name = getArguments().getString("bill_name");
+        bill_mobile = getArguments().getString("bill_mobile");
+        bill_address = getArguments().getString("bill_address");
+        bill_pincode = getArguments().getString("bill_pincode");
+        Log.e("addresss_data",""+bill_name+" - "+bill_mobile+" - "+bill_address+" - "+bill_pincode);
 //        Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "font/bold.ttf" );
         checkBox_Wallet = (CheckBox) view.findViewById(R.id.use_wallet);
         //     checkBox_Wallet.setTypeface(font);
@@ -231,6 +236,7 @@ public class Payment_fragment extends Fragment {
         deli_charges = getArguments().getString("deli_charges");
         getstore_id = getArguments().getString("getstoreid");
         getcharge = getArguments().getString( "deli_charges" );
+
         payble_ammount = (TextView) view.findViewById(R.id.payable_ammount);
         order_ammount = (TextView) view.findViewById(R.id.order_ammount);
         //  used_wallet_ammount = (TextView) view.findViewById(R.id.used_wallet_ammount);
@@ -541,14 +547,13 @@ public class Payment_fragment extends Fragment {
                 getdate=g;
          if(sessionManagement.isOnlinePay())
          {
-            getdate=sessionManagement.getPayDetails().get(PAY_DATE);
             gettime=sessionManagement.getPayDetails().get(PAY_TIME);
             getlocation_id=sessionManagement.getPayDetails().get(PAY_LOCATION);
             getvalue=sessionManagement.getPayDetails().get(PAY_METHOD);
             total_amount=sessionManagement.getPayDetails().get(PAY_AMT);
-            couponCode=sessionManagement.getPayDetails().get(PAY_COUPON_CODE);
-            couponValue=sessionManagement.getPayDetails().get(PAY_DISCOUNT);
             getcharge=sessionManagement.getPayDetails().get(PAY_DELIVERY);
+
+            Log.e("sessssss",""+sessionManagement.getPayDetails().toString());
 
          }
 
@@ -583,15 +588,7 @@ public class Payment_fragment extends Fragment {
         //coupon code
         params.put("coupon_code", couponCode);
         params.put("discount_amt", couponValue);
-        if(sessionManagement.isOnlinePay())
-        {
-            params.put("disinfection_charge", sessionManagement.getPayDetails().get(PAY_DISINFECTION));
-        }
-        else
-        {
-            params.put("disinfection_charge", String.valueOf(extra_charges));
-        }
-
+        params.put("disinfection_charge", String.valueOf(extra_charges));
         params.put("data", passArray.toString());
         Log.e("order_details",""+params.toString());
 //        // Toast.makeText(getActivity(),""+passArray,Toast.LENGTH_LONG).show();
@@ -607,6 +604,7 @@ public class Payment_fragment extends Fragment {
                         // JSONObject object = response.getJSONObject("data");
                         String msg=response.getString("data");
                         db_cart.clearCart();
+                        sessionManagement.clearPay();
                         loadingBar.dismiss();
                         Bundle args = new Bundle();
                         Fragment fm = new Thanks_fragment();
@@ -870,6 +868,8 @@ public class Payment_fragment extends Fragment {
         }
         else if(pay_now.isChecked())
         {
+//              sessionManagement.updatePaySection(getdate,gettime,getlocation_id,deli_charges,getvalue,couponCode,couponValue,String.valueOf(extra_charges));
+//            Log.e("sesstion_data",""+getdate+" - "+gettime+" - "+getlocation_id+" - "+deli_charges+" - "+getvalue+" - "+couponCode+" - "+couponValue+" - "+String.valueOf(extra_charges));
             onlinePay();
         }
         else {
@@ -956,8 +956,16 @@ public class Payment_fragment extends Fragment {
             intent.putExtra(AvenuesParams.MERCHANT_ID, ServiceUtility.chkNull(getResources().getString(R.string.merchant_id)).toString().trim());
             intent.putExtra(AvenuesParams.ORDER_ID, ServiceUtility.chkNull(order_pay_id).toString().trim());
             intent.putExtra(AvenuesParams.CURRENCY, ServiceUtility.chkNull(getResources().getString(R.string.pay_currency)).toString().trim());
-//            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(total_amount).toString().trim());
-            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull("10").toString().trim());
+            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull(total_amount).toString().trim());
+//            intent.putExtra(AvenuesParams.AMOUNT, ServiceUtility.chkNull("2").toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_NAME, ServiceUtility.chkNull(bill_name).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_ADDRESS, ServiceUtility.chkNull(bill_address).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_ZIP, ServiceUtility.chkNull(bill_pincode).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_EMAIL, ServiceUtility.chkNull(getResources().getString(R.string.billing_email)).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_TEL, ServiceUtility.chkNull(bill_mobile).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_CITY, ServiceUtility.chkNull(getResources().getString(R.string.billing_city)).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_STATE, ServiceUtility.chkNull(getResources().getString(R.string.billing_state)).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_COUNTRY, ServiceUtility.chkNull(getResources().getString(R.string.billing_country)).toString().trim());
             intent.putExtra(AvenuesParams.REDIRECT_URL, ServiceUtility.chkNull(BaseURL.PAY_REDIRECT_URL).toString().trim());
             intent.putExtra(AvenuesParams.CANCEL_URL, ServiceUtility.chkNull(BaseURL.PAY_CANCEL_URL).toString().trim());
             intent.putExtra(AvenuesParams.RSA_KEY_URL, ServiceUtility.chkNull(BaseURL.PAY_RSA_URL).toString().trim());
