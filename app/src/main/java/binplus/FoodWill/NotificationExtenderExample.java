@@ -1,8 +1,12 @@
 package binplus.FoodWill;
 
+import android.app.Notification;
+import android.graphics.Color;
 import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
 
 import com.onesignal.NotificationExtenderService;
 import com.onesignal.OSNotificationDisplayedResult;
@@ -22,7 +26,17 @@ public class NotificationExtenderExample extends NotificationExtenderService {
             @Override
             public NotificationCompat.Builder extend(NotificationCompat.Builder builder) {
                 // Sets the background notification color to Red on Android 5.0+ devices.
-                return builder.setColor(new BigInteger("FFFF0000", 16).intValue());
+
+//                int color = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary);
+//                builder.setContentTitle(HtmlCompat.fromHtml("<font color=\"" + color + "\">" + getResources().getString(R.string.app_name) + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY))
+////                builder.setBadgeIconType(NotificationCompat.BADGE_ICON_NONE)
+////                builder.setContentTitle()
+//                        .setColor(getResources().getColor(R.color.colorPrimary))
+                  builder.setSmallIcon(R.drawable.ic_stat_veg_logo)
+////                .setColorized(true)
+                        .setColor(getResources().getColor(R.color.bell_color
+                        ));
+                return builder;
             }
         };
 

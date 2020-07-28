@@ -12,6 +12,7 @@ public class Delivery_address_model {
     String house_no;
     String receiver_name;
     String receiver_mobile;
+    String receiver_email;
     String socity_name;
     String pincode;
 
@@ -64,4 +65,7 @@ public class Delivery_address_model {
         this.ischeckd = ischeckd;
     }
 
+    public String getReceiver_email() {
+        return receiver_email;
+    }
 }

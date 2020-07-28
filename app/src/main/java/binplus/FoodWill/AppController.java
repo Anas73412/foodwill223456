@@ -7,6 +7,9 @@ import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.util.Log;
 
+import androidx.core.content.ContextCompat;
+import androidx.core.text.HtmlCompat;
+
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
@@ -92,9 +95,10 @@ public class AppController extends Application {
     public class ExampleNotificationReceivedHandler implements OneSignal.NotificationReceivedHandler {
         @Override
         public void notificationReceived(OSNotification notification) {
+            int color = ContextCompat.getColor(getApplicationContext(), R.color.colorPrimary);
             JSONObject data = notification.payload.additionalData;
             String notificationID = notification.payload.notificationID;
-            String title = notification.payload.title;
+            String title =String.valueOf(HtmlCompat.fromHtml("<font color=\"" + color + "\">" + notification.payload.title + "</font>", HtmlCompat.FROM_HTML_MODE_LEGACY));
             String body = notification.payload.body;
             String smallIcon = notification.payload.smallIcon;
             String largeIcon = notification.payload.largeIcon;

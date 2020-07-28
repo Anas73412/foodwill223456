@@ -330,6 +330,7 @@ public class Delivery_fragment extends Fragment implements View.OnClickListener 
             String society = addmap.get("society");
             String pin = addmap.get("pin");
             String house = addmap.get("house");
+            String email = addmap.get("email");
             Log.e("address_map",""+addmap.toString());
             //args.putString("getdate", getdate);
             args.putString("time", gettime);
@@ -340,6 +341,7 @@ public class Delivery_fragment extends Fragment implements View.OnClickListener 
             args.putString("name",name);
             args.putString( "pin",pin );
             args.putString( "house",house );
+            args.putString( "email",email );
             args.putString( "society",society );
             args.putString( "phone",phone );
             args.putString("deli_charges", deli_charges);

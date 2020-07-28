@@ -95,6 +95,42 @@
                 android:orientation="horizontal">
 
                 <binplus.FoodWill.Fonts.LatoBLack
+                    android:id="@+id/tv_add_adres_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Email Address"
+                    android:textColor="#000"
+                    android:textSize="14sp" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/iconm_email"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/iconn" />
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space_4"
+                android:fontFamily="@font/bold"
+                android:hint="Enter Email (Optional)"
+                android:layout_marginBottom="@dimen/space_5"
+                android:background="@drawable/xml_textbox_bg"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:textSize="@dimen/space_14" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <binplus.FoodWill.Fonts.LatoBLack
                     android:id="@+id/tv_add_adres_pin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

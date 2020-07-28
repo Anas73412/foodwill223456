@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -58,12 +59,13 @@ public class Delivery_payment_detail_fragment extends Fragment {
     private String getdate = "";
     private String getuser_id = "";
     private String getstore_id = "";
-    String bill_name="",bill_address="",bill_pincode="",bill_mobile="";
+    String bill_name="",bill_address="",bill_pincode="",bill_mobile="",bill_email="";
     Dialog loadingBar ;
     TextView tvItems,tvMrp,tvDiscount,tvDelivary,tvSubTotal,tv_total ,tv_extra_charge;
-    TextView reciver_name ,mobile_no ,pincode,house_no,society,txtNote ;
+    TextView reciver_name ,mobile_no ,pincode,house_no,society,txtNote,tv_email ;
     private int deli_charges;
     Double total;
+    RelativeLayout rel_email;
     SharedPreferences preferences;
     private DatabaseCartHandler db_cart;
     private Session_management sessionManagement;
@@ -105,6 +107,8 @@ public class Delivery_payment_detail_fragment extends Fragment {
         tvDelivary = (TextView) view.findViewById(R.id.tvDelivary);
         tvSubTotal = (TextView) view.findViewById(R.id.tvSubTotal);
         txtNote = (TextView) view.findViewById(R.id.txtNote);
+        rel_email=view.findViewById(R.id.rel_email);
+        tv_email=view.findViewById(R.id.tv_email);
         //tv_total = (TextView) view.findViewById(R.id.textPrice);
         // tv_total = (TextView) view.findViewById(R.id.txtTotal);
         reciver_name =view.findViewById( R.id.recivername );
@@ -141,6 +145,23 @@ public class Delivery_payment_detail_fragment extends Fragment {
         bill_mobile = getArguments().getString( "phone" );
         bill_address = getArguments().getString( "house" );
         bill_pincode = getArguments().getString( "pin" );
+        bill_email = getArguments().getString( "email" );
+        if(bill_email == null || bill_email.isEmpty())
+        {
+            if(rel_email.getVisibility()==View.VISIBLE)
+            {
+              rel_email.setVisibility(View.GONE);
+            }
+
+        }
+        else
+        {
+            if(rel_email.getVisibility()==View.GONE)
+            {
+                rel_email.setVisibility(View.VISIBLE);
+            }
+            tv_email.setText(bill_email.toString());
+        }
         //   Toast.makeText( getActivity(),"charge"+deli_charges ,Toast.LENGTH_LONG ).show();
 
         tv_timeslot.setText(gettime);
@@ -331,6 +352,7 @@ public class Delivery_payment_detail_fragment extends Fragment {
                     args.putString( "bill_name", bill_name);
                     args.putString( "bill_address", bill_address );
                     args.putString( "bill_mobile", bill_mobile );
+                    args.putString( "bill_email", bill_email );
 
                     sessionManagement.createPaySection();
                     fm.setArguments(args);

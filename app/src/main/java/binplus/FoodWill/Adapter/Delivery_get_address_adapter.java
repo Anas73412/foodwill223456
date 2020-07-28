@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,11 +53,12 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
     private boolean ischecked = false;
     private Button edit_address;
     private String location_id = "";
-    private String getsocity, gethouse, getphone, getpin, getname, getcharge ,getaddress;
+    private String getsocity, gethouse, getphone, getpin, getname, getcharge ,getaddress,getemail;
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public TextView tv_address, tv_name, tv_phone, tv_charges,txtEdit,txtDelete;
+        public TextView tv_address, tv_name, tv_phone, tv_charges,txtEdit,txtDelete,tv_email;
         public RadioButton rb_select;
+        LinearLayout lin_email;
 
 //        SwipeLayout swipeLayout;
 //        Button buttonDelete, btn_edit;
@@ -66,7 +68,8 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
 
 //            swipeLayout = (SwipeLayout) itemView.findViewById(R.id.swipe);
 //            buttonDelete = (Button) itemView.findViewById(R.id.delete);
-//            btn_edit = (Button) itemView.findViewById(R.id.edit);
+            lin_email = (LinearLayout) itemView.findViewById(R.id.lin_email);
+            tv_email = (TextView) itemView.findViewById(R.id.tv_email);
 
             tv_address = (TextView) view.findViewById(R.id.tv_adres_address);
             tv_name = (TextView) view.findViewById(R.id.tv_adres_pincode);
@@ -93,6 +96,7 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
                     getsocity = modelList.get(clickedPos).getSocity_name();
                     getpin = modelList.get(clickedPos).getPincode();
                     getcharge = modelList.get(clickedPos).getDelivery_charge();
+                    getemail = modelList.get(clickedPos).getReceiver_email();
 
 
                     if (modelList.size() > 1) {
@@ -155,6 +159,19 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
 
         //  holder.tv_charges.setText(mList.getDelivery_charge()+context.getResources().getString(R.string.currency));
 
+        if(mList.getReceiver_email() == null || mList.getReceiver_email().isEmpty())
+        {
+            holder.lin_email.setVisibility(View.GONE);
+
+        }
+        else
+        {
+            if(holder.lin_email.getVisibility()==View.GONE)
+            {
+                holder.lin_email.setVisibility(View.VISIBLE);
+            }
+            holder.tv_email.setText(mList.getReceiver_email().toString());
+        }
         holder.rb_select.setChecked(mList.getIscheckd());
         holder.rb_select.setTag(new Integer(position));
 
@@ -174,6 +191,7 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
             getsocity = modelList.get(0).getHouse_no();
             getpin = modelList.get(0).getPincode();
             getcharge = modelList.get(0).getDelivery_charge();
+            getemail = modelList.get(0).getReceiver_email();
 
             ischecked = true;
 
@@ -244,6 +262,7 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
                 args.putString("socity_id", mList.getSocity_id());
                 args.putString("socity_name", mList.getSocity_name());
                 args.putString("house", mList.getHouse_no());
+                args.putString("email", mList.getReceiver_email());
                 //  args.putString( "address",getaddress );
 
                 fm.setArguments(args);
@@ -304,6 +323,7 @@ public class Delivery_get_address_adapter extends RecyclerView.Adapter<Delivery_
         map.put("pin",getpin);
         map.put("house",gethouse);
         map.put("society",getsocity);
+        map.put("email",getemail);
 
         return map;
     }

@@ -75,7 +75,7 @@ import static com.android.volley.VolleyLog.TAG;
 
 public class Payment_fragment extends Fragment {
     //RelativeLayout confirm;
-    Button confirm;
+    Button confirm,btn_pay;
     Module module;
     private DatabaseCartHandler db_cart;
     private Session_management sessionManagement;
@@ -105,7 +105,8 @@ public class Payment_fragment extends Fragment {
     String getcharge ;
     LinearLayout Promo_code_layout, Coupon_and_wallet;
     RelativeLayout Apply_Coupon_Code, Relative_used_wallet, Relative_used_coupon;
-    String bill_name="",bill_address="",bill_pincode="",bill_mobile="";
+    String bill_name="",bill_address="",bill_pincode="",bill_mobile="",bill_email="";
+
     public Payment_fragment() {
 
     }
@@ -150,7 +151,8 @@ public class Payment_fragment extends Fragment {
         bill_mobile = getArguments().getString("bill_mobile");
         bill_address = getArguments().getString("bill_address");
         bill_pincode = getArguments().getString("bill_pincode");
-        Log.e("addresss_data",""+bill_name+" - "+bill_mobile+" - "+bill_address+" - "+bill_pincode);
+        bill_email = getArguments().getString("bill_email");
+        Log.e("addresss_data",""+bill_name+" - "+bill_mobile+" - "+bill_address+" - "+bill_pincode+" - "+bill_email);
 //        Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "font/bold.ttf" );
         checkBox_Wallet = (CheckBox) view.findViewById(R.id.use_wallet);
         //     checkBox_Wallet.setTypeface(font);
@@ -166,6 +168,7 @@ public class Payment_fragment extends Fragment {
         {
             rb_Cod.setVisibility(View.GONE);
         }
+        btn_pay=view.findViewById(R.id.btn_pay);
         //   rb_Cod.setTypeface(font);
         rb_card = (RadioButton) view.findViewById(R.id.use_card);
         //    rb_card.setTypeface(font);
@@ -352,6 +355,14 @@ public class Payment_fragment extends Fragment {
 
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
                 }
+            }
+        });
+
+        btn_pay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //module.showToast("Please wait..");
+                onlinePay();
             }
         });
         return view;
@@ -948,6 +959,15 @@ public class Payment_fragment extends Fragment {
         String vMerchantId = ServiceUtility.chkNull(getResources().getString(R.string.merchant_id)).toString().trim();
         String vCurrency = ServiceUtility.chkNull(getResources().getString(R.string.pay_currency)).toString().trim();
         String vAmount = ServiceUtility.chkNull(total_amount).toString().trim();
+        String vEmail="";
+        if(bill_email == null || bill_email.isEmpty())
+        {
+            vEmail=getResources().getString(R.string.billing_email);
+        }
+        else
+        {
+            vEmail=bill_email;
+        }
         if(!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals("")){
 
             sessionManagement.updatePaySection(getdate,gettime,getlocation_id,deli_charges,getvalue,couponCode,couponValue,String.valueOf(extra_charges));
@@ -961,7 +981,7 @@ public class Payment_fragment extends Fragment {
             intent.putExtra(AvenuesParams.BILLING_NAME, ServiceUtility.chkNull(bill_name).toString().trim());
             intent.putExtra(AvenuesParams.BILLING_ADDRESS, ServiceUtility.chkNull(bill_address).toString().trim());
             intent.putExtra(AvenuesParams.BILLING_ZIP, ServiceUtility.chkNull(bill_pincode).toString().trim());
-            intent.putExtra(AvenuesParams.BILLING_EMAIL, ServiceUtility.chkNull(getResources().getString(R.string.billing_email)).toString().trim());
+            intent.putExtra(AvenuesParams.BILLING_EMAIL, ServiceUtility.chkNull(vEmail).toString().trim());
             intent.putExtra(AvenuesParams.BILLING_TEL, ServiceUtility.chkNull(bill_mobile).toString().trim());
             intent.putExtra(AvenuesParams.BILLING_CITY, ServiceUtility.chkNull(getResources().getString(R.string.billing_city)).toString().trim());
             intent.putExtra(AvenuesParams.BILLING_STATE, ServiceUtility.chkNull(getResources().getString(R.string.billing_state)).toString().trim());

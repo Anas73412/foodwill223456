@@ -80,7 +80,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/space_5"
-                    android:visibility="gone"
+                    android:id="@+id/lin_email"
                     android:orientation="horizontal">
 
                     <binplus.FoodWill.Fonts.LatoBLack
@@ -88,11 +88,11 @@
                         android:id="@+id/textView16"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/delivery_charge" />
+                        android:text="Email: " />
 
                     <binplus.FoodWill.Fonts.LatoBLack
                         android:textColor="#000"
-                        android:id="@+id/tv_adres_charge"
+                        android:id="@+id/tv_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/space_2"

@@ -56,7 +56,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
     private List<Socity_model> socity_modelList = new ArrayList<>();
     Module module;
     List<String> list;
-    private EditText et_phone, et_name, et_address;
+    private EditText et_phone, et_name, et_address,et_email;
     private TextView et_pin;
     private RelativeLayout btn_update;
     private TextView tv_phone, tv_name, tv_pin, tv_address, tv_socity, btn_socity ,tv_submit;
@@ -99,6 +99,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
         tv_name = (TextView) view.findViewById(R.id.tv_add_adres_name);
         tv_pin = (TextView) view.findViewById(R.id.tv_add_adres_pin);
         et_pin = (TextView) view.findViewById(R.id.et_add_adres_pin);
+        et_email = (EditText) view.findViewById(R.id.et_email);
         et_address = (EditText) view.findViewById(R.id.et_add_adres_home);
         tv_address =(TextView)view.findViewById( R.id.tv_add );
         tv_submit = view.findViewById( R.id.add_updt );
@@ -171,6 +172,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
             getlocation_id = getArguments().getString("location_id");
             String get_name = getArguments().getString("name");
             String get_phone = getArguments().getString("mobile");
+            String get_email = getArguments().getString("email");
             sPin = getArguments().getString("pincode");
             sScId = getArguments().getString("socity_id");
             sScNm = getArguments().getString("socity_name");
@@ -195,6 +197,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
                 et_pin.setText(sScNm+" ("+sPin+")");
                 et_phone.setText(get_phone);
                 et_address.setText(get_add);
+                et_email.setText(get_email);
                 //  btn_socity.setText(get_socity_name);
 
                 // sessionManagement.updateSocity(get_socity_name, get_socity_id);
@@ -264,6 +267,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
         String getname = et_name.getText().toString();
         String getpin = et_pin.getText().toString();
         String getadd = et_address.getText().toString();
+        String getemail=et_email.getText().toString();
         // String getsocity = sessionManagement.getUserDetails().get(BaseURL.KEY_SOCITY_ID);
         String getsocity = getsocity_id;
         boolean cancel = false;
@@ -295,12 +299,19 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
         }
 
 
+
         if (TextUtils.isEmpty(getname)) {
             et_name.setError("Enter name");
             focusView = et_name;
             cancel = true;
         }
-
+        if(!TextUtils.isEmpty(getemail)) {
+            if (!getemail.contains("@")) {
+                et_email.setError("Invalid Email");
+                focusView = et_email;
+                cancel = true;
+            }
+        }
 
         if (TextUtils.isEmpty(sPin)) {
             et_pin.setError("Select any one socity");
@@ -345,10 +356,10 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
                 if (ConnectivityReceiver.isConnected()) {
                     if (isEdit) {
 //                            Log.e("adddddd_edit",sPin+" - "+sScId);
-                        makeEditAddressRequest(getlocation_id, sPin,sScId, getadd, getname, getphone);
+                        makeEditAddressRequest(getlocation_id, sPin,sScId, getadd, getname, getphone,getemail);
                     } else {
 //                            Log.e("adddddd_add",sPin+" - "+sScId);
-                        makeAddAddressRequest(user_id, sPin, sScId,getadd, getname, getphone);
+                        makeAddAddressRequest(user_id, sPin, sScId,getadd, getname, getphone,getemail);
                     }
                 }
 //                }
@@ -366,7 +377,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
      * Method to make json object request where json response starts wtih
      */
     private void makeAddAddressRequest(String user_id, String pincode,String socity_id,
-                                       String address, String receiver_name, String receiver_mobile) {
+                                       String address, String receiver_name, String receiver_mobile,String receiver_email) {
 
         loadingBar.show();
         // Tag used to cancel the request
@@ -379,6 +390,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
         params.put("house_no", address);
         params.put("receiver_name", receiver_name);
         params.put("receiver_mobile", receiver_mobile);
+        params.put("receiver_email", receiver_email);
 
 
 
@@ -427,7 +439,7 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
      * Method to make json object request where json response starts wtih
      */
     private void makeEditAddressRequest(String location_id, String pincode,String socity_id,
-                                        String add, String receiver_name, String receiver_mobile) {
+                                        String add, String receiver_name, String receiver_mobile,String receiver_email) {
 
         loadingBar.show();
         // Tag used to cancel the request
@@ -440,6 +452,8 @@ public class Add_delivery_address_fragment extends Fragment implements View.OnCl
         params.put("house_no", add);
         params.put("receiver_name", receiver_name);
         params.put("receiver_mobile", receiver_mobile);
+        params.put("receiver_email", receiver_email);
+
 //     Toast.makeText(getActivity(),"loc- "+location_id+"\n pin- "+pincode+"\n soc- "+socity_id+"\n add- "+add
 //             +"\n name- "+receiver_name+"\n mob- "+receiver_mobile+"\n list_soc- "+getSocietyId(pincode).getSocity_id(),Toast.LENGTH_SHORT).show();
         CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.POST,

@@ -24,11 +24,13 @@
 
 
     <color name="light_gray">#c7c5c5</color>
+    <color name="light_gray1">#00FFFFFF</color>
     <color name="contact_name">#333333</color>
     <color name="contact_number">#8c8c8c</color>
     <color name="contact">#A09F9F</color>
     <color name="all">#FDB750</color>
     <color name="tot">#2E7731</color>
+    <color name="bell_color">#008001</color>
 
 
 </resources>
