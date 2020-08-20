@@ -34,7 +34,7 @@
                 android:layout_height="200dp"
                 android:layout_marginTop="@dimen/space_20"
                 android:layout_centerHorizontal="true"
-                android:src="@drawable/splash_logo"
+                android:src="@drawable/spls"
 
                 />
             <TextView
@@ -50,7 +50,7 @@
                 android:text="@string/tagline"
                 android:textColor="@color/tagline_color"
                 android:textSize="24dp" />
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/txt2"
                 android:layout_marginTop="@dimen/space_10"
                 android:layout_width="match_parent"
@@ -68,7 +68,7 @@
             android:layout_weight="4"
             android:orientation="vertical"
             android:layout_margin="@dimen/space_10">
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:layout_marginTop="50dp"
                 android:layout_above="@+id/rel_num"
                 android:layout_width="wrap_content"

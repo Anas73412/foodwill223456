@@ -97,14 +97,14 @@
             >
 
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/txtleft"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/space_5"
                 android:layout_centerHorizontal="true"
                 android:text="Time left :"/>
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/tv_countdown"
                 android:text="0"
                 android:layout_toRightOf="@id/txtleft"

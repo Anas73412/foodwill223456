@@ -5,7 +5,7 @@
     android:background="@color/colorPrimaryDark"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="binplus.FoodWill.RegisterActivity">
+    tools:context="binplus.foodiswill.RegisterActivity">
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -24,7 +24,7 @@
                 android:src="@drawable/icon"
                 android:textAlignment="center" />
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/textView"
                 android:layout_below="@+id/imageView"
                 android:layout_width="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_reg_name"
                     android:textColor="#000"
                     android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
                 android:orientation="horizontal"
 
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
 
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,7 +131,7 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:textColor="#000"
                     android:id="@+id/tv_reg_phone"
                     android:layout_width="wrap_content"
@@ -194,7 +194,7 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_mpin"
                     android:textColor="#000"
 
@@ -209,7 +209,7 @@
                     android:layout_height="10dp"
                     android:src="@drawable/iconn" />
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:textColor="@color/dark_gray"
 
                     android:layout_width="wrap_content"
@@ -243,7 +243,7 @@
                 android:orientation="horizontal"
                 android:visibility="gone"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:textColor="#000"
                     android:id="@+id/tv_reg_con_password"
                     android:layout_width="wrap_content"
@@ -287,7 +287,7 @@
         android:layout_gravity="center_vertical"
         android:layout_width="30dp"
         android:layout_height="30dp" />
-    <binplus.FoodWill.Fonts.LatoBLack
+    <binplus.foodiswill.Fonts.LatoBLack
 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -332,7 +332,7 @@ android:layout_gravity="center_vertical"
                 android:background="@drawable/bg_rounded_button"
                 android:padding="12dp">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"

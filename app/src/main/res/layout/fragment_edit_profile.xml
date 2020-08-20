@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_pro_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_pro_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
                 android:layout_height="wrap_content">
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_pro_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
                 android:background="@drawable/bg_rounded_button"
                 android:padding="12dp">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"

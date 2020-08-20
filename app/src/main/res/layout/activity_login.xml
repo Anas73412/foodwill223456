@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="binplus.FoodWill.LoginActivity">
+    tools:context="binplus.foodiswill.LoginActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,7 +43,7 @@
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:layout_height="wrap_content">
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/tv_login_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="visible">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_login_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -142,7 +142,7 @@
                 android:layout_height="wrap_content"
                 android:visibility="gone">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_login_otp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -233,7 +233,7 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -244,7 +244,7 @@
 
         </RelativeLayout>
 
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:id="@+id/btnForgot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

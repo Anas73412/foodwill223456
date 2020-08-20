@@ -60,7 +60,7 @@
                 />
 
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/product_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 android:layout_height="wrap_content"
                 >
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/product_prize"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     android:text="Price :"
                     android:textSize="14sp" />
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/product_mrp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                 android:layout_centerVertical="true"
                 android:background="@drawable/dis_banner"
                 />
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/product_discount"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
@@ -181,7 +181,7 @@
             android:layout_above="@+id/rel_add"
             android:layout_marginBottom="@dimen/space_8">
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/txtId"
 
                 android:layout_width="match_parent"
@@ -194,7 +194,7 @@
                 android:visibility="invisible"
                 />
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/txtVar"
 
                 android:layout_width="match_parent"
@@ -206,7 +206,7 @@
 
                 android:visibility="invisible"
                 />
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/single_varient"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -229,7 +229,7 @@
                 android:visibility="gone"
                 android:background="@drawable/relative_unit_layout">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/unit_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

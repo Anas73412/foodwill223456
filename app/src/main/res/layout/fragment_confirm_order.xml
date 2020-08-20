@@ -17,7 +17,7 @@
 
         android:orientation="vertical">
 
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:textColor="#fff"
             android:id="@+id/txtPaymentdetails"
             android:layout_width="match_parent"
@@ -71,7 +71,7 @@
                             android:orientation="vertical"
                             >
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:textColor="#fff"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                                 android:text="@string/tv_del_date_time"
                                 android:textSize="@dimen/space_18" />
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:textColor="#000"
                                 android:id="@+id/textTimeSlot"
                                 android:layout_width="match_parent"
@@ -132,7 +132,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/textname"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="14dp" />
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/recivername"
                                         android:layout_toRightOf="@id/textname"
                                         android:layout_width="wrap_content"
@@ -161,7 +161,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtmobile"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                                         android:padding="2dp"
                                         android:text="Mobile No. :"/>
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/mobileno"
                                         android:layout_toRightOf="@id/txtmobile"
                                         android:layout_width="wrap_content"
@@ -192,7 +192,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtemail"
                                         android:layout_width="67dp"
                                         android:layout_height="match_parent"
@@ -203,7 +203,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14" />
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tv_email"
                                         android:layout_toRightOf="@id/txtemail"
                                         android:layout_width="wrap_content"
@@ -223,7 +223,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtpin"
                                         android:layout_width="67dp"
                                         android:layout_height="match_parent"
@@ -234,7 +234,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14" />
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/pincode"
                                         android:layout_toRightOf="@id/txtpin"
                                         android:layout_width="wrap_content"
@@ -256,7 +256,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtHouse"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -268,7 +268,7 @@
                                         android:textSize="@dimen/space_14"
                                         android:visibility="gone"/>
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/Houseno"
                                         android:layout_toRightOf="@id/txtHouse"
                                         android:layout_width="wrap_content"
@@ -290,7 +290,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtSociety"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -300,7 +300,7 @@
                                         android:textColor="@android:color/black"/>
 
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/Society"
                                         android:layout_toRightOf="@id/txtSociety"
                                         android:layout_width="wrap_content"
@@ -356,7 +356,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtitmes"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -365,7 +365,7 @@
                                         android:textColor="@android:color/black"
                                         android:text="Total no. of items :"/>
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tvItems"
                                         android:layout_toRightOf="@id/txtitmes"
                                         android:layout_width="wrap_content"
@@ -386,7 +386,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtmrp"
                                         android:layout_width="wrap_content"
                                         android:layout_height="match_parent"
@@ -395,7 +395,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14" />
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tvMrp"
                                         android:layout_toRightOf="@id/txtmrp"
                                         android:layout_width="wrap_content"
@@ -416,7 +416,7 @@
                                     android:layout_margin="@dimen/space_2"
                                     >
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtDis"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -426,7 +426,7 @@
                                         android:textColor="@android:color/black"
                                         android:textSize="@dimen/space_14" />
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tvDiscount"
                                         android:layout_toRightOf="@id/txtDis"
                                         android:layout_width="wrap_content"
@@ -447,7 +447,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtDel"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -456,7 +456,7 @@
                                         android:textColor="@android:color/black"
                                         android:text="Delivery Charges :"/>
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tvDelivary"
                                         android:layout_width="wrap_content"
                                         android:layout_alignParentRight="true"
@@ -474,7 +474,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtextra"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -483,7 +483,7 @@
                                         android:textColor="@android:color/black"
                                         android:text="Sanitization Charges :"/>
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tv_extra"
                                         android:layout_width="wrap_content"
                                         android:layout_alignParentRight="true"
@@ -496,7 +496,7 @@
                                         android:textColor="@color/colorPrimary"
                                         android:textSize="@dimen/space_14" />
                                 </RelativeLayout>
-                                <binplus.FoodWill.Fonts.LatoBLack
+                                <binplus.foodiswill.Fonts.LatoBLack
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/space_1"
                                     android:background="@android:color/darker_gray"
@@ -508,7 +508,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtsub"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
@@ -519,7 +519,7 @@
                                         android:textColor="@android:color/black"/>
 
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/tvSubTotal"
                                         android:layout_toRightOf="@id/txtsub"
                                         android:layout_width="match_parent"
@@ -649,7 +649,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/space_2"
                                     >
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:id="@+id/txtNote"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -680,7 +680,7 @@
             android:orientation="vertical"
             android:padding="@dimen/space_10">
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/buttonContinue"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

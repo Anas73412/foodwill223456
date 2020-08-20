@@ -8,7 +8,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:id="@+id/tv_pro_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

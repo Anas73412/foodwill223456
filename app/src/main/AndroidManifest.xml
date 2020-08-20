@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="binplus.FoodWill">
+    package="binplus.foodiswill">
 
     <supports-screens
         android:anyDensity="true"
@@ -21,7 +21,7 @@
     <uses-permission android:name="android.permission.READ_INTERNAL_STORAGE" />
 
     <application
-        android:name=".AppController"
+        android:name="binplus.foodiswill.AppController"
         android:allowBackup="true"
         android:hardwareAccelerated="false"
         android:icon="@drawable/main_logo"
@@ -31,14 +31,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon">
-        <activity android:name=".MainFormActivity"></activity>
-        <activity android:name=".ScreenshotActivity" />
-        <activity android:name=".SmsVerificationActivity" />
-        <activity android:name=".OtpGenerateActivity" />
-        <activity android:name=".Verfication_activity" />
-        <activity android:name=".OtpActivity" />
+        <activity android:name="binplus.foodiswill.MainFormActivity"></activity>
+        <activity android:name="binplus.foodiswill.ScreenshotActivity" />
+        <activity android:name="binplus.foodiswill.SmsVerificationActivity" />
+        <activity android:name="binplus.foodiswill.OtpGenerateActivity" />
+        <activity android:name="binplus.foodiswill.Verfication_activity" />
+        <activity android:name="binplus.foodiswill.OtpActivity" />
         <activity
-            android:name=".SplashActivity"
+            android:name="binplus.foodiswill.SplashActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -47,40 +47,40 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".SmsReceiver">
+        <receiver android:name="binplus.foodiswill.SmsReceiver">
             <intent-filter>
                 <action android:name="android.provider.Telephony.SMS_RECEIVED" />
             </intent-filter>
         </receiver>
 
         <activity
-            android:name=".MainActivity"
+            android:name="binplus.foodiswill.MainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".networkconnectivity.NetworkError" />
+        <activity android:name="binplus.foodiswill.networkconnectivity.NetworkError" />
         <activity
-            android:name=".LoginActivity"
+            android:name="binplus.foodiswill.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".RegisterActivity"
+            android:name="binplus.foodiswill.RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".SelectStore" /> <!-- Firebase Notifications -->
-        <activity android:name=".SelectCity" />
+        <activity android:name="binplus.foodiswill.SelectStore" /> <!-- Firebase Notifications -->
+        <activity android:name="binplus.foodiswill.SelectCity" />
         <activity
-            android:name=".ForgotActivity"
+            android:name="binplus.foodiswill.ForgotActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".PaymentGatWay"
+            android:name="binplus.foodiswill.PaymentGatWay"
             android:theme="@style/AppTheme.NoActionBar" /> <!-- ./Firebase Notifications -->
-        <activity android:name=".My_Order_activity" />
-        <activity android:name=".MyOrderDetail" />
-        <activity android:name=".RechargeWallet" />
-        <activity android:name=".ThanksOrder" />
-        <activity android:name=".OrderFail" />
-        <activity android:name=".PaymentActivities.InitialScreenActivity" />
-        <activity android:name=".PaymentActivities.WebViewActivity" />
-        <activity android:name=".PaymentActivities.StatusActivity" />
+        <activity android:name="binplus.foodiswill.My_Order_activity" />
+        <activity android:name="binplus.foodiswill.MyOrderDetail" />
+        <activity android:name="binplus.foodiswill.RechargeWallet" />
+        <activity android:name="binplus.foodiswill.ThanksOrder" />
+        <activity android:name="binplus.foodiswill.OrderFail" />
+        <activity android:name="binplus.foodiswill.PaymentActivities.InitialScreenActivity" />
+        <activity android:name="binplus.foodiswill.PaymentActivities.WebViewActivity" />
+        <activity android:name="binplus.foodiswill.PaymentActivities.StatusActivity" />
 
         <meta-data
             android:name="com.google.android.gms.version"
@@ -94,21 +94,21 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".Paytm" />
-        <activity android:name=".networkconnectivity.NoInternetConnection" />
+        <activity android:name="binplus.foodiswill.Paytm" />
+        <activity android:name="binplus.foodiswill.networkconnectivity.NoInternetConnection" />
 
         <meta-data
             android:name="com.onesignal.NotificationOpened.DEFAULT"
             android:value="DISABLE" />
 
-        <service android:name=".MyFirebaseMessagingService">
+        <service android:name="binplus.foodiswill.MyFirebaseMessagingService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <meta-data android:name="com.onesignal.NotificationAccentColor.DEFAULT" android:value="FF00FF00" />
         <service
-            android:name=".NotificationExtenderExample"
+            android:name="binplus.foodiswill.NotificationExtenderExample"
             android:permission="android.permission.BIND_JOB_SERVICE"
             android:exported="false">
             <intent-filter>
@@ -116,7 +116,7 @@
             </intent-filter>
         </service>
         <receiver
-            android:name=".Config.SmsBroadcastReceiver"
+            android:name="binplus.foodiswill.Config.SmsBroadcastReceiver"
             android:enabled="true"
             android:exported="true" />
     </application>

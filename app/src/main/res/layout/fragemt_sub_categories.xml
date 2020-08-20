@@ -29,7 +29,7 @@
                 android:background="#f2f0f4"
                 android:gravity="center">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/firebase"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

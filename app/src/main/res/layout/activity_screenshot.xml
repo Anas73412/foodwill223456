@@ -28,7 +28,7 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="50dp">
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/tv_app_name"
                 android:layout_centerVertical="true"
                 android:gravity="center_horizontal"
@@ -75,7 +75,7 @@
             android:background="@drawable/bg_rounded_button"
             android:padding="12dp">
 
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

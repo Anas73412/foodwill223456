@@ -34,7 +34,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical">
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
@@ -42,7 +42,7 @@
                             android:textColor="#000"
                             android:textSize="14sp" />
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:id="@+id/order_ammount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical">
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/space_12"
@@ -80,7 +80,7 @@
                                 android:textColor="#000"
                                 android:textSize="@dimen/text_size_small" />
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:id="@+id/used_wallet_ammount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                             android:layout_gravity="center_vertical"
                             android:gravity="center_vertical">
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/space_12"
@@ -109,7 +109,7 @@
                                 android:textColor="@color/tot"
                                 android:textSize="@dimen/text_size_small" />
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:id="@+id/used_coupon_ammount"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
@@ -139,7 +139,7 @@
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical">
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
@@ -147,7 +147,7 @@
                             android:textColor="#000"
                             android:textSize="14sp" />
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:id="@+id/payable_ammount"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -185,7 +185,7 @@
 
 
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:id="@+id/user_wallet"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                             android:layout_gravity="center"
                             android:gravity="center">
 
-                            <binplus.FoodWill.Fonts.LatoBLack
+                            <binplus.foodiswill.Fonts.LatoBLack
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
@@ -230,7 +230,7 @@
                             android:layout_marginTop="@dimen/space_2"
                             android:background="@color/gray" />
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:visibility="gone"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -305,7 +305,7 @@
                                     android:background="@drawable/bg_rounded_button"
                                     android:gravity="center_vertical">
 
-                                    <binplus.FoodWill.Fonts.LatoBLack
+                                    <binplus.foodiswill.Fonts.LatoBLack
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
                                         android:gravity="center"
@@ -323,7 +323,7 @@
                             android:background="@color/gray" />
 
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
@@ -390,7 +390,7 @@
                             android:background="@color/gray"
                             android:visibility="gone"/>
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"
@@ -429,7 +429,7 @@
                             android:layout_marginTop="@dimen/space_2"
                             android:background="@color/gray" />
 
-                        <binplus.FoodWill.Fonts.LatoBLack
+                        <binplus.foodiswill.Fonts.LatoBLack
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="@dimen/space_12"

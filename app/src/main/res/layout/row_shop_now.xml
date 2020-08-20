@@ -47,7 +47,7 @@
 
 
 
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:id="@+id/tv_home_title"
             android:layout_width="match_parent"
             android:layout_height="0dp"

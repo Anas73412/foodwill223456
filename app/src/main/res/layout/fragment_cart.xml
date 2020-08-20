@@ -34,7 +34,7 @@
           android:backgroundTint="@color/all"
             android:src="@drawable/noproducts" />
 
-        <binplus.FoodWill.Fonts.LatoBLack
+        <binplus.foodiswill.Fonts.LatoBLack
             android:layout_width="348dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -79,14 +79,14 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   >
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Items"
                     android:padding="@dimen/space_5"
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/space_5"/>
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_cart_item"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                   android:layout_height="wrap_content"
                   android:visibility="gone"
                   >
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Mrp"
@@ -110,7 +110,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/space_5"/>
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/totalmrp"
 
                     android:layout_width="wrap_content"
@@ -131,14 +131,14 @@
                   android:layout_height="wrap_content"
                   android:visibility="gone"
                   >
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text=" Discount"
                     android:padding="@dimen/space_5"
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/space_5"/>
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/totaldisc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -154,14 +154,14 @@
                   android:layout_height="wrap_content"
                   android:visibility="gone"
                   >
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/delivery_charge"
                     android:padding="@dimen/space_5"
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/space_5"/>
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/delivery_charge"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_margin="@dimen/space_5"/>
               </RelativeLayout>
-              <binplus.FoodWill.Fonts.LatoBLack
+              <binplus.foodiswill.Fonts.LatoBLack
                   android:layout_width="match_parent"
                   android:layout_height="@dimen/space_2"
                   android:background="@color/light_gray"
@@ -181,7 +181,7 @@
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   >
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Amount Payable"
@@ -189,7 +189,7 @@
                     android:layout_alignParentStart="true"
                     android:layout_margin="@dimen/space_5"/>
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/subtotal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -204,7 +204,7 @@
             </LinearLayout>
           </androidx.cardview.widget.CardView>
 
-          <binplus.FoodWill.Fonts.LatoBLack
+          <binplus.foodiswill.Fonts.LatoBLack
               android:id="@+id/tv_cart_clear"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
@@ -236,7 +236,7 @@
                   android:layout_height="wrap_content"
                   android:src="@drawable/noproduct"
                   />
-              <binplus.FoodWill.Fonts.LatoBLack
+              <binplus.foodiswill.Fonts.LatoBLack
                   android:layout_width="match_parent"
                   android:layout_height="wrap_content"
                   android:layout_gravity="center"
@@ -299,7 +299,7 @@
 
       android:textSize="@dimen/text_size_X_small">
 
-    <binplus.FoodWill.Fonts.LatoBLack
+    <binplus.foodiswill.Fonts.LatoBLack
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"

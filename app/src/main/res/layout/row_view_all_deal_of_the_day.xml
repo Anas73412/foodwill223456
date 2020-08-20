@@ -28,7 +28,7 @@
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -37,7 +37,7 @@
                     android:paddingLeft="20dp"
                     android:textSize="20dp" />
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/start_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -53,7 +53,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
@@ -62,7 +62,7 @@
                     android:textColor="#837e7e"
                     android:textSize="20dp" />
 
-                <binplus.FoodWill.Fonts.LatoBLack
+                <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/end_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 android:src="@mipmap/ic_launcher" />
 
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <binplus.FoodWill.Fonts.LatoBLack
+                    <binplus.foodiswill.Fonts.LatoBLack
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/space_4"
@@ -128,7 +128,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <binplus.FoodWill.Fonts.LatoBLack
+                    <binplus.foodiswill.Fonts.LatoBLack
                         android:id="@+id/product_prize"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -155,7 +155,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <binplus.FoodWill.Fonts.LatoBLack
+                    <binplus.foodiswill.Fonts.LatoBLack
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="right"
@@ -171,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <binplus.FoodWill.Fonts.LatoBLack
+                    <binplus.foodiswill.Fonts.LatoBLack
                         android:id="@+id/offer_product_prize"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -18,14 +18,14 @@ android {
     compileSdkVersion 28
     // buildToolsVersion '28.0.3'
     defaultConfig {
-        applicationId "binplus.FoodWill"
-        manifestPlaceholders = [onesignal_app_id: '253f1edd-73d8-457b-9bf7-2f942d7dc2b9',
+        applicationId "binplus.foodiswill"
+        manifestPlaceholders = [onesignal_app_id: '208065a8-b89c-49de-a3c3-f937db2ae1f6',
                                 // Project number pulled from dashboard, local value is ignored.
                                 onesignal_google_project_number: 'REMOTE']
         minSdkVersion 19
-        targetSdkVersion 28
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 29
+        versionCode 4
+        versionName "1.3"
         vectorDrawables.useSupportLibrary = true
         multiDexEnabled true
 

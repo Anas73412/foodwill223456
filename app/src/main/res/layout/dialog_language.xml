@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="10dp">
-    <binplus.FoodWill.Fonts.LatoBLack
+    <binplus.foodiswill.Fonts.LatoBLack
         android:id="@+id/l_english"
         android:text="English"
         android:textSize="17sp"
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="0.08dp"
         android:background="#d9d9d9"/>
-    <binplus.FoodWill.Fonts.LatoBLack
+    <binplus.foodiswill.Fonts.LatoBLack
         android:id="@+id/l_arabic"
         android:text="Arabic"
         android:textSize="17sp"

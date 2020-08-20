@@ -22,7 +22,7 @@
         android:layout_width="0dp"
         android:layout_weight="6"
         android:layout_height="wrap_content">
-      <binplus.FoodWill.Fonts.LatoBLack
+      <binplus.foodiswill.Fonts.LatoBLack
           android:id="@+id/text1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
           android:textStyle="bold"
           android:textColor="@android:color/white"
           android:textSize="@dimen/space_20"/>
-      <binplus.FoodWill.Fonts.LatoBLack
+      <binplus.foodiswill.Fonts.LatoBLack
           android:id="@+id/text2"
           android:layout_below="@+id/text1"
           android:layout_width="wrap_content"
@@ -143,7 +143,7 @@
               android:layout_gravity="center_vertical"
               android:layout_width="40dp"
               android:layout_height="40dp" />
-          <binplus.FoodWill.Fonts.LatoBLack
+          <binplus.foodiswill.Fonts.LatoBLack
               android:gravity="center_vertical"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"

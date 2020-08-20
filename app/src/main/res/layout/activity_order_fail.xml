@@ -41,7 +41,7 @@
             android:orientation="vertical"
             android:padding="@dimen/activity_horizontal_margin">
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -56,7 +56,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
@@ -71,7 +71,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
-            <binplus.FoodWill.Fonts.LatoBLack
+            <binplus.foodiswill.Fonts.LatoBLack
                 android:id="@+id/tv_thank_info"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                     android:background="@drawable/bg_rounded_button"
                     android:padding="12dp">
 
-                    <binplus.FoodWill.Fonts.LatoBLack
+                    <binplus.foodiswill.Fonts.LatoBLack
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center"
