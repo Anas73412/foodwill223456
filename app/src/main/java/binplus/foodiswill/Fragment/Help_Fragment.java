@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -42,6 +43,7 @@ import binplus.foodiswill.util.CustomVolleyJsonRequest;
 import binplus.foodiswill.util.Session_management;
 
 import static binplus.foodiswill.AppController.TAG;
+import static binplus.foodiswill.MainActivity.contact_whtsapp;
 
 public class Help_Fragment extends Fragment {
     Dialog loadingBar;
@@ -52,7 +54,7 @@ public class Help_Fragment extends Fragment {
     Session_management sessionManagement;
     Button submit ;
     RelativeLayout rel_whatsapp;
-
+    TextView tv_whtsapp;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class Help_Fragment extends Fragment {
         et_name = (EditText) view.findViewById(R.id.et_name);
         et_email=(EditText)view.findViewById( R.id.et_email );
         et_message=(EditText)view.findViewById( R.id.et_mesg );
+        tv_whtsapp=view.findViewById(R.id.tv_whtsapp_number);
+        tv_whtsapp.setText("+91-"+contact_whtsapp);
         String getemail = sessionManagement.getUserDetails().get( BaseURL.KEY_EMAIL);
         String getname = sessionManagement.getUserDetails().get(BaseURL.KEY_NAME);
         String getphone = sessionManagement.getUserDetails().get(BaseURL.KEY_MOBILE);
@@ -101,7 +105,7 @@ public class Help_Fragment extends Fragment {
 rel_whatsapp.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View view) {
-        whatsapp("9664104085","Hello, FOODWILL!");
+        whatsapp(contact_whtsapp,"Hello"+getActivity().getResources().getString(R.string.app_name));
 
     }
 });

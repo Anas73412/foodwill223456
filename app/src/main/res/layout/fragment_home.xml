@@ -124,6 +124,78 @@
                 <!--android:layout_height="wrap_content"-->
                 <!--android:gravity="center" />-->
             </RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/card_prescription"
+                app:cardUseCompatPadding="true"
+                app:cardBackgroundColor="@color/white"
+                android:layout_width="match_parent"
+                android:layout_margin="5dp"
+                app:cardCornerRadius="@dimen/space_5"
+                android:paddingLeft="@dimen/space_10"
+                android:padding="@dimen/space_5"
+
+                android:layout_height="wrap_content">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/space_10"
+                    android:paddingBottom="@dimen/space_10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:id="@+id/lin_call"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/space_5"
+                        android:weightSum="10"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:src="@drawable/contct_us"
+                            android:layout_width="40dp"
+                            android:layout_weight="1"
+                            android:layout_height="40dp"/>
+                        <binplus.foodiswill.Fonts.LatoBLack
+                            android:id="@+id/tv_contact_number"
+                            android:textSize="@dimen/space_18"
+                            android:textColor="@color/black"
+                            android:text=""
+                            android:layout_width="wrap_content"
+                            android:layout_weight="9"
+                            android:layout_marginRight="@dimen/space_10"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/lin_whtsapp"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/space_5"
+                        android:weightSum="10"
+                        android:layout_height="wrap_content">
+
+                        <binplus.foodiswill.Fonts.LatoBLack
+                            android:id="@+id/tv_whtsapp_number"
+                            android:textSize="@dimen/space_18"
+                            android:textColor="@color/black"
+                            android:text=""
+                            android:layout_width="wrap_content"
+                            android:layout_weight="9"
+                            android:layout_marginLeft="@dimen/space_10"
+                            android:layout_height="wrap_content"/>
+                        <ImageView
+                            android:layout_weight="1"
+                            android:src="@drawable/whtsapp"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
             <!--                <TextView-->
             <!--                    android:id = "@+id/text"-->

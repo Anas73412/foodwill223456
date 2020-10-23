@@ -39,12 +39,16 @@ import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.travijuu.numberpicker.library.NumberPicker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -53,14 +57,15 @@ import java.util.Map;
 import binplus.foodiswill.Adapter.ImageAdapter;
 import binplus.foodiswill.Adapter.Produccts_images_adapter;
 import binplus.foodiswill.Adapter.ProductVariantAdapter;
-import binplus.foodiswill.Adapter.RelatedProductAdapter;
+import binplus.foodiswill.Adapter.Top_Selling_Adapter;
 import binplus.foodiswill.Config.BaseURL;
 import binplus.foodiswill.Config.Module;
+import binplus.foodiswill.CustomSlider;
 import binplus.foodiswill.Model.ProductVariantModel;
-import binplus.foodiswill.Model.RelatedProductModel;
 import binplus.foodiswill.AppController;
 import binplus.foodiswill.LoginActivity;
 import binplus.foodiswill.MainActivity;
+import binplus.foodiswill.Model.Product_model;
 import binplus.foodiswill.R;
 import binplus.foodiswill.util.ConnectivityReceiver;
 import binplus.foodiswill.util.CustomVolleyJsonRequest;
@@ -68,6 +73,7 @@ import binplus.foodiswill.util.DatabaseCartHandler;
 import binplus.foodiswill.util.Session_management;
 import binplus.foodiswill.util.WishlistHandler;
 
+import static binplus.foodiswill.Config.BaseURL.IMG_PRODUCT_URL;
 import static binplus.foodiswill.Config.BaseURL.KEY_ID;
 
 
@@ -97,8 +103,8 @@ public class Details_Fragment extends Fragment {
     double tot=0;
 
     RelativeLayout rel_variant,lin_img;
-   List<RelatedProductModel> product_modelList = new ArrayList<>();
-    private RelatedProductAdapter adapter_product;
+   List<Product_model> product_modelList = new ArrayList<>();
+    private Top_Selling_Adapter adapter_product;
     Activity activity;
     Button btn_add_to_cart;
     DatabaseCartHandler db_cart;
@@ -189,7 +195,7 @@ public class Details_Fragment extends Fragment {
         details_stock=bundle.getString("stock");
         details_product_attribute=bundle.getString("product_attribute");
         details_product_name_hindi=bundle.getString("product_name_hindi");
-       Log.e("product_name_hindiwssss",""+details_product_name_hindi);
+//       Log.e("product_name_hindiwssss",""+details_product_name_hindi);
         //   details_product_size=bundle.getString("product_size");
         details_product_price=bundle.getString("price");
         details_product_mrp=bundle.getString("mrp");
@@ -938,15 +944,39 @@ public class Details_Fragment extends Fragment {
 
 
                 }
-                Glide.with(getActivity())
-                        .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
-                        .placeholder(R.drawable.icon)
-                        .crossFade()
-                        .diskCacheStrategy(DiskCacheStrategy.ALL)
-                        .dontAnimate()
-                        .into(btn);
+                if (image_list.size()>1)
+                {
+                    img_slider.setVisibility(View.VISIBLE);
+                    btn.setVisibility(View.GONE);
+                    for (final HashMap<String, String> name : img_array) {
+                        CustomSlider customSlider = new CustomSlider(getActivity());
+                        Log.e("slider_images",""+name.get("image").toString());
+                        customSlider.description(name.get("")).image(IMG_PRODUCT_URL+name.get("image")).setScaleType( BaseSliderView.ScaleType.Fit);;
+                        img_slider.addSlider(customSlider);
+//                        customSlider.setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
+//                            @Override
+//                            public void onSliderClick(BaseSliderView slider) {
+//                                Fragment fm = new ImagesViewFragment();
+//                                FragmentManager fragmentManager = getFragmentManager();
+//                                fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
+//                                        .addToBackStack(null).commit();
+//                            }
+//                        });
 
+                    }
+                }
+                else {
+                    img_slider.setVisibility(View.GONE);
+                    btn.setVisibility(View.VISIBLE);
+                    Glide.with(getActivity())
+                            .load(IMG_PRODUCT_URL + image_list.get(0))
+                            .placeholder(R.drawable.icon)
+                            .crossFade()
+                            .diskCacheStrategy(DiskCacheStrategy.ALL)
+                            .dontAnimate()
+                            .into(btn);
 
+                }
 
 
             }
@@ -986,13 +1016,14 @@ public class Details_Fragment extends Fragment {
                         for (int i = 0 ; i< array.length();i++)
                         {
                             JSONObject obj = array.getJSONObject(i);
-                            RelatedProductModel model = new RelatedProductModel();
+                            Product_model model = new Product_model();
                             model.setProduct_id(obj.getString("product_id"));
                             model.setProduct_name(obj.getString("product_name"));
                             model.setProduct_name_arb(obj.getString("product_name_hindi"));
                             model.setProduct_description_arb(obj.getString("product_description_arb"));
+                            model.setProduct_description(obj.getString("product_description"));
                             model.setCategory_id(obj.getString("category_id"));
-                            model.setProduct_description("product_description");
+
                             model.setProduct_attribute(obj.getString("product_attribute"));
                             model.setStatus(obj.getString("status"));
                             model.setIn_stock(obj.getString("in_stock"));
@@ -1017,15 +1048,16 @@ public class Details_Fragment extends Fragment {
 
                             }
                         }
-                        Log.e("prod_list", String.valueOf(product_modelList.size()));
-                        adapter_product = new RelatedProductAdapter( getActivity(),product_modelList,product_id);
+//                        Gson gson = new Gson();
+//                        Type listType = new TypeToken<List<Product_model>>() {
+//                        }.getType();
+//                        product_modelList = gson.fromJson(response.getString("data"), listType);
+                        Log.e("prod_list_ret", String.valueOf(product_modelList.size()));
+                        adapter_product = new Top_Selling_Adapter( getActivity(),product_modelList);
 
                         rv_cat.setAdapter(adapter_product);
                         adapter_product.notifyDataSetChanged();
-//                        Gson gson = new Gson();
-//                        Type listType = new TypeToken<List<RelatedProductModel>>() {
-//                        }.getType();
-//                        product_modelList = gson.fromJson(response.getString("data"), listType);
+//
                         loadingBar.dismiss();
 
 

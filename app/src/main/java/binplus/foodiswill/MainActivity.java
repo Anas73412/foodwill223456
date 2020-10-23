@@ -114,7 +114,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     ExpandableListView expandableListView;
     List<MenuModel> headerList = new ArrayList<>();
     HashMap<MenuModel, List<MenuModel>> childList = new HashMap<>();
-    public static String stop_order="",cod_status="",delivery_msg="",stop_order_image="";
+    public static String stop_order="",cod_status="",delivery_msg="",stop_order_image="",whtsapp_number="",phone_number="",contact_whtsapp="";
 
 
     BroadcastReceiver UpdateCart = null;
@@ -738,27 +738,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                 startActivity(intent);
             }
-        } else if (id == R.id.nav_terms) {
-            fm = new Terms_and_Condition_fragment();
-            args.putString("url", BaseURL.GET_TERMS_URL);
-            args.putString("title", getResources().getString(R.string.nav_terms));
-            fm.setArguments(args);
-        } else if (id == R.id.nav_policy) {
-            fm = new Terms_and_Condition_fragment();
-            args.putString("url", BaseURL.GET_PRIVACY_URL);
-            args.putString("title", getResources().getString(R.string.nav_privacy));
-            fm.setArguments(args);
-        }else if (id == R.id.nav_return) {
-            fm = new Terms_and_Condition_fragment();
-            args.putString("url", BaseURL.GET_RETURN_POLICY_URL);
-            args.putString("title", getResources().getString(R.string.nav_return_policy));
-            fm.setArguments(args);
-        }
-        else if (id == R.id.nav_contact) {
-            fm = new Contact_Us_fragment();
-            args.putString("url", BaseURL.GET_SUPPORT_URL);
-            args.putString("title", getResources().getString(R.string.nav_terms));
-            fm.setArguments(args);
         }
         else if (id == R.id.nav_fb) {
 redirect(fb_link);
@@ -946,6 +925,7 @@ redirect(fb_link);
 
 
     public void getLinks()
+
     {
         loadingBar.show();
         HashMap<String ,String> params = new HashMap<>();
@@ -966,13 +946,16 @@ redirect(fb_link);
                     cod_status = object.getString("cod");
                     delivery_msg = object.getString("delivery_msg");
                     stop_order_image = object.getString("stop_order_image");
+                    whtsapp_number= object.getString("home_whatsapp");
+                    phone_number = object.getString("home_call");
+                  contact_whtsapp = object.getString("contact_whatsapp");
                     if(stop_order.equalsIgnoreCase("0"))
                     {
                         Fragment fm = new Reward_fragment();
                         FragmentManager fragmentManager = getFragmentManager();
                         fragmentManager.beginTransaction()
                                 .replace(R.id.contentPanel, fm,"Reward_fragment")
-                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 .commit();
                         viewpa.setVisibility(View.GONE);
                         nav_menu.findItem(R.id.nav_shop_now).setVisible(false);
@@ -984,7 +967,7 @@ redirect(fb_link);
                         FragmentManager fragmentManager = getFragmentManager();
                         fragmentManager.beginTransaction()
                                 .replace(R.id.contentPanel, fm, "Home_fragment")
-                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+//                                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
                                 .commit();
                     }
 
@@ -1002,5 +985,7 @@ redirect(fb_link);
         AppController.getInstance().addToRequestQueue(jsonRequest);
     }
 }
+
+
 
 

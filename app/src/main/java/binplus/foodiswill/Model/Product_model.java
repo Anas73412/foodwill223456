@@ -1,8 +1,5 @@
 package binplus.foodiswill.Model;
 
-/**
- * Created by Rajesh Dabhi on 26/6/2017.
- */
 
 public class Product_model {
 
@@ -33,6 +30,8 @@ public class Product_model {
     String product_attribute;
     String product_name_hindi;
 
+    public Product_model() {
+    }
 
     public Product_model(String product_id, String product_name, String category_id, String product_description, String deal_price, String start_date, String start_time, String end_date, String end_time, String price, String product_image, String product_name_arb, String product_description_arb, String status, String in_stock, String unit_value, String unit, String increament, String rewards, String stock, String title, String size, String color, String mrp, String product_attribute, String product_name_hindi) {
         this.product_id = product_id;
