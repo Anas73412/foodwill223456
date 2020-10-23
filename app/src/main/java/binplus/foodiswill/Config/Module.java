@@ -23,8 +23,7 @@ import com.android.volley.VolleyError;
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 
-import binplus.foodiswill.Model.Deal_Of_Day_model;
-import binplus.foodiswill.Model.Top_Selling_model;
+import binplus.foodiswill.Model.Product_model;
 import binplus.foodiswill.R;
 import binplus.foodiswill.util.DatabaseCartHandler;
 import binplus.foodiswill.util.WishlistHandler;
@@ -186,9 +185,9 @@ public class Module {
         context.sendBroadcast(updates);
     }
 
-    public Top_Selling_model addExtraOneTopSelling()
+    public Product_model addExtraOneTopSelling()
     {
-        Top_Selling_model m=new Top_Selling_model();
+        Product_model m=new Product_model();
         m.setProduct_id("00");
         m.setProduct_name("Shop By Categories");
         m.setProduct_name_hindi("");
@@ -206,9 +205,9 @@ public class Module {
         m.setTitle("Shop By Category");
         return m;
     }
-    public Deal_Of_Day_model addExtraOneNew()
+    public Product_model addExtraOneNew()
     {
-        Deal_Of_Day_model m=new Deal_Of_Day_model();
+        Product_model m=new Product_model();
         m.setProduct_id("00");
         m.setProduct_name("Shop By Categories");
         m.setProduct_name_hindi("");

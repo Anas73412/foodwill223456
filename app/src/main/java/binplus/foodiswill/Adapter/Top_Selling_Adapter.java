@@ -41,7 +41,7 @@ import binplus.foodiswill.Fragment.Shop_Now_fragment;
 import binplus.foodiswill.LoginActivity;
 import binplus.foodiswill.MainActivity;
 import binplus.foodiswill.Model.ProductVariantModel;
-import binplus.foodiswill.Model.Top_Selling_model;
+import binplus.foodiswill.Model.Product_model;
 import binplus.foodiswill.R;
 import binplus.foodiswill.util.DatabaseCartHandler;
 import binplus.foodiswill.util.Session_management;
@@ -69,7 +69,7 @@ Module module ;
     ProductVariantAdapter productVariantAdapter;
     float stock ;
     double price=0;
-    private List<Top_Selling_model> modelList;
+    private List<Product_model> modelList;
     private Context context;
     private DatabaseCartHandler db_cart;
     WishlistHandler db_wish;
@@ -122,7 +122,7 @@ Module module ;
         }
     }
 
-    public Top_Selling_Adapter(Activity activity, List<Top_Selling_model> modelList) {
+    public Top_Selling_Adapter(Activity activity, List<Product_model> modelList) {
         this.modelList = modelList;
         db_cart=new DatabaseCartHandler(activity);
         db_wish=new WishlistHandler(activity);
@@ -138,7 +138,7 @@ Module module ;
     }
     @Override
     public void onBindViewHolder(final Top_Selling_Adapter.MyViewHolder holder, final int position) {
-        final Top_Selling_model mList = modelList.get(position);
+        final Product_model mList = modelList.get(position);
         final String getid = mList.getProduct_id();
         sessionManagement = new Session_management( context );
         user_id=sessionManagement.getUserDetails().get(KEY_ID);
@@ -337,7 +337,7 @@ Module module ;
 
 
 
-                final Top_Selling_model mList = modelList.get(position);
+                final Product_model mList = modelList.get(position);
                 float stock=Float.parseFloat(mList.getStock());
                 if(stock<=0 || mList.getIn_stock().equals("0"))
                 {
@@ -482,7 +482,7 @@ Module module ;
 
                     float stock = Float.parseFloat(modelList.get(position).getStock());
 
-                    final Top_Selling_model mList = modelList.get(position);
+                    final Product_model mList = modelList.get(position);
                     Bundle args = new Bundle();
 //                String cl=String.valueOf( mList.getColor());
 //                String sz=String.valueOf(mList.getSize());
@@ -553,7 +553,7 @@ Module module ;
 //                        Toast.makeText( context,"Out Of Stock",Toast.LENGTH_LONG ).show();
 //                    }
 //                    else {
-                        final Top_Selling_model mList = modelList.get( position );
+                        final Product_model mList = modelList.get( position );
                         holder.wish_after.setVisibility( View.VISIBLE );
                         holder.wish_before.setVisibility( View.INVISIBLE );
 
@@ -593,7 +593,7 @@ Module module ;
                 } else {
 
                     holder.add_Button.setVisibility( View.INVISIBLE );
-                    Top_Selling_model mList = modelList.get( position );
+                    Product_model mList = modelList.get( position );
                     String atr = String.valueOf( modelList.get( position ).getProduct_attribute() );
                     if (atr.equals( "[]" )) {
                         HashMap<String, String> mapProduct = new HashMap<String, String>();
@@ -696,7 +696,7 @@ Module module ;
         holder.elegantNumberButton.setOnValueChangeListener( new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {
-                final Top_Selling_model mList = modelList.get(position);
+                final Product_model mList = modelList.get(position);
                 String atr= String.valueOf(modelList.get(position).getProduct_attribute());
                 if(newValue<=0)
                 {

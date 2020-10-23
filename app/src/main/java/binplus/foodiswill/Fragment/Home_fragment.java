@@ -1,5 +1,6 @@
 package binplus.foodiswill.Fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.Uri;
@@ -52,25 +54,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Type;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import binplus.foodiswill.Adapter.Deal_OfDay_Adapter;
 import binplus.foodiswill.Adapter.Home_Icon_Adapter;
 import binplus.foodiswill.Adapter.Home_adapter;
 import binplus.foodiswill.Adapter.Top_Selling_Adapter;
 import binplus.foodiswill.Config.BaseURL;
 import binplus.foodiswill.Config.Module;
 import binplus.foodiswill.Model.Category_model;
-import binplus.foodiswill.Model.Deal_Of_Day_model;
 import binplus.foodiswill.Model.Home_Icon_model;
-import binplus.foodiswill.Model.Top_Selling_model;
 import binplus.foodiswill.AppController;
 import binplus.foodiswill.CustomSlider;
 import binplus.foodiswill.LoginActivity;
 import binplus.foodiswill.MainActivity;
+import binplus.foodiswill.Model.Product_model;
 import binplus.foodiswill.R;
 import binplus.foodiswill.util.ConnectivityReceiver;
 import binplus.foodiswill.util.CustomVolleyJsonRequest;
@@ -81,6 +82,8 @@ import binplus.foodiswill.util.WishlistHandler;
 
 import static androidx.recyclerview.widget.RecyclerView.HORIZONTAL;
 import static binplus.foodiswill.Config.BaseURL.KEY_ID;
+import static binplus.foodiswill.MainActivity.phone_number;
+import static binplus.foodiswill.MainActivity.whtsapp_number;
 
 
 public class Home_fragment extends Fragment {
@@ -103,7 +106,8 @@ public class Home_fragment extends Fragment {
     int version_code=0;
     String app_link="";
     SharedPreferences sharedpreferences;
-
+    LinearLayout lin_call,lin_whtsapp;
+    TextView tv_call,tv_whtsapp;
     Animation animation;
 
 
@@ -115,15 +119,15 @@ public class Home_fragment extends Fragment {
 
 
     //Deal O Day
-    private Deal_OfDay_Adapter deal_ofDay_adapter;
-    private List<Deal_Of_Day_model> deal_of_day_models = new ArrayList<>();
+    private Top_Selling_Adapter Top_Selling_Adapter;
+    private List<Product_model> new_product_models = new ArrayList<>();
     LinearLayout Deal_Linear_layout;
     FrameLayout Deal_Frame_layout, Deal_Frame_layout1;
 
 
     //Top Selling Products
     private Top_Selling_Adapter top_selling_adapter;
-    private List<Top_Selling_model> top_selling_models = new ArrayList<>();
+    private List<Product_model> top_roduct_models = new ArrayList<>();
 
 
     //  private ImageView iv_Call, iv_Whatspp, iv_reviews, iv_share_via;
@@ -202,19 +206,12 @@ public class Home_fragment extends Fragment {
     getAppSettingData();
 
         }
-
-        //  View_all_deals = (Button) view.findViewById(R.id.view_all_deals);
-        //View_all_TopSell = (Button) view.findViewById(R.id.view_all_topselling);
-        // Deal_Frame_layout = (FrameLayout) view.findViewById(R.id.deal_frame_layout);
-        // Deal_Frame_layout1 = (FrameLayout) view.findViewById(R.id.deal_frame_layout1);
-        //Deal_Linear_layout = (LinearLayout) view.findViewById(R.id.deal_linear_layout);
-
-
-        //Top Selling Poster
-        // Top_Selling_Poster = (ImageView) view.findViewById(R.id.top_selling_imageview);
-
-        //Deal Of Day Poster
-        //   Deal_Of_Day_poster = (ImageView) view.findViewById(R.id.deal_of_day_imageview);
+        lin_call = view.findViewById(R.id.lin_call);
+        tv_call = view.findViewById(R.id.tv_contact_number);
+        lin_whtsapp = view.findViewById(R.id.lin_whtsapp);
+        tv_whtsapp = view.findViewById(R.id.tv_whtsapp_number);
+        tv_call.setText(phone_number);
+        tv_whtsapp.setText(whtsapp_number);
         footer =(TextView) view.findViewById( R.id.bottomtxt );
         click_here = view.findViewById( R.id.bottombtn );
 
@@ -239,19 +236,26 @@ public class Home_fragment extends Fragment {
         banner_slider = (SliderLayout) view.findViewById( R.id.relative_banner);
        featuredslider = (SliderLayout) view.findViewById(R.id.featured_img_slider);
 
-
-        //Catogary Icons
-        //rv_items = (RecyclerView) view.findViewById(R.id.rv_home);
-        // GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
-        // rv_items.setLayoutManager(gridLayoutManager);
-        // rv_items.setItemAnimator(new DefaultItemAnimator());
-        // rv_items.setNestedScrollingEnabled(false);
+        lin_whtsapp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                contactWhatsapp(whtsapp_number,"Hi!"+getActivity().getResources().getString(R.string.app_name));
+            }
+        });
+        lin_call.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel: "+phone_number));
+                getActivity().startActivity(intent);
+            }
+        });
 
         //DealOf the Day
         new_products_recycler = (RecyclerView) view.findViewById( R.id.new_products_recycler);
         //  GridLayoutManager gridLayoutManager1 = new GridLayoutManager(getActivity(), 2);
-//        new_products_recycler.setLayoutManager(new GridLayoutManager(getActivity(), 2));
-        new_products_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), HORIZONTAL,false));
+        new_products_recycler.setLayoutManager( new GridLayoutManager(getActivity(),2, LinearLayoutManager.HORIZONTAL,false));
+//        new_products_recycler.setLayoutManager(new LinearLayoutManager(getActivity(), HORIZONTAL,false));
         new_products_recycler.setItemAnimator(new DefaultItemAnimator());
         new_products_recycler.setNestedScrollingEnabled(false);
         new_products_recycler.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(1), true));
@@ -260,8 +264,8 @@ public class Home_fragment extends Fragment {
         //Top Selling Products
         rv_top_selling = (RecyclerView) view.findViewById( R.id.top_selling_recycler);
 //        GridLayoutManager gridLayoutManager2 = new GridLayoutManager(getActivity(), 2);
-//        rv_top_selling.setLayoutManager(new GridLayoutManager(getActivity(),2));
-        rv_top_selling.setLayoutManager(new LinearLayoutManager(getActivity(), HORIZONTAL,false));
+       rv_top_selling.setLayoutManager( new GridLayoutManager(getActivity(),2, LinearLayoutManager.HORIZONTAL,false));
+//        rv_top_selling.setLayoutManager(new LinearLayoutManager(getActivity(), HORIZONTAL,false));
         rv_top_selling.setItemAnimator(new DefaultItemAnimator());
         rv_top_selling.setNestedScrollingEnabled(false);
         rv_top_selling.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(1), true));
@@ -436,7 +440,7 @@ public class Home_fragment extends Fragment {
 //        rv_deal_of_day.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_deal_of_day, new RecyclerTouchListener.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(View view, int position) {
-//                getid = deal_of_day_models.get(position).getId();
+//                getid = Product_models.get(position).getId();
 //                Bundle args = new Bundle();
 //                binplus.Jabico.Fragment fm = new Product_fragment();
 //                args.putString("cat_deal", "2");
@@ -471,12 +475,12 @@ public class Home_fragment extends Fragment {
 //        rv_top_selling.addOnItemTouchListener(new RecyclerTouchListener(getActivity(), rv_top_selling, new RecyclerTouchListener.OnItemClickListener() {
 //            @Override
 //            public void onItemClick(View view, int position) {
-//                getid = top_selling_models.get(position).getProduct_id();
+//                getid = Product_models.get(position).getProduct_id();
 //                Bundle args = new Bundle();
 //                binplus.Jabico.Fragment fm = new Product_fragment();
 //                args.putString("cat_top_selling", "2");
 //                fm.setArguments(args);
-//               // String as=top_selling_models.get(position).getColor();
+//               // String as=Product_models.get(position).getColor();
 //                //Toast.makeText(getActivity(),""+as,Toast.LENGTH_LONG).show();
 //                FragmentManager fragmentManager = getFragmentManager();
 //                fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
@@ -793,14 +797,14 @@ public class Home_fragment extends Fragment {
 //                        Boolean status = response.getBoolean("responce");
 //                        Gson gson = new Gson();
 //                        if (status) {
-//                            Type listType = new TypeToken<List<Deal_Of_Day_model>>() {
+//                            Type listType = new TypeToken<List<Product_model>>() {
 //                            }.getType();
-//                            deal_of_day_models = gson.fromJson(response.getString("Deal_of_the_day"), listType);
-//                            deal_ofDay_adapter = new Deal_OfDay_Adapter(deal_of_day_models, getActivity());
-//                            rv_deal_of_day.setAdapter(deal_ofDay_adapter);
-//                            deal_ofDay_adapter.notifyDataSetChanged();
+//                            Product_models = gson.fromJson(response.getString("Deal_of_the_day"), listType);
+//                            Top_Selling_Adapter = new Top_Selling_Adapter(Product_models, getActivity());
+//                            rv_deal_of_day.setAdapter(Top_Selling_Adapter);
+//                            Top_Selling_Adapter.notifyDataSetChanged();
 //                            if (getActivity() != null) {
-//                                if (deal_of_day_models.isEmpty()) {
+//                                if (Product_models.isEmpty()) {
 //                                    //  Toast.makeText(getActivity(), "No Deal For Day", Toast.LENGTH_SHORT).show();
 //                                    rv_deal_of_day.setVisibility(View.GONE);
 //                                    Deal_Frame_layout.setVisibility(View.GONE);
@@ -854,11 +858,11 @@ public class Home_fragment extends Fragment {
                         Boolean status = response.getBoolean("responce");
                         if (status) {
                             Gson gson = new Gson();
-                            Type listType = new TypeToken<List<Top_Selling_model>>() {
+                            Type listType = new TypeToken<List<Product_model>>() {
                             }.getType();
-                            top_selling_models = gson.fromJson(response.getString("top_selling_product"), listType);
-                            top_selling_models.add(module.addExtraOneTopSelling());
-                            top_selling_adapter = new Top_Selling_Adapter(getActivity(),top_selling_models);
+                            top_roduct_models = gson.fromJson(response.getString("top_selling_product"), listType);
+                            top_roduct_models.add(module.addExtraOneTopSelling());
+                            top_selling_adapter = new Top_Selling_Adapter(getActivity(),top_roduct_models);
                             rv_top_selling.setAdapter(top_selling_adapter);
                             top_selling_adapter.notifyDataSetChanged();
                         }
@@ -906,13 +910,13 @@ public class Home_fragment extends Fragment {
                         Boolean status = response.getBoolean("responce");
                         if (status) {
                             Gson gson = new Gson();
-                            Type listType = new TypeToken<List<Deal_Of_Day_model>>() {
+                            Type listType = new TypeToken<List<Product_model>>() {
                             }.getType();
-                            deal_of_day_models = gson.fromJson(response.getString("new_product"), listType);
-                            deal_of_day_models.add(module.addExtraOneNew());
-                            deal_ofDay_adapter = new Deal_OfDay_Adapter(deal_of_day_models,getActivity());
-                            new_products_recycler.setAdapter(deal_ofDay_adapter);
-                            deal_ofDay_adapter.notifyDataSetChanged();
+                            new_product_models = gson.fromJson(response.getString("new_product"), listType);
+                            new_product_models.add(module.addExtraOneNew());
+                            Top_Selling_Adapter = new Top_Selling_Adapter(getActivity(),new_product_models);
+                            new_products_recycler.setAdapter(Top_Selling_Adapter);
+                            Top_Selling_Adapter.notifyDataSetChanged();
                         }
                     }
                 } catch (JSONException e) {
@@ -1262,5 +1266,23 @@ public class Home_fragment extends Fragment {
         });
 
         AppController.getInstance().addToRequestQueue(request,json_tag);
+    }
+
+    @SuppressLint("NewApi")
+    public void contactWhatsapp( String phone,String message) {
+
+        PackageManager packageManager = getActivity().getPackageManager();
+        Intent i = new Intent(Intent.ACTION_VIEW);
+
+        try {
+            String url = "https://api.whatsapp.com/send?phone=+91"+ phone +"&text=" + URLEncoder.encode(message, "UTF-8");
+            i.setPackage("com.whatsapp");
+            i.setData(Uri.parse(url));
+            if (i.resolveActivity(packageManager) != null) {
+                startActivity(i);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 }
