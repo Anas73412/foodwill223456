@@ -234,7 +234,7 @@
         <RelativeLayout
             android:id="@+id/rel_add"
             android:layout_alignParentBottom="true"
-
+            android:layout_marginTop="@dimen/space_10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"

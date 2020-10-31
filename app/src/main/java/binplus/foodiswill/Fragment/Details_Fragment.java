@@ -58,6 +58,7 @@ import binplus.foodiswill.Adapter.ImageAdapter;
 import binplus.foodiswill.Adapter.Produccts_images_adapter;
 import binplus.foodiswill.Adapter.ProductVariantAdapter;
 import binplus.foodiswill.Adapter.Top_Selling_Adapter;
+import binplus.foodiswill.Adapter.gridAdapter;
 import binplus.foodiswill.Config.BaseURL;
 import binplus.foodiswill.Config.Module;
 import binplus.foodiswill.CustomSlider;
@@ -104,7 +105,7 @@ public class Details_Fragment extends Fragment {
 
     RelativeLayout rel_variant,lin_img;
    List<Product_model> product_modelList = new ArrayList<>();
-    private Top_Selling_Adapter adapter_product;
+    private gridAdapter adapter_product;
     Activity activity;
     Button btn_add_to_cart;
     DatabaseCartHandler db_cart;
@@ -1053,7 +1054,8 @@ public class Details_Fragment extends Fragment {
 //                        }.getType();
 //                        product_modelList = gson.fromJson(response.getString("data"), listType);
                         Log.e("prod_list_ret", String.valueOf(product_modelList.size()));
-                        adapter_product = new Top_Selling_Adapter( getActivity(),product_modelList);
+//                        adapter_product = new Top_Selling_Adapter( getActivity(),product_modelList,"related");
+                        adapter_product = new gridAdapter(product_modelList,getActivity());
 
                         rv_cat.setAdapter(adapter_product);
                         adapter_product.notifyDataSetChanged();
