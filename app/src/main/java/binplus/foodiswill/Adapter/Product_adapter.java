@@ -60,7 +60,7 @@ public class Product_adapter extends RecyclerView.Adapter<Product_adapter.MyView
     private List<Product_model> modelList;
     private Context context;
     int status=0;
-    String user_id ;
+    String user_id,tag ;
 
     private DatabaseHandler dbcart;
     private DatabaseCartHandler db_cart;
@@ -180,15 +180,24 @@ Session_management sessionManagement ;
         }
     }
 
-    public Product_adapter(List<Product_model> modelList, Context context) {
+    public Product_adapter(List<Product_model> modelList, Context context,String tag) {
         this.modelList = modelList;
+        this.tag = tag;
         dbcart = new DatabaseHandler(context);
         db_cart=new DatabaseCartHandler(context);
+
     }
 
     @Override
     public Product_adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_product_rv, parent, false);
+        View itemView = null;
+        if (tag.equals("top")||tag.equals("new"))
+        {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_top_product_rv, parent, false);
+        }
+        else {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_product_rv, parent, false);
+        }
         context = parent.getContext();
         return new Product_adapter.MyViewHolder(itemView);
     }

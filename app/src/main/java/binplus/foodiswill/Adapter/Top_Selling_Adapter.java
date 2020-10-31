@@ -73,7 +73,7 @@ Module module ;
     private Context context;
     private DatabaseCartHandler db_cart;
     WishlistHandler db_wish;
-    String user_id ;
+    String user_id ,tag;
     Session_management sessionManagement ;
     //  String product_id,product_name,category_id,product_description,deal_price,start_date,start_time, end_date,end_time,price,product_image,status,in_stock,unit_value;
     // String unit,increament,rewards,stock,title,size,color,mrp,top;
@@ -122,8 +122,9 @@ Module module ;
         }
     }
 
-    public Top_Selling_Adapter(Activity activity, List<Product_model> modelList) {
+    public Top_Selling_Adapter(Activity activity, List<Product_model> modelList,String tag) {
         this.modelList = modelList;
+        this.tag = tag;
         db_cart=new DatabaseCartHandler(activity);
         db_wish=new WishlistHandler(activity);
 
@@ -131,8 +132,14 @@ Module module ;
 
     @Override
     public Top_Selling_Adapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View itemView = LayoutInflater.from(parent.getContext())
-                .inflate( R.layout.row_top_selling, parent, false);
+        View itemView = null;
+        if (tag.equals("top")||tag.equals("new"))
+        {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_top_product_rv, parent, false);
+        }
+        else {
+            itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_top_selling, parent, false);
+        }
         context = parent.getContext();
         return new Top_Selling_Adapter.MyViewHolder(itemView);
     }
@@ -212,7 +219,7 @@ Module module ;
                 {
                     holder.iv_dis.setVisibility(View.VISIBLE);
                     holder.product_discount.setVisibility(View.VISIBLE);
-                    holder.product_discount.setText(""+discount+"% "+"\nOFF");
+                    holder.product_discount.setText(""+discount+"% "+" OFF");
                 }
                 //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
 
@@ -270,7 +277,7 @@ Module module ;
                     {
                         holder.iv_dis.setVisibility(View.VISIBLE);
                         holder.product_discount.setVisibility(View.VISIBLE);
-                        holder.product_discount.setText( "" + atr_dis + "%"+"\n OFF" );
+                        holder.product_discount.setText( "" + atr_dis + "%"+" OFF" );
 
                     }
                     holder.product_mrp.setText( "\u20B9" + attribute_mrp.toString() );
@@ -414,7 +421,7 @@ Module module ;
                             {
                                 holder.product_discount.setVisibility(View.VISIBLE);
                                 holder.iv_dis.setVisibility(View.VISIBLE);
-                                holder.product_discount.setText("" + atr_dis + "% "+"\n OFF");
+                                holder.product_discount.setText("" + atr_dis + "% "+" OFF");
                             }
                             else
                             {
@@ -686,13 +693,7 @@ Module module ;
                 }
             }
         } );
-        holder.card_view_top.setOnClickListener( new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-
-            }
-        } );
         holder.elegantNumberButton.setOnValueChangeListener( new ElegantNumberButton.OnValueChangeListener() {
             @Override
             public void onValueChange(ElegantNumberButton view, int oldValue, int newValue) {

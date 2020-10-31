@@ -862,7 +862,7 @@ public class Home_fragment extends Fragment {
                             }.getType();
                             top_roduct_models = gson.fromJson(response.getString("top_selling_product"), listType);
                             top_roduct_models.add(module.addExtraOneTopSelling());
-                            top_selling_adapter = new Top_Selling_Adapter(getActivity(),top_roduct_models);
+                            top_selling_adapter = new Top_Selling_Adapter(getActivity(),top_roduct_models,"top");
                             rv_top_selling.setAdapter(top_selling_adapter);
                             top_selling_adapter.notifyDataSetChanged();
                         }
@@ -914,7 +914,7 @@ public class Home_fragment extends Fragment {
                             }.getType();
                             new_product_models = gson.fromJson(response.getString("new_product"), listType);
                             new_product_models.add(module.addExtraOneNew());
-                            Top_Selling_Adapter = new Top_Selling_Adapter(getActivity(),new_product_models);
+                            Top_Selling_Adapter = new Top_Selling_Adapter(getActivity(),new_product_models,"new");
                             new_products_recycler.setAdapter(Top_Selling_Adapter);
                             Top_Selling_Adapter.notifyDataSetChanged();
                         }
