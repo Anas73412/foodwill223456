@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.franmontiel:LocaleChanger:0.9.2@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ace097914a50f80c6a8c9ad8497f4701/jetified-LocaleChanger-0.9.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ace097914a50f80c6a8c9ad8497f4701/jetified-LocaleChanger-0.9.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ace097914a50f80c6a8c9ad8497f4701/jetified-LocaleChanger-0.9.2/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca44af9cb1463c655e63614ff268cbb3/jetified-LocaleChanger-0.9.2/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca44af9cb1463c655e63614ff268cbb3/jetified-LocaleChanger-0.9.2/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/ca44af9cb1463c655e63614ff268cbb3/jetified-LocaleChanger-0.9.2/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.franmontiel/LocaleChanger/0.9.2/ecbcd6f1b3bc306500f1f45ca4bbc24d144f02cd/LocaleChanger-0.9.2-javadoc.jar!/" />

@@ -438,7 +438,7 @@
                     android:textSize="@dimen/space_16"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:text="Products in Demand"/>
+                    android:text="Recommended Products"/>
                 <ImageView
                     android:layout_marginLeft="10dp"
                     android:layout_alignParentRight="true"
@@ -505,7 +505,7 @@
                 android:paddingLeft="@dimen/space_10"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:text="Proudly Delivered"/>
+                android:text="Popular Products"/>
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"

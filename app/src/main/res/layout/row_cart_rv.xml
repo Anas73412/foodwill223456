@@ -9,41 +9,61 @@
 
     app:cardUseCompatPadding="true"
     card_view:cardCornerRadius="4dp">
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
+            android:id="@+id/con_layout_product"
+            android:paddingBottom="3dp"
+            >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-          >
+
+            <ImageView
+                android:id="@+id/iv_subcat_remove"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="4dp"
+              android:layout_alignParentEnd="true"
+                app:srcCompat="@drawable/ic_close" />
             <de.hdodenhof.circleimageview.CircleImageView
                 xmlns:app="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/iv_subcat_img"
-                android:layout_width="130dp"
-                android:layout_height="150dp"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/space_5"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="14dp"
                 app:civ_border_color="@color/gray"
-
-
+                app:civ_border_width="1dp"
+                android:layout_gravity="center"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/icon" />
+            </RelativeLayout>
             <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="@color/light_gray"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="@dimen/space_10"
+                android:layout_marginRight="@dimen/space_10"
+                android:background="@color/colorPrimary"
+                android:layout_marginTop="@dimen/space_10"
+                android:layout_below="@+id/con_layout_product"
                 />
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:orientation="vertical"
-                android:layout_weight="2"
-                >
+                app:layout_constraintLeft_toRightOf="@+id/iv_subcat_img"
+                app:layout_constraintRight_toLeftOf="@+id/iv_subcat_minus"
+                app:layout_constraintTop_toTopOf="@+id/iv_subcat_img">
 
                 <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_subcat_title"
@@ -53,6 +73,7 @@
                     android:layout_alignParentTop="true"
                     android:layout_marginTop="4dp"
                     android:text=""
+                    android:textAllCaps="true"
                     android:gravity="center"
                     android:textColor="#000"
                     android:textSize="15dp" />
@@ -106,6 +127,7 @@
                         android:layout_marginLeft="2dp"
                         android:text="@string/currency"
                         android:textColor="#000"
+                        android:visibility="gone"
                         android:textSize="@dimen/text_size_small"
                         />
 
@@ -145,117 +167,58 @@
 
 
                 </RelativeLayout>
-                <com.travijuu.numberpicker.library.NumberPicker
-                    android:id="@+id/product_qty"
-                    android:layout_alignParentEnd="true"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/space_10"
-                    android:layout_gravity="center"
-                    android:elevation="6dp"
-                    app:textSize="8dp"
-
-
-                    app:textColor="@color/white"
-
-                    />
 
             </LinearLayout>
-
             <LinearLayout
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:id="@+id/con_layout_product"
-                android:paddingBottom="3dp"
-                android:weightSum="3"
-                android:visibility="gone"
-                android:layout_marginBottom="@dimen/space_5"
-                >
+                android:weightSum="3">
 
 
 
-                <ImageView
-                    android:id="@+id/iv_subcat_minus"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/space_8"
 
-                    android:tint="@color/colorAccent"
-                    app:srcCompat="@drawable/minus" />
+            <ImageView
+                android:id="@+id/iv_subcat_minus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+
+                android:tint="@color/colorPrimary"
+                app:srcCompat="@drawable/minus" />
 
 
                 <binplus.foodiswill.Fonts.LatoBLack
                     android:id="@+id/tv_subcat_contetiy"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="match_parent"
                     android:gravity="center"
                     android:enabled="false"
                     android:text="0"
-                    android:textSize="18dp"
+                    android:textSize="16dp"
                     android:textColor="@android:color/black"
                     />
-
-
-
-
                 <ImageView
                     android:id="@+id/iv_subcat_plus"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_weight="1"
 
-                    android:tint="@color/colorAccent"
-
+                    android:tint="@color/colorPrimary"
                     app:srcCompat="@drawable/plus" />
 
-
-
-
             </LinearLayout>
+
+
+
+
+
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
 
-            android:weightSum="2">
-            <Button
-                android:id="@+id/tv_remove"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="4dp"
-                android:text="Remove"
 
-                android:gravity="center"
-                android:background="@android:color/transparent"
-                android:textAllCaps="false"
-                android:padding="@dimen/space_5"
-                android:textSize="15dp" />
-            <Button
-                android:id="@+id/tv_wishlist"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="4dp"
-                android:text="Wishlist"
-                android:gravity="center"
-                android:background="@android:color/transparent"
-                android:textAllCaps="false"
-                android:padding="@dimen/space_5"
-                android:textSize="15dp" />
-        </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </androidx.cardview.widget.CardView>
