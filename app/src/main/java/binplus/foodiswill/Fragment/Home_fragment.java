@@ -108,6 +108,7 @@ public class Home_fragment extends Fragment {
     SharedPreferences sharedpreferences;
     LinearLayout lin_call,lin_whtsapp;
     TextView tv_call,tv_whtsapp;
+    ImageView iv_call,iv_whatsapp;
     Animation animation;
 
 
@@ -208,6 +209,8 @@ public class Home_fragment extends Fragment {
         }
         lin_call = view.findViewById(R.id.lin_call);
         tv_call = view.findViewById(R.id.tv_contact_number);
+        iv_whatsapp = view.findViewById(R.id.iv_whatsapp);
+        iv_call = view.findViewById(R.id.iv_call);
         lin_whtsapp = view.findViewById(R.id.lin_whtsapp);
         tv_whtsapp = view.findViewById(R.id.tv_whtsapp_number);
         tv_call.setText(phone_number);
@@ -236,13 +239,13 @@ public class Home_fragment extends Fragment {
         banner_slider = (SliderLayout) view.findViewById( R.id.relative_banner);
        featuredslider = (SliderLayout) view.findViewById(R.id.featured_img_slider);
 
-        lin_whtsapp.setOnClickListener(new View.OnClickListener() {
+        iv_whatsapp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 contactWhatsapp(whtsapp_number,"Hi!"+getActivity().getResources().getString(R.string.app_name));
             }
         });
-        lin_call.setOnClickListener(new View.OnClickListener() {
+        iv_call.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(Intent.ACTION_DIAL);

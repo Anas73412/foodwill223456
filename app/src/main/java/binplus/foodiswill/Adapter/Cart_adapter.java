@@ -82,7 +82,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
     @Override
     public ProductHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = null;
-        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_cart_rv, parent, false);
+        view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_cart, parent, false);
         return new ProductHolder(view);
     }
 
@@ -103,7 +103,7 @@ public class Cart_adapter extends RecyclerView.Adapter<Cart_adapter.ProductHolde
                 .load(BaseURL.IMG_PRODUCT_URL + img_name)
                 .centerCrop()
                 .placeholder(R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.iv_logo);

@@ -74,7 +74,7 @@ public class Shop_Now_adapter extends RecyclerView.Adapter<Shop_Now_adapter.MyVi
         Glide.with(context)
                 .load(BaseURL.IMG_CATEGORY_URL + mList.getImage())
                 .placeholder(R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.image);

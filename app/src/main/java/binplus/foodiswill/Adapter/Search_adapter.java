@@ -300,7 +300,7 @@ public class Search_adapter extends RecyclerView.Adapter<Search_adapter.MyViewHo
 
                 .placeholder(R.drawable.icon)
                 .centerCrop()
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.iv_logo);

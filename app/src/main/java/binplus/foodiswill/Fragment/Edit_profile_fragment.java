@@ -128,7 +128,7 @@ public class Edit_profile_fragment extends Fragment implements View.OnClickListe
                     .load( BaseURL.IMG_PROFILE_URL + getimage)
                     .fitCenter()
                     .placeholder( R.drawable.user )
-                    .crossFade()
+//                    .crossFade()
                     .diskCacheStrategy( DiskCacheStrategy.ALL )
                     .dontAnimate()
                     .into( iv_profile );
@@ -290,7 +290,7 @@ public class Edit_profile_fragment extends Fragment implements View.OnClickListe
                                 .load( BaseURL.IMG_PROFILE_URL + name)
                                 .fitCenter()
                                 .placeholder( R.drawable.user )
-                                .crossFade()
+//                                .crossFade()
                                 .diskCacheStrategy( DiskCacheStrategy.ALL )
                                 .dontAnimate()
                                 .into( MainActivity.iv_profile );

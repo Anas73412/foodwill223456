@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -111,8 +112,8 @@ public class Cart_fragment extends Fragment implements View.OnClickListener {
     linear_cart = (LinearLayout)view.findViewById(R.id.lin_cart);
     linear_empty =view.findViewById(R.id.linear_empty);
 
-//    rv_cart.setLayoutManager(new LinearLayoutManager(getActivity()));
-    rv_cart.setLayoutManager(new GridLayoutManager(getActivity(),2));
+    rv_cart.setLayoutManager(new LinearLayoutManager(getActivity()));
+//    rv_cart.setLayoutManager(new GridLayoutManager(getActivity(),2));
 
     //db = new DatabaseHandler(getActivity());
     db_cart=new DatabaseCartHandler(getActivity());

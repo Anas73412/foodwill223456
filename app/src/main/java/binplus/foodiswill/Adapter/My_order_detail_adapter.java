@@ -73,7 +73,7 @@ public class My_order_detail_adapter extends RecyclerView.Adapter<My_order_detai
                 .load(BaseURL.IMG_PRODUCT_URL + mList.getProduct_image())
                 .centerCrop()
                 .placeholder(R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.iv_img);
@@ -94,7 +94,7 @@ public class My_order_detail_adapter extends RecyclerView.Adapter<My_order_detai
             .load(BaseURL.IMG_PRODUCT_URL + image_list.get(0))
             .centerCrop()
             .placeholder(R.drawable.icon)
-            .crossFade()
+//            .crossFade()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate()
             .into(holder.iv_img);

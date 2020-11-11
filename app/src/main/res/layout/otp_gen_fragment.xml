@@ -18,10 +18,9 @@
 
 
         <ImageView
-            android:padding="@dimen/space_20"
-            android:layout_width="250dp"
 
-            android:layout_height="200dp"
+            android:layout_width="300dp"
+            android:layout_height="220dp"
             android:src="@drawable/spls"/>
         <LinearLayout
             android:id="@+id/lin_reg"

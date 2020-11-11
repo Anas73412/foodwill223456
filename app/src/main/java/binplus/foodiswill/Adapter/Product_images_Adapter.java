@@ -49,7 +49,7 @@ public class Product_images_Adapter extends BaseAdapter {
         Glide.with(context)
                 .load(BaseURL.IMG_PRODUCT_URL + list.get(i))
                 .centerCrop()
-                .crossFade()
+//                .crossFade()
                 .into(img);
         return view1;
     }

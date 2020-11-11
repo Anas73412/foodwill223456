@@ -244,7 +244,7 @@ Session_management sessionManagement ;
                         .load(BaseURL.IMG_PRODUCT_URL +mList.getProduct_image() )
                         .fitCenter()
                         .placeholder(R.drawable.icon)
-                        .crossFade()
+//                        .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(holder.iv_logo);
@@ -262,7 +262,7 @@ Session_management sessionManagement ;
                         .load(BaseURL.IMG_PRODUCT_URL +image_list.get(0) )
                         .fitCenter()
                                   .placeholder(R.drawable.icon)
-                        .crossFade()
+//                        .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(holder.iv_logo);

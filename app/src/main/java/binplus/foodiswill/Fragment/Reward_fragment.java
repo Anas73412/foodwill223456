@@ -84,7 +84,7 @@ public class Reward_fragment extends Fragment {
       Glide.with(getActivity())
               .load( BaseURL.IMG_EXTRA_URL + stop_order_image)
               .placeholder( R.drawable.icon)
-              .crossFade()
+//              .crossFade()
               .diskCacheStrategy(DiskCacheStrategy.ALL)
               .dontAnimate()
               .into(iv_img);

@@ -136,7 +136,7 @@ Module module ;
                         .load( BaseURL.IMG_PRODUCT_URL +modelList.get(position).getProduct_image().toString() )
                         .fitCenter()
                         .placeholder( R.drawable.icon)
-                        .crossFade()
+//                        .crossFade()
                         .diskCacheStrategy( DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(holder.product_img);
@@ -155,7 +155,7 @@ Module module ;
                         .load( BaseURL.IMG_PRODUCT_URL +image_list.get(0).toString() )
                         .fitCenter()
                         .placeholder( R.drawable.icon)
-                        .crossFade()
+//                        .crossFade()
                         .diskCacheStrategy(DiskCacheStrategy.ALL)
                         .dontAnimate()
                         .into(holder.product_img);

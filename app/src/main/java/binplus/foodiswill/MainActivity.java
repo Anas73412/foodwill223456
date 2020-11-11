@@ -283,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     .load( BaseURL.IMG_PROFILE_URL + getimage)
                     .fitCenter()
                     .placeholder( R.drawable.user )
-                    .crossFade()
+//                    .crossFade()
                     .diskCacheStrategy( DiskCacheStrategy.ALL )
                     .dontAnimate()
                     .into( iv_profile );
@@ -493,7 +493,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         .load( BaseURL.IMG_PROFILE_URL + getimage)
                         .fitCenter()
                         .placeholder( R.drawable.user )
-                        .crossFade()
+//                        .crossFade()
                         .diskCacheStrategy( DiskCacheStrategy.ALL )
                         .dontAnimate()
                         .into( iv_profile );

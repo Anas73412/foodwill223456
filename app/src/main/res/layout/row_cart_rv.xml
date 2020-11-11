@@ -228,7 +228,7 @@
             <Button
                 android:id="@+id/tv_remove"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
@@ -243,6 +243,7 @@
             <Button
                 android:id="@+id/tv_wishlist"
                 android:layout_width="0dp"
+                android:visibility="gone"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"

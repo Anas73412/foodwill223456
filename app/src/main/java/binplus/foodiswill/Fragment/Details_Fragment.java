@@ -972,7 +972,7 @@ public class Details_Fragment extends Fragment {
                     Glide.with(getActivity())
                             .load(IMG_PRODUCT_URL + image_list.get(0))
                             .placeholder(R.drawable.icon)
-                            .crossFade()
+//                            .crossFade()
                             .diskCacheStrategy(DiskCacheStrategy.ALL)
                             .dontAnimate()
                             .into(btn);

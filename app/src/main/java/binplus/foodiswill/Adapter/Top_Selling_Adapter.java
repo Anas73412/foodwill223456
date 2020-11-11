@@ -163,7 +163,7 @@ Module module ;
         Glide.with(context)
                 .load( BaseURL.IMG_PRODUCT_URL + img_name)
                 .placeholder( R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.image);

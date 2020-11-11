@@ -14,8 +14,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.onesignal.OSNotification;
 import com.onesignal.OSNotificationAction;
 import com.onesignal.OSNotificationOpenResult;
@@ -30,7 +32,7 @@ public class SplashActivity extends AppCompatActivity {
     public static final int MY_PERMISSIONS_REQUEST_WRITE_FIELS = 102;
     private AlertDialog dialog;
     Module module;
-
+   ImageView iv_splash;
     private Session_management sessionManagement;
 
 
@@ -40,6 +42,8 @@ public class SplashActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
+        iv_splash=findViewById(R.id.iv_splash);
+        Glide.with(this).asGif().load(R.raw.splash).into(iv_splash);
 //        loadingBar=new LoadingBar(SplashActivity.this);
         module=new Module(SplashActivity.this);
         sessionManagement = new Session_management(SplashActivity.this);

@@ -54,7 +54,7 @@ public class Produccts_images_adapter extends RecyclerView.Adapter<Produccts_ima
             .load(BaseURL.IMG_PRODUCT_URL + list.get(0))
 
 
-            .crossFade()
+//            .crossFade()
             .into(Details_Fragment.btn);
 
     final int i=position;
@@ -68,7 +68,7 @@ public class Produccts_images_adapter extends RecyclerView.Adapter<Produccts_ima
         Glide.with(activity)
                 .load(BaseURL.IMG_PRODUCT_URL + list.get(i))
 
-                .crossFade()
+//                .crossFade()
                 .into(Details_Fragment.btn);
 
       }

@@ -112,7 +112,7 @@ public class Wishlist_Adapter extends RecyclerView.Adapter<Wishlist_Adapter.Wish
                 .load( BaseURL.IMG_PRODUCT_URL + img_name)
                 .centerCrop()
                 .placeholder(R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy( DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.iv_icon);

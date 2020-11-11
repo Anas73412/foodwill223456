@@ -78,7 +78,7 @@ public class Home_Icon_Adapter extends RecyclerView.Adapter<Home_Icon_Adapter.My
         Glide.with(context)
                 .load(BaseURL.IMG_CATEGORY_URL + mList.getImage())
                 .placeholder(R.drawable.icon)
-                .crossFade()
+//                .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .dontAnimate()
                 .into(holder.image);
