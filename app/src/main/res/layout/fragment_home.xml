@@ -137,12 +137,13 @@
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:orientation="horizontal"
+                    android:paddingTop="@dimen/space_10"
+                    android:paddingBottom="@dimen/space_10"
                     android:weightSum="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/lin_call"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
@@ -183,7 +184,6 @@
 
                     </LinearLayout>
                     <LinearLayout
-                        android:visibility="gone"
                         android:id="@+id/lin_whtsapp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
@@ -227,19 +227,6 @@
                             android:layout_height="40dp"/>
 
                     </LinearLayout>
-                    <ImageView
-                        android:id="@+id/iv_call"
-                        android:src="@drawable/call_poster"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_marginRight="@dimen/space_2"
-                        android:layout_height="100dp"/>
-                    <ImageView
-                        android:id="@+id/iv_whatsapp"
-                        android:src="@drawable/whatsapp_poster"
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -451,7 +438,7 @@
                     android:textSize="@dimen/space_16"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:text="Popular Products"/>
+                    android:text="Recommended Products"/>
                 <ImageView
                     android:layout_marginLeft="10dp"
                     android:layout_alignParentRight="true"
@@ -518,7 +505,7 @@
                 android:paddingLeft="@dimen/space_10"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:text="Proudly Delivered"/>
+                android:text="Popular Products"/>
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"
