@@ -229,7 +229,6 @@
                                 android:text="Remove"
                                 android:padding="@dimen/space_2"
                                 android:drawablePadding="@dimen/space_5"
-                                android:drawableLeft="@drawable/icons8_delete_bin_16px"
                                 android:drawableTint="@color/dark_gray"
                                 android:layout_margin="5dp"
                                 android:layout_gravity="end"

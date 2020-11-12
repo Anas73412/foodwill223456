@@ -51,7 +51,34 @@ android:layout_margin="@dimen/space_4"
                 android:layout_gravity="center"
                 android:gravity="center"
                 >
+                <RelativeLayout
+                    android:id="@+id/rel_discount"
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_marginTop="@dimen/space_10"
+                    android:layout_height="wrap_content"
 
+                    >
+                    <ImageView
+                        android:id="@+id/iv_dis"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:scaleType="fitXY"
+                        android:layout_centerVertical="true"
+                        android:background="@drawable/dis_banner"
+                        />
+                    <binplus.foodiswill.Fonts.LatoBLack
+                        android:id="@+id/product_discount"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text=" discount"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:padding="2dp"
+                        android:textColor="@android:color/white"
+                        />
+                </RelativeLayout>
                 <TextView
 
                     android:id="@+id/product_prize"
@@ -62,7 +89,7 @@ android:layout_margin="@dimen/space_4"
                     android:textStyle="bold"
                     android:fontFamily="@font/bold"
 
-                    android:textColor="#837e7e"
+                    android:textColor="@color/black"
                     android:textSize="18dp" />
 
                 <binplus.foodiswill.Fonts.LatoBLack
@@ -74,41 +101,12 @@ android:layout_margin="@dimen/space_4"
                     android:layout_toRightOf="@id/tv_subcat_price"
                     android:paddingTop="3dp"
                     android:text="Price"
+
                     android:textColor="@color/color_3"
-                    android:textSize="12dp" />
+                    android:textSize="14dp" />
 
 
-                <RelativeLayout
-                    android:id="@+id/rel_discount"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="left"
-                    android:gravity="center_vertical"
-                    android:layout_marginTop="@dimen/space_10"
-                    android:layout_height="wrap_content"
 
-                    >
-                    <ImageView
-                        android:id="@+id/iv_dis"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/bg_button"
-                        android:tint="@color/green"
-                        android:visibility="gone"
-
-                        />
-                    <binplus.foodiswill.Fonts.LatoBLack
-                        android:id="@+id/product_discount"
-                        android:layout_height="wrap_content"
-                        android:layout_width="wrap_content"
-                        android:text="discount"
-                        android:textColor="@color/white"
-                        android:background="@drawable/bg_button"
-                        android:backgroundTint="#4CAF50"
-                        android:layout_centerVertical="true"
-                        android:gravity="center"
-                        android:padding="5dp"
-                        />
-                </RelativeLayout>
             </LinearLayout>
 
 
@@ -133,7 +131,7 @@ android:layout_margin="@dimen/space_4"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:text="Product Name"
-                android:textColor="#837e7e"
+                android:textColor="@color/black"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:textSize="14dp" />
@@ -183,7 +181,7 @@ android:layout_margin="@dimen/space_4"
                     android:id="@+id/single_varient"
                     android:layout_width="match_parent"
                     android:layout_height="30dp"
-
+                    android:textColor="@color/black"
                     android:gravity="center"
                     android:text="1kg"
                     android:textAlignment="gravity"
@@ -209,6 +207,7 @@ android:layout_margin="@dimen/space_4"
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:text="text"
+                        android:textColor="@color/black"
                         android:drawableRight="@drawable/ic_arrow_drop_down_black_24dp"
                         android:drawablePadding="@dimen/space_5"
 

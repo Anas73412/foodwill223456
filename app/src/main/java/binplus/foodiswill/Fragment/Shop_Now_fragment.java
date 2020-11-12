@@ -8,6 +8,8 @@ import android.os.Bundle;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -51,6 +53,8 @@ public class Shop_Now_fragment extends Fragment {
   private List<ShopNow_model> catList = new ArrayList<>();
   private Shop_Now_adapter adapter;
   private boolean isSubcat = false;
+  SwipeRefreshLayout swipe;
+  boolean swipe_flag=false;
   String getid;
   String getcat_title;
   Dialog loadingBar;
@@ -76,6 +80,7 @@ public class Shop_Now_fragment extends Fragment {
     loadingBar.setContentView( R.layout.progressbar );
     loadingBar.setCanceledOnTouchOutside(false);
     session_management=new Session_management(getActivity());
+
     module=new Module(getActivity());
     setHasOptionsMenu(true);
 
@@ -86,6 +91,18 @@ public class Shop_Now_fragment extends Fragment {
       makeGetCategoryRequest();
 
     }
+    swipe=view.findViewById(R.id.swipe);
+    swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+        swipe_flag=true;
+        if (ConnectivityReceiver.isConnected()) {
+          makeGetCategoryRequest();
+
+        }
+
+      }
+    });
 
     rv_items = (RecyclerView) view.findViewById(R.id.rv_home);
     GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 4);
@@ -182,10 +199,11 @@ public class Shop_Now_fragment extends Fragment {
     String tag_json_obj = "json_category_req";
 
     isSubcat = false;
-
+    catList.clear();
     Map<String, String> params = new HashMap<String, String>();
     params.put("parent", "");
     isSubcat = true;
+    category_modelList.clear();
        /* if (parent_id != null && parent_id != "") {
         }*/
 
@@ -195,7 +213,9 @@ public class Shop_Now_fragment extends Fragment {
       @Override
       public void onResponse(JSONObject response) {
         Log.d("shop_now", response.toString());
-
+            if(swipe_flag){
+              swipe.setRefreshing(false);
+            }
         try {
           if (response != null && response.length() > 0) {
             Boolean status = response.getBoolean("responce");

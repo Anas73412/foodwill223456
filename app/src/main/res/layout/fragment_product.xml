@@ -51,6 +51,7 @@
             android:layout_marginTop="@dimen/space_5"
             android:visibility="gone"
             android:layout_marginBottom="@dimen/space_5"/>
+
         <RelativeLayout
             android:id="@+id/rel_sort"
             android:layout_width="match_parent"
@@ -79,7 +80,14 @@
     </LinearLayout>
 
 
-
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <RelativeLayout
         android:layout_marginTop="@dimen/space_2"
         android:layout_width="match_parent"
@@ -110,7 +118,7 @@
 
 
     </RelativeLayout>
-
-
+        </LinearLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </LinearLayout>

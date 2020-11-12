@@ -83,6 +83,7 @@ public class BaseURL {
     public static String GET_DEAL_OF_DAY_PRODUCTS = BASE_URL + "index.php/api/deal_product";
     public static String GET_ALL_DEAL_OF_DAY_PRODUCTS = BASE_URL + "index.php/api/get_all_deal_product";
     public static String GET_TOP_SELLING_PRODUCTS = BASE_URL + "index.php/api/top_selling_product";
+    public static String GET_TOP_PRODUCTS = BASE_URL + "index.php/api/top_products";
     public static String GET_NEW_PRODUCTS = BASE_URL + "index.php/api/new_product";
     public static String GET_ALL_TOP_SELLING_PRODUCTS = BASE_URL + "index.php/api/get_all_top_selling_product";
 

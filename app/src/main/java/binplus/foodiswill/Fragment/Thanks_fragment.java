@@ -1,25 +1,43 @@
 package binplus.foodiswill.Fragment;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.app.Fragment;
 
 import android.app.FragmentManager;
 
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+
+import org.json.JSONObject;
+
+import java.util.HashMap;
+
+import binplus.foodiswill.AppController;
+import binplus.foodiswill.Config.BaseURL;
 import binplus.foodiswill.Config.Module;
 import binplus.foodiswill.MainActivity;
 import binplus.foodiswill.My_Order_activity;
 import binplus.foodiswill.R;
+import binplus.foodiswill.util.CustomVolleyJsonRequest;
 
 import static android.content.Context.MODE_PRIVATE;
 
@@ -27,8 +45,8 @@ import static android.content.Context.MODE_PRIVATE;
 
 public class Thanks_fragment extends Fragment implements View.OnClickListener {
 
-    TextView tv_info;
-    RelativeLayout btn_home, btn_order;
+    TextView tv_info,tv_note;
+    RelativeLayout btn_home, btn_order,btn_rate;
     Dialog loadingBar ;
     SharedPreferences preferences;
     Module module;
@@ -72,12 +90,14 @@ public class Thanks_fragment extends Fragment implements View.OnClickListener {
                 return false;
             }
         });
-
+  getAppSettingData();
         String data = getArguments().getString("msg");
         String dataarb=getArguments().getString("msg");
         tv_info = (TextView) view.findViewById(R.id.tv_thank_info);
+        tv_note = (TextView) view.findViewById(R.id.tv_note);
         btn_home = (RelativeLayout) view.findViewById(R.id.btn_thank_home);
         btn_order = (RelativeLayout) view.findViewById(R.id.btn_track_order);
+        btn_rate = (RelativeLayout) view.findViewById(R.id.btn_rate);
 
         if (language.contains("english")) {
             tv_info.setText(Html.fromHtml(data));
@@ -87,6 +107,7 @@ public class Thanks_fragment extends Fragment implements View.OnClickListener {
 
         btn_home.setOnClickListener(this);
         btn_order.setOnClickListener(this);
+        btn_rate.setOnClickListener(this);
 
         return view;
     }
@@ -100,12 +121,61 @@ public class Thanks_fragment extends Fragment implements View.OnClickListener {
             fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
                     .addToBackStack(null).commit();
         }
-        if (id == R.id.btn_track_order) {
+        else if (id == R.id.btn_track_order) {
             Intent myIntent = new Intent(getActivity(), My_Order_activity.class);
             getActivity().startActivity(myIntent);
+        }else if(id == R.id.btn_rate){
+            new Module(getActivity()).rateApp();
         }
 
 
+    }
+
+    public void getAppSettingData()
+    {
+        loadingBar.show();
+        String json_tag="json_app_tag";
+        HashMap<String,String> map=new HashMap<>();
+
+        CustomVolleyJsonRequest request=new CustomVolleyJsonRequest(Request.Method.POST, BaseURL.GET_VERSTION_DATA, map, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                Log.e("app_setting",response.toString());
+                loadingBar.dismiss();
+                try
+                {
+                    boolean sts=response.getBoolean("responce");
+
+                    if(sts)
+                    {
+
+                        JSONObject object=response.getJSONObject("data");
+                        String rate_msg=object.getString("rate_msg");
+                        tv_note.setText(Html.fromHtml(rate_msg));
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(),""+response.getString("error"),Toast.LENGTH_SHORT).show();
+                    }
+                }catch (Exception ex)
+                {
+                    ex.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadingBar.dismiss();
+                String msg=module.VolleyErrorMessage(error);
+                if(!(msg.isEmpty() || msg.equals("")))
+                {
+                    Toast.makeText(getActivity(),""+msg,Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        AppController.getInstance().addToRequestQueue(request,json_tag);
     }
 
 }

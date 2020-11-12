@@ -38,6 +38,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.daimajia.slider.library.Indicators.PagerIndicator;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.google.gson.Gson;
@@ -234,6 +235,8 @@ public class Details_Fragment extends Fragment {
 
         lin_img = view.findViewById(R.id.relative_layout_img);
         img_slider = view.findViewById(R.id.img_slider);
+        img_slider.getPagerIndicator().setIndicatorVisibility(PagerIndicator.IndicatorVisibility.Visible);
+        img_slider.getPagerIndicator().setDefaultIndicatorColor(getActivity().getResources().getColor(R.color.colorPrimary),getActivity().getResources().getColor( R.color.all));
         image_list=new ArrayList<String>();
 //        progressBar=(ProgressBar)view.findViewById(R.id.progress_bar);
 
@@ -949,6 +952,7 @@ public class Details_Fragment extends Fragment {
                 {
                     img_slider.setVisibility(View.VISIBLE);
                     btn.setVisibility(View.GONE);
+                    img_slider.removeAllSliders();
                     for (final HashMap<String, String> name : img_array) {
                         CustomSlider customSlider = new CustomSlider(getActivity());
                         Log.e("slider_images",""+name.get("image").toString());
@@ -965,6 +969,7 @@ public class Details_Fragment extends Fragment {
 //                        });
 
                     }
+
                 }
                 else {
                     img_slider.setVisibility(View.GONE);

@@ -42,8 +42,8 @@ public class SplashActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
-        iv_splash=findViewById(R.id.iv_splash);
-        Glide.with(this).asGif().load(R.raw.splash).into(iv_splash);
+//        iv_splash=findViewById(R.id.iv_splash);
+//        Glide.with(this).asGif().load(R.raw.splash).into(iv_splash);
 //        loadingBar=new LoadingBar(SplashActivity.this);
         module=new Module(SplashActivity.this);
         sessionManagement = new Session_management(SplashActivity.this);

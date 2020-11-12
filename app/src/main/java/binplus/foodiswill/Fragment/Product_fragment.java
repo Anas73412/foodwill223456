@@ -13,6 +13,8 @@ import com.google.android.material.tabs.TabLayout;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,6 +94,8 @@ public class Product_fragment extends Fragment implements View.OnClickListener {
     String getcat_id ;
     SharedPreferences preferences;
     DatabaseCartHandler db_cart;
+    SwipeRefreshLayout swipe;
+    boolean swipe_flag=false;
     public Product_fragment() {
     }
 
@@ -147,7 +151,26 @@ public class Product_fragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent( getActivity() , NoInternetConnection.class);
             startActivity(intent);
         }
+        swipe=view.findViewById(R.id.swipe);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipe_flag=true;
+                if (ConnectivityReceiver.isConnected()) {
 
+                    makeGetProductRequest(getcat_id);
+
+
+                }
+                else
+                {
+                    Intent intent = new Intent( getActivity() , NoInternetConnection.class);
+                    startActivity(intent);
+                }
+
+
+            }
+        });
 
 //
 //
@@ -204,8 +227,7 @@ public class Product_fragment extends Fragment implements View.OnClickListener {
         loadingBar1.setContentView( R.layout.progressbar );
         loadingBar1.setCanceledOnTouchOutside(false);
         loadingBar1.show();
-
-
+        product_modelList.clear();
         String tag_json_obj = "json_product_req";
         Map<String, String> params = new HashMap<String, String>();
         params.put("cat_id", cat_id);
@@ -217,6 +239,9 @@ public class Product_fragment extends Fragment implements View.OnClickListener {
             public void onResponse(JSONObject response) {
                 Log.d("rett " +
                         "", response.toString());
+                if(swipe_flag){
+                    swipe.setRefreshing(false);
+                }
                 loadingBar1.dismiss();
                 try {
                     if(response.has("data"))

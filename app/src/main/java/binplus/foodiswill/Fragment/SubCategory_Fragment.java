@@ -8,6 +8,8 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,6 +61,9 @@ public class SubCategory_Fragment extends Fragment {
     ImageView img_no_product;
     Dialog loadingBar;
     Home_Icon_Adapter home_icon_adapter;
+    SwipeRefreshLayout swipe;
+    boolean swipe_flag=false;
+    String getcat_id="";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
@@ -71,7 +76,7 @@ public class SubCategory_Fragment extends Fragment {
         firebase=view.findViewById(R.id.firebase);
         img_no_product=view.findViewById(R.id.img_no_product);
         session_management=new Session_management(getActivity());
-        String getcat_id = getArguments().getString("cat_id");
+         getcat_id = getArguments().getString("cat_id");
         String getcat_name = getArguments().getString("title");
 
         ((MainActivity) getActivity()).setTitle(getcat_name);
@@ -82,6 +87,19 @@ public class SubCategory_Fragment extends Fragment {
             makeGetCategoryRequest(getcat_id);
 
         }
+
+        swipe=view.findViewById(R.id.swipe);
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipe_flag=true;
+                if (ConnectivityReceiver.isConnected()) {
+                    makeGetCategoryRequest(getcat_id);
+
+                }
+
+            }
+        });
 
         rv_items = (RecyclerView) view.findViewById(R.id.rv_sub);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 3);
@@ -130,6 +148,7 @@ public class SubCategory_Fragment extends Fragment {
 
     private void makeGetCategoryRequest(final String parent_id) {
         loadingBar.show();
+        category_modelList.clear();
         String tag_json_obj = "json_category_req";
         Map<String, String> params = new HashMap<String, String>();
         params.put("parent", parent_id);
@@ -138,7 +157,9 @@ public class SubCategory_Fragment extends Fragment {
             @Override
             public void onResponse(JSONObject response) {
                 Log.d("response from category", response.toString());
-
+                if(swipe_flag){
+                    swipe.setRefreshing(false);
+                }
                 try {
                     Boolean status = response.getBoolean("responce");
                     if (status) {

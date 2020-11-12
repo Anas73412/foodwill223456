@@ -219,7 +219,7 @@ Module module ;
                 {
                     holder.iv_dis.setVisibility(View.VISIBLE);
                     holder.product_discount.setVisibility(View.VISIBLE);
-                    holder.product_discount.setText(""+discount+"% "+" OFF");
+                    holder.product_discount.setText(""+discount+"%\n "+" OFF");
                 }
                 //Toast.makeText(getActivity(),""+atr,Toast.LENGTH_LONG).show();
 
@@ -277,7 +277,7 @@ Module module ;
                     {
                         holder.iv_dis.setVisibility(View.VISIBLE);
                         holder.product_discount.setVisibility(View.VISIBLE);
-                        holder.product_discount.setText( "" + atr_dis + "%"+" OFF" );
+                        holder.product_discount.setText( "" + atr_dis + "%\n"+" OFF" );
 
                     }
                     holder.product_mrp.setText( "\u20B9" + attribute_mrp.toString() );
@@ -421,7 +421,7 @@ Module module ;
                             {
                                 holder.product_discount.setVisibility(View.VISIBLE);
                                 holder.iv_dis.setVisibility(View.VISIBLE);
-                                holder.product_discount.setText("" + atr_dis + "% "+" OFF");
+                                holder.product_discount.setText("" + atr_dis + "%\n "+" OFF");
                             }
                             else
                             {
@@ -862,6 +862,15 @@ Module module ;
     @Override
     public int getItemCount() {
         return modelList.size();
+    }
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
+
+    @Override
+    public int getItemViewType(int position) {
+        return position;
     }
 
     public int getDiscount(String price, String mrp)

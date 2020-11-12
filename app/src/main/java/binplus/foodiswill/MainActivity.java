@@ -16,6 +16,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 
+import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.appcompat.app.AlertDialog;
 import android.text.Spannable;
@@ -57,6 +58,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import binplus.foodiswill.Config.Module;
 import binplus.foodiswill.Fragment.*;
 import binplus.foodiswill.Adapter.ExpandableListAdapter;
 import binplus.foodiswill.Config.BaseURL;
@@ -83,12 +86,13 @@ import static binplus.foodiswill.Config.BaseURL.KEY_ID;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, ConnectivityReceiver.ConnectivityReceiverListener {
     private static final String TAG = MainActivity.class.getSimpleName();
+
     private BroadcastReceiver mRegistrationBroadcastReceiver;
     private TextView totalBudgetCount, totalWishCount, totalBudgetCount3, tv_name, powerd_text;
     public static ImageView iv_profile;
     private DatabaseHandler dbcart;
     private WishlistHandler db_wish;
-
+      RelativeLayout rel_home;
     private DatabaseCartHandler db_cart;
     String previouslyEncodedImage="";
     private Session_management sessionManagement;
@@ -151,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         db_wish=new WishlistHandler(MainActivity.this);
         sharedPreferences = getSharedPreferences("lan", Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
-
+     rel_home=findViewById(R.id.rel_home);
         editor.putString("language", "english");
         SharedPreferences.Editor editor = getSharedPreferences("push", MODE_PRIVATE).edit();
         editor.putBoolean("status",false);
@@ -173,8 +177,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
 
-        Store_Count = SharedPref.getString(MainActivity.this, BaseURL.KEY_STORE_COUNT);
 
+
+
+        Store_Count = SharedPref.getString(MainActivity.this, BaseURL.KEY_STORE_COUNT);
+        rel_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+//   new Module(MainActivity.this).rateApp();
+                Fragment fm = new Home_fragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.contentPanel, fm)
+                        .addToBackStack(null).commit();
+            }
+        });
 
 //
 
@@ -747,6 +764,8 @@ redirect(fb_link);
         }
         else if (id == R.id.nav_link) {
             redirect(share_link);
+        }else if(id == R.id.nav_rate){
+            new Module(MainActivity.this).rateApp();
         }
         else if (id == R.id.nav_share) {
             shareApp(app_link);
@@ -925,7 +944,6 @@ redirect(fb_link);
 
 
     public void getLinks()
-
     {
         loadingBar.show();
         HashMap<String ,String> params = new HashMap<>();
@@ -934,7 +952,6 @@ redirect(fb_link);
             public void onResponse(JSONArray response) {
                 loadingBar.dismiss();
                 try {
-                    Log.e("link_data",""+response.toString());
                     JSONObject object = response.getJSONObject(0);
                     share_link = object.getString("share_link");
                     fb_link = object.getString("fb_link");
@@ -948,7 +965,7 @@ redirect(fb_link);
                     stop_order_image = object.getString("stop_order_image");
                     whtsapp_number= object.getString("home_whatsapp");
                     phone_number = object.getString("home_call");
-                  contact_whtsapp = object.getString("contact_whatsapp");
+                    contact_whtsapp = object.getString("contact_whatsapp");
                     if(stop_order.equalsIgnoreCase("0"))
                     {
                         Fragment fm = new Reward_fragment();

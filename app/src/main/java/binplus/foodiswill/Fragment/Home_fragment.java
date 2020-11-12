@@ -18,11 +18,17 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.net.Uri;
 import android.os.Bundle;
+
+import androidx.annotation.NonNull;
+import androidx.core.widget.NestedScrollView;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSmoothScroller;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import android.text.Html;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -88,19 +94,21 @@ import static binplus.foodiswill.MainActivity.whtsapp_number;
 
 public class Home_fragment extends Fragment {
     Module module;
+    boolean swipe_flag=false;
     private static String TAG = Home_fragment.class.getSimpleName();
     private SliderLayout imgSlider, banner_slider, featuredslider;
     private RecyclerView new_products_recycler, rv_top_selling, rv_headre_icons;
     private List<Category_model> category_modelList = new ArrayList<>();
     private Home_adapter adapter;
     private boolean isSubcat = false;
+    SwipeRefreshLayout swipe;
     Session_management session_management;
     WishlistHandler db_wish;
     LinearLayout Search_layout;
     DatabaseCartHandler db_cart;
     String getid;
     String getcat_title;
-    ScrollView scrollView;
+    NestedScrollView scrollView;
     TextView footer ;
     Button click_here ;
     int version_code=0;
@@ -156,6 +164,7 @@ public class Home_fragment extends Fragment {
         loadingBar.setContentView( R.layout.progressbar );
         loadingBar.setCanceledOnTouchOutside(false);
         setHasOptionsMenu(true);
+        swipe=view.findViewById(R.id.swipe);
         module=new Module(getActivity());
         ((MainActivity) getActivity()).setTitle(getResources().getString( R.string.app_name));
         ((MainActivity) getActivity()).updateHeader();
@@ -207,6 +216,14 @@ public class Home_fragment extends Fragment {
     getAppSettingData();
 
         }
+        swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                swipe_flag=true;
+                getAppSettingData();
+
+            }
+        });
         lin_call = view.findViewById(R.id.lin_call);
         tv_call = view.findViewById(R.id.tv_contact_number);
         iv_whatsapp = view.findViewById(R.id.iv_whatsapp);
@@ -219,7 +236,7 @@ public class Home_fragment extends Fragment {
         click_here = view.findViewById( R.id.bottombtn );
 
         //Scroll View
-        scrollView = (ScrollView) view.findViewById( R.id.scroll_view);
+        scrollView = (NestedScrollView) view.findViewById( R.id.scroll_view);
         scrollView.setSmoothScrollingEnabled(true);
 
         //Search
@@ -243,6 +260,7 @@ public class Home_fragment extends Fragment {
             @Override
             public void onClick(View v) {
                 contactWhatsapp(whtsapp_number,"Hi!"+getActivity().getResources().getString(R.string.app_name));
+
             }
         });
         iv_call.setOnClickListener(new View.OnClickListener() {
@@ -849,7 +867,7 @@ public class Home_fragment extends Fragment {
         }*/
 
         CustomVolleyJsonRequest jsonObjReq = new CustomVolleyJsonRequest(Request.Method.POST,
-                BaseURL.GET_TOP_SELLING_PRODUCTS, params, new Response.Listener<JSONObject>() {
+                BaseURL.GET_TOP_PRODUCTS, params, new Response.Listener<JSONObject>() {
 
             @Override
             public void onResponse(JSONObject response) {
@@ -1193,15 +1211,21 @@ public class Home_fragment extends Fragment {
             public void onResponse(JSONObject response) {
                 Log.e("app_setting",response.toString());
                 loadingBar.dismiss();
+                if(swipe_flag){
+                    swipe_flag=false;
+                    swipe.setRefreshing(false);
+                }
                 try
                 {
                     boolean sts=response.getBoolean("responce");
 
                     if(sts)
                     {
+
                         JSONObject object=response.getJSONObject("data");
                         version_code=Integer.parseInt(object.getString("app_version"));
                         app_link=object.getString("data");
+                        String update_msg=object.getString("update_msg");
 
                         if(getUpdaterInfo())
                         {
@@ -1221,7 +1245,8 @@ public class Home_fragment extends Fragment {
 
                             AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
                             builder.setCancelable(false);
-                            builder.setMessage("The new version of app is available please update to get access.");
+//                            builder.setMessage("The new version of app is available please update to get access.");
+                            builder.setMessage(Html.fromHtml(update_msg));
                             builder.setPositiveButton("Update now", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {

@@ -229,6 +229,7 @@
                                     android:layout_below="@id/descriptionTitle"
                                     android:layout_marginTop="5dp"
                                     android:textSize="18dp"
+                                    android:textColor="@color/black"
                                     android:textAllCaps="false"
                                     android:padding="5dp"
                                     android:text="Name"

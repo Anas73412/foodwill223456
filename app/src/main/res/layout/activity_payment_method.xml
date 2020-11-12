@@ -333,6 +333,7 @@
                             android:textSize="@dimen/text_size_normal" />
 
                         <Button
+                            android:visibility="gone"
                             android:layout_marginTop="@dimen/space_10"
                             android:id="@+id/btn_pay"
                             android:layout_width="match_parent"
@@ -359,6 +360,7 @@
 
 
                         <RadioButton
+                            android:visibility="gone"
                             android:id="@+id/use_COD"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

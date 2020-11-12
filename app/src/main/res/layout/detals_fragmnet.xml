@@ -479,7 +479,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/space_13"
                         android:textAllCaps="false"
-                        android:textColor="@color/dark_gray"
+                        android:textColor="@color/black"
                         android:padding="10dp"
                         android:text="Name"
                         android:maxLines="4"

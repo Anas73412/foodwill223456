@@ -7,7 +7,11 @@
     android:orientation="vertical"
     android:background="@color/all">
 
-    <ScrollView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -137,13 +141,12 @@
                 android:layout_height="wrap_content">
                 <LinearLayout
                     android:orientation="horizontal"
-                    android:paddingTop="@dimen/space_10"
-                    android:paddingBottom="@dimen/space_10"
                     android:weightSum="2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/lin_call"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
@@ -184,6 +187,7 @@
 
                     </LinearLayout>
                     <LinearLayout
+                        android:visibility="gone"
                         android:id="@+id/lin_whtsapp"
                         android:layout_centerVertical="true"
                         android:gravity="center_vertical"
@@ -227,6 +231,19 @@
                             android:layout_height="40dp"/>
 
                     </LinearLayout>
+                    <ImageView
+                        android:id="@+id/iv_call"
+                        android:src="@drawable/call_poster"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_marginRight="@dimen/space_2"
+                        android:layout_height="100dp"/>
+                    <ImageView
+                        android:id="@+id/iv_whatsapp"
+                        android:src="@drawable/whatsapp_poster"
+                        android:layout_weight="1"
+                        android:layout_width="0dp"
+                        android:layout_height="100dp"/>
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
@@ -438,7 +455,8 @@
                     android:textSize="@dimen/space_16"
                     android:textColor="@color/colorPrimary"
                     android:textStyle="bold"
-                    android:text="Recommended Products"/>
+                    android:textAllCaps="true"
+                    android:text="(Recommended Products)"/>
                 <ImageView
                     android:layout_marginLeft="10dp"
                     android:layout_alignParentRight="true"
@@ -505,7 +523,8 @@
                 android:paddingLeft="@dimen/space_10"
                 android:textStyle="bold"
                 android:textColor="@color/colorPrimary"
-                android:text="Popular Products"/>
+                android:text="(Popular Products)"
+                 android:textAllCaps="true"/>
             <ImageView
                 android:layout_marginLeft="10dp"
                 android:layout_alignParentRight="true"
@@ -517,7 +536,6 @@
                 android:layout_marginRight="@dimen/space_5"
                 android:src="@drawable/slide_ind"
                 android:layout_height="15dp"/>
-
         </LinearLayout>
 
 
@@ -589,7 +607,7 @@
 
         </LinearLayout>
 
-    </ScrollView>
+    </androidx.core.widget.NestedScrollView>
 
-
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </LinearLayout>

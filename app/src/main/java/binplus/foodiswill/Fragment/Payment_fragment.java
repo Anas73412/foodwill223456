@@ -53,13 +53,12 @@ import binplus.foodiswill.networkconnectivity.NetworkError;
 
 import binplus.foodiswill.R;
 import binplus.foodiswill.util.ConnectivityReceiver;
+import binplus.foodiswill.util.CustomVolleyJsonArrayRequest;
 import binplus.foodiswill.util.CustomVolleyJsonRequest;
 import binplus.foodiswill.util.DatabaseCartHandler;
 import binplus.foodiswill.util.Session_management;
 
 import static binplus.foodiswill.Config.BaseURL.KEY_ID;
-import static binplus.foodiswill.MainActivity.cod_status;
-import static binplus.foodiswill.MainActivity.extra_charges;
 import static binplus.foodiswill.Utility.Constants.PAY_AMT;
 import static binplus.foodiswill.Utility.Constants.PAY_DELIVERY;
 import static binplus.foodiswill.Utility.Constants.PAY_LOCATION;
@@ -102,7 +101,7 @@ public class Payment_fragment extends Fragment {
     LinearLayout Promo_code_layout, Coupon_and_wallet;
     RelativeLayout Apply_Coupon_Code, Relative_used_wallet, Relative_used_coupon;
     String bill_name="",bill_address="",bill_pincode="",bill_mobile="",bill_email="";
-
+    String cod_status="",extra_charges="",gateway_status="";
     public Payment_fragment() {
 
     }
@@ -154,17 +153,11 @@ public class Payment_fragment extends Fragment {
         //     checkBox_Wallet.setTypeface(font);
         rb_Store = (RadioButton) view.findViewById(R.id.use_store_pickup);
 //        rb_Store.setTypeface(font);
+        getLinks();
         rb_Cod = (RadioButton) view.findViewById(R.id.use_COD);
         pay_now = (RadioButton) view.findViewById(R.id.pay_now);
-        if (cod_status.equals("1"))
-        {
-            rb_Cod.setVisibility(View.VISIBLE);
-        }
-        else
-        {
-            rb_Cod.setVisibility(View.GONE);
-        }
         btn_pay=view.findViewById(R.id.btn_pay);
+
         //   rb_Cod.setTypeface(font);
         rb_card = (RadioButton) view.findViewById(R.id.use_card);
         //    rb_card.setTypeface(font);
@@ -348,7 +341,7 @@ public class Payment_fragment extends Fragment {
 
                 } else {
                     confirm.setEnabled(true);
-
+                    
                     ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
                 }
             }
@@ -992,5 +985,45 @@ public class Payment_fragment extends Fragment {
     }
 
 
+    public void getLinks()
+    {
+        loadingBar.show();
+        HashMap<String ,String> params = new HashMap<>();
+        CustomVolleyJsonArrayRequest jsonRequest = new CustomVolleyJsonArrayRequest(Request.Method.POST,BaseURL.GET_LINKS, params, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                loadingBar.dismiss();
+                try {
+                    Log.e("link_data",""+response.toString());
+                    JSONObject object = response.getJSONObject(0);
+                    cod_status = object.getString("cod");
+                    gateway_status = object.getString("gateway_status");
+                    if (cod_status.equals("1"))
+                    {
+                        rb_Cod.setVisibility(View.VISIBLE);
+                    }
+                    else
+                    {
+                        rb_Cod.setVisibility(View.GONE);
+                    }
 
+                    if(gateway_status.equals("1")){
+                        btn_pay.setVisibility(View.VISIBLE);
+                    }else{
+                        btn_pay.setVisibility(View.GONE);
+                    }
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                loadingBar.dismiss();
+            }
+        });
+        AppController.getInstance().addToRequestQueue(jsonRequest);
+    }
 }
