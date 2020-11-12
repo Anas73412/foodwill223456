@@ -984,7 +984,6 @@ public class Payment_fragment extends Fragment {
         }
     }
 
-
     public void getLinks()
     {
         loadingBar.show();
