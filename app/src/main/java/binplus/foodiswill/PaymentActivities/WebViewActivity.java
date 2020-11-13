@@ -11,6 +11,7 @@ import android.util.Log;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -116,10 +117,11 @@ Session_management session_management;
                     }
                     else
                     {
+                        session_management.updateIsPayValue(false);
                         session_management.clearPay();
                     }
                     WebViewActivity.this.finish();
-//                    //Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), status, Toast.LENGTH_SHORT).show();
 //                    Intent intent = new Intent(getApplicationContext(), StatusActivity.class);
 //                    intent.putExtra("transStatus", status);
 //                    startActivity(intent);
@@ -252,5 +254,12 @@ Session_management session_management;
 
 
         alertDialog.show();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        session_management.updateIsPayValue(false);
+        session_management.clearPay();
     }
 }

@@ -94,7 +94,7 @@ import static binplus.foodiswill.MainActivity.whtsapp_number;
 
 public class Home_fragment extends Fragment {
     Module module;
-    boolean swipe_flag=false;
+
     private static String TAG = Home_fragment.class.getSimpleName();
     private SliderLayout imgSlider, banner_slider, featuredslider;
     private RecyclerView new_products_recycler, rv_top_selling, rv_headre_icons;
@@ -102,6 +102,7 @@ public class Home_fragment extends Fragment {
     private Home_adapter adapter;
     private boolean isSubcat = false;
     SwipeRefreshLayout swipe;
+    boolean swipe_flag=false;
     Session_management session_management;
     WishlistHandler db_wish;
     LinearLayout Search_layout;

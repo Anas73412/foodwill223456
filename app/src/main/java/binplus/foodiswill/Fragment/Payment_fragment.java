@@ -87,7 +87,7 @@ public class Payment_fragment extends Fragment {
     CheckBox checkBox_Wallet;
     CheckBox checkBox_coupon;
     EditText et_Coupon;
-    String getvalue="Pay Now";
+    String getvalue="";
     String text;
     String deli_charges="";
     Dialog loadingBar;
@@ -552,9 +552,12 @@ public class Payment_fragment extends Fragment {
             getvalue=sessionManagement.getPayDetails().get(PAY_METHOD);
             total_amount=sessionManagement.getPayDetails().get(PAY_AMT);
             getcharge=sessionManagement.getPayDetails().get(PAY_DELIVERY);
-
+//            module.showToast("problem");
             Log.e("sessssss",""+sessionManagement.getPayDetails().toString());
 
+         }else{
+//             module.showToast("No problem");
+             getvalue="Cash On Delivery";
          }
 
                 //gettime="03:00 PM - 03:30 PM";
@@ -958,7 +961,7 @@ public class Payment_fragment extends Fragment {
             vEmail=bill_email;
         }
         if(!vAccessCode.equals("") && !vMerchantId.equals("") && !vCurrency.equals("") && !vAmount.equals("")){
-
+           getvalue="Pay Now";
             sessionManagement.updatePaySection(getdate,gettime,getlocation_id,deli_charges,getvalue,couponCode,couponValue,String.valueOf(extra_charges));
             Intent intent = new Intent(getActivity(), WebViewActivity.class);
             intent.putExtra(AvenuesParams.ACCESS_CODE, ServiceUtility.chkNull(getResources().getString(R.string.access_code)).toString().trim());

@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
 
             android:gravity="center"
-            android:text=" Stay Home Stay Safe"
+            android:text=" BE VOCAL FOR LOCAL"
             android:textColor="@color/colorPrimary"
             android:textSize="@dimen/space_16"
             android:textStyle="bold|italic"

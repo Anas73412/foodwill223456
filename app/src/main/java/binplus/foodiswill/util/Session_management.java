@@ -118,6 +118,10 @@ public class Session_management {
         editor2.apply();
 
     }
+    public void updateIsPayValue(boolean value){
+      editor2.putBoolean(PAY_CHECK,value);
+      editor2.apply();
+    }
     public boolean isOnlinePay()
     {
         return prefs2.getBoolean(PAY_CHECK,false);
@@ -158,6 +162,7 @@ public class Session_management {
     public void clearPay()
     {
         editor2.clear();
+        editor2.commit();
     }
     /**
      * Get stored session data
@@ -223,6 +228,7 @@ public class Session_management {
 
         context.startActivity(logout);
     }
+
 
     public void logoutSessionwithchangepassword() {
         editor.clear();

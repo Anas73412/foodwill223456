@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.util.Log;
 import android.view.KeyEvent;
@@ -50,6 +51,10 @@ public class My_Past_Order extends Fragment {
   private RecyclerView rv_myorder;
   Dialog loadingBar;
   RelativeLayout rel_no ;
+  String user_id="";
+  SwipeRefreshLayout swipe;
+
+  boolean swipe_flag=false;
 
   private List<My_Past_order_model> my_order_modelList = new ArrayList<>();
   TabHost tHost;
@@ -77,6 +82,7 @@ public class My_Past_Order extends Fragment {
     loadingBar.setContentView( R.layout.progressbar );
     loadingBar.setCanceledOnTouchOutside(false);
     rel_no=(RelativeLayout)view.findViewById(R.id.rel_no);
+    swipe=view.findViewById(R.id.swipe);
     module=new Module(getActivity());
     // handle the touch event if true
     view.setFocusableInTouchMode(true);
@@ -101,7 +107,7 @@ public class My_Past_Order extends Fragment {
     rv_myorder.setLayoutManager(new LinearLayoutManager(getActivity()));
 
     Session_management sessionManagement = new Session_management(getActivity());
-    String user_id = sessionManagement.getUserDetails().get(BaseURL.KEY_ID);
+     user_id = sessionManagement.getUserDetails().get(BaseURL.KEY_ID);
 
     // check internet connection
     if (ConnectivityReceiver.isConnected())
@@ -113,6 +119,22 @@ public class My_Past_Order extends Fragment {
     {
       ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
     }
+    swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+      @Override
+      public void onRefresh() {
+
+        if (ConnectivityReceiver.isConnected())
+        {
+          swipe_flag=true;
+          makeGetOrderRequest(user_id);
+        } else
+
+        {
+          ((MainActivity) getActivity()).onNetworkConnectionChanged(false);
+        }
+
+      }
+    });
 
     // recyclerview item click listener
     rv_myorder.addOnItemTouchListener(new
@@ -166,12 +188,17 @@ public class My_Past_Order extends Fragment {
     String tag_json_obj = "json_socity_req";
     Map<String, String> params = new HashMap<String, String>();
     params.put("user_id", userid);
+    my_order_modelList.clear();
 
     CustomVolleyJsonArrayRequest jsonObjReq = new CustomVolleyJsonArrayRequest(Request.Method.POST,
             BaseURL.GET_DELIVERD_ORDER_URL, params, new Response.Listener<JSONArray>() {
 
       @Override
       public void onResponse(JSONArray response) {
+        if(swipe_flag){
+          swipe_flag=false;
+          swipe.setRefreshing(false);
+        }
         Log.e("passst_order",""+response.toString());
         Gson gson = new Gson();
         Type listType = new TypeToken<List<My_Past_order_model>>() {
